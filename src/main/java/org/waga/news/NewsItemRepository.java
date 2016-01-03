@@ -2,8 +2,12 @@ package org.waga.news;
 
 import java.util.List;
 
-public interface NewsItemRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-	List<NewsItem> findFirst10ByCreatedDateDesc();
+public interface NewsItemRepository extends JpaRepository<NewsItem, Long> {
+
+	List<NewsItem> findFirst10ByOrderByCreatedTimeDesc();
+
+	List<NewsItem> findFirst10ByTagOrderByCreatedTimeDesc(String tag);
 
 }

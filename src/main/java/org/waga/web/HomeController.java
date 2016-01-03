@@ -6,21 +6,57 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.waga.news.NewsItemRepository;
+import org.waga.rtcb.RaceToCiaoBellaConstants;
+import org.waga.rtcb.RaceToCiaoBellaStatsService;
+import org.waga.wc.WoodmanCupConstants;
+import org.waga.wc.WoodmanCupStatsService;
 
 @RequestMapping("/")
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private NewsItemRepository newsItemRepository;
 
-	@RequestMapping(method=RequestMethod.GET)
+	@Autowired
+	private RaceToCiaoBellaStatsService raceToCiaoBellaStatsService;
+
+	@Autowired
+	private WoodmanCupStatsService woodmanCupStatsService;
+
+	@RequestMapping(method = RequestMethod.GET)
 	public String home(ModelMap modelMap) {
-		
-		modelMap.addAttribute("items", newsItemRepository.findFirst10ByCreatedDateDesc() );
-		modelMap.addAttribute("helper", new ViewHelper());
-		
+
+		modelMap.addAttribute("items", newsItemRepository.findFirst10ByOrderByCreatedTimeDesc());
+		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
+		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
+		modelMap.addAttribute("helper", new ViewHelper("home"));
+
 		return "home";
 	}
-	
+
+	@RequestMapping(value = "/racetociaobella", method = RequestMethod.GET)
+	public String racetociaobella(ModelMap modelMap) {
+
+		modelMap.addAttribute("items",
+				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
+		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
+		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
+		modelMap.addAttribute("helper", new ViewHelper("rtcb"));
+
+		return "home";
+	}
+
+	@RequestMapping(value = "/woodmancup", method = RequestMethod.GET)
+	public String woodmancup(ModelMap modelMap) {
+
+		modelMap.addAttribute("items",
+				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(WoodmanCupConstants.NEWS_ITEM_TAG));
+		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
+		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
+		modelMap.addAttribute("helper", new ViewHelper("wc"));
+
+		return "home";
+	}
+
 }

@@ -2,7 +2,14 @@ package org.waga.news;
 
 import java.util.Date;
 
-public class NewsItem {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.waga.core.AbstractEntity;
+
+@Entity
+public class NewsItem extends AbstractEntity {
 
 	private String imageUrl;
 	private String title;
@@ -10,11 +17,11 @@ public class NewsItem {
 	private String link;
 	private String tag;
 	private Date createdTime;
-	
+
 	public String getTag() {
 		return tag;
 	}
-	
+
 	public void setTag(String tag) {
 		this.tag = tag;
 	}

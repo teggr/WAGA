@@ -7,14 +7,20 @@ import java.util.Date;
 
 public class ViewHelper {
 
-	public String elapsedTime(Date createdTime) {
+	private String viewName;
 
+	public ViewHelper(String viewName) {
+		this.viewName = viewName;
+	}
+
+	public String elapsedTime(Date createdTime) {
 		Period period = Period.between(createdTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
 				LocalDate.now());
-		
-		
 		return period.getDays() + "d";
-
+	}
+	
+	public boolean isActive(String viewName) {
+		return viewName.equalsIgnoreCase(this.viewName);
 	}
 
 }
