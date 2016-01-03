@@ -5,7 +5,18 @@
   	
   	<div th:replace="fragments/header::header"></div>
   	
-    <h1>Hello, world!</h1>
+    <div class="media" th:each="item : ${items}">
+	  <div class="media-left">
+	    <a th:href="${item.link}">
+	      <img class="media-object" th:src="${item.imageUrl}" height="64px" width="64px" alt="..."></img>
+	    </a>
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading" ><a th:href="${item.link}" th:text="${item.title}">Media heading</a></h4>
+	    <p th:text="${item.summary}"></p>
+	    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdTime)}"></span> | <span th:text="${item.tag}"></span></p>
+	  </div>
+	</div>
 	
 	<div th:replace="fragments/scripts::scripts"></div>
 	
