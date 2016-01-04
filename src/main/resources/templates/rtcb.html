@@ -8,18 +8,76 @@
   	<div class="container-fluid">
   		<div class="row">
 		  <div class="col-md-8">
-		    <div class="media" th:each="item : ${items}">
-			  <div class="media-left">
-			    <a th:href="${item.link}">
-			      <img class="media-object" th:src="${item.imageUrl}" height="64px" width="64px" alt="..."></img>
-			    </a>
+		  
+		  	<!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#leaderboard" aria-controls="leaderboard" role="tab" data-toggle="tab">Leaderboard</a></li>
+			    <li role="presentation"><a href="#tournaments" aria-controls="tournaments" role="tab" data-toggle="tab">Tournaments</a></li>
+			    <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
+			  </ul>
+			
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="leaderboard">
+			    	<div class="waga-tab-content">
+				    	<table class="table table-striped">
+						  <thead>
+						  	<tr>
+						  		<th>Rank</th>
+						  		<th>Player</th>
+						  		<th>Played</th>
+						  		<th>Points</th>
+						  	</tr>
+						  </thead>
+						  <tbody>
+						  	<tr th:each="ranking : ${rtcbRankings}">
+						  		<td th:text="${ranking.position}"></td>
+						  		<td th:text="${ranking.player}"></td>
+						  		<td th:text="${ranking.played}"></td>
+						  		<td th:text="${ranking.points}"></td>
+						  	</tr>
+						  </tbody>
+						</table>
+			    	</div>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="tournaments">
+			    	<div class="waga-tab-content">
+				    	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						  <div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingOne">
+						      <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Collapsible Group Item #1
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						      <div class="panel-body">
+						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						      </div>
+						    </div>
+						  </div>
+						 </div>
+			    	</div>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="news">
+					<div class="waga-tab-content">
+					    <div class="media" th:each="item : ${items}">
+						  <div class="media-left">
+						    <a th:href="${item.link}">
+						      <img class="media-object" th:src="${item.imageUrl}" height="64px" width="64px" alt="..."></img>
+						    </a>
+						  </div>
+						  <div class="media-body">
+						    <h4 class="media-heading" ><a th:href="${item.link}" th:text="${item.title}">Media heading</a></h4>
+						    <p th:text="${item.summary}"></p>
+						    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdTime)}"></span> | <span th:text="${item.tag}"></span></p>
+						  </div>
+						</div>
+					</div>
+			    </div>
 			  </div>
-			  <div class="media-body">
-			    <h4 class="media-heading" ><a th:href="${item.link}" th:text="${item.title}">Media heading</a></h4>
-			    <p th:text="${item.summary}"></p>
-			    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdTime)}"></span> | <span th:text="${item.tag}"></span></p>
-			  </div>
-			</div>
+		    
 		  </div>
 		  <div class="col-md-4">
 		  		<h4>Race to Ciao Bella Leaderboard</h4>
