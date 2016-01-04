@@ -4,10 +4,10 @@
   
   <body th:fragment="table">
   	
-		<h4>Last Tournament</h4>
-		<h5 th:text="${lastTournament.name}"></h5>
-		<p th:text="${lastTournament.venueName} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
-  		<table class="table table-condensed">
+		<h4 th:if="${lastTournament}">Last Tournament</h4>
+		<h5 th:if="${lastTournament}" th:text="${lastTournament.name}"></h5>
+		<p th:if="${lastTournament}" th:text="${lastTournament.venueName} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
+  		<table th:if="${lastTournament}" class="table table-condensed">
 		  <thead>
 		  	<tr>
 		  		<th>Position</th>

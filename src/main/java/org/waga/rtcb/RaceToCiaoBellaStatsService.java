@@ -1,6 +1,7 @@
 package org.waga.rtcb;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +21,13 @@ public class RaceToCiaoBellaStatsService {
 
 	public TournamentSummary getLastTournamentSummary() {
 
-		return new TournamentSummary(raceToCiaoBellaRepository.findLastByOrderBySeason().getTournaments().stream()
-				.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get());
+		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findLastByOrderBySeason();
+		if (lastRace != null) {
+			return new TournamentSummary(lastRace.getTournaments().stream()
+					.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get());
+		} else {
+			return null;
+		}
 
 	}
 
@@ -31,19 +37,21 @@ public class RaceToCiaoBellaStatsService {
 
 		Map<String, Totals> leaders = new HashMap<>();
 
-		for (Tournament round : race.getTournaments()) {
+		if (race != null) {
+			for (Tournament round : race.getTournaments()) {
 
-			Set<Result> results = round.getResults();
-			for (Result result : results) {
-				Player player = result.getPlayer();
-				Totals totals = leaders.get(player.getSurname());
-				if (totals == null) {
-					totals = new Totals(player);
-					leaders.put(player.getSurname(), totals);
+				Set<Result> results = round.getResults();
+				for (Result result : results) {
+					Player player = result.getPlayer();
+					Totals totals = leaders.get(player.getSurname());
+					if (totals == null) {
+						totals = new Totals(player);
+						leaders.put(player.getSurname(), totals);
+					}
+					totals.addScore(result.getScore());
 				}
-				totals.addScore(result.getScore());
-			}
 
+			}
 		}
 
 		List<RaceToCiaoBellaRanking> rankings = leaders.values().stream().map(t -> {
@@ -88,9 +96,13 @@ public class RaceToCiaoBellaStatsService {
 
 	public List<TournamentSummary> getTournamentSummaries() {
 
-		return raceToCiaoBellaRepository.findLastByOrderBySeason().getTournaments().stream()
-				.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).map(t -> new TournamentSummary(t))
-				.collect(Collectors.toList());
+		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findLastByOrderBySeason();
+		if (lastRace != null) {
+			return lastRace.getTournaments().stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate()))
+					.map(t -> new TournamentSummary(t)).collect(Collectors.toList());
+		} else {
+			return Collections.emptyList();
+		}
 
 	}
 

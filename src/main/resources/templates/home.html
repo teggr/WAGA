@@ -8,6 +8,9 @@
   	<div class="container-fluid">
   		<div class="row">
 		  <div class="col-md-8">
+		  
+		  	<h2 th:if="${items.size() == 0}">No news yet. Check back later</h2>
+		    
 		    <div class="media" th:each="item : ${items}">
 			  <div class="media-left">
 			    <a th:href="${item.link}">
@@ -20,6 +23,9 @@
 			    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdTime)}"></span> | <span th:text="${item.tag}"></span></p>
 			  </div>
 			</div>
+			
+			<hr/>
+			
 		  </div>
 		  <div class="col-md-4">
 		  		<h4>Race to Ciao Bella Leaderboard</h4>
@@ -48,25 +54,25 @@
 				
 				<hr/>
 				
-				<h4>Woodman Cup Hall Of Fame</h4>
-		  		<table class="table table-condensed">
-				  <thead>
-				  	<tr>
-				  		<th>Position</th>
-				  		<th>Player</th>
-				  		<th>Played</th>
-				  		<th>Points</th>
-				  	</tr>
-				  </thead>
-				  <tbody>
-				  	<tr th:each="leader : ${wcLeaders}">
-				  		<td th:text="${leader.position}"></td>
-				  		<td th:text="${leader.player}"></td>
-				  		<td th:text="${leader.played}"></td>
-				  		<td th:text="${leader.points}"></td>
-				  	</tr>
-				  </tbody>
-				</table>
+<!-- 				<h4>Woodman Cup Hall Of Fame</h4> -->
+<!-- 		  		<table class="table table-condensed"> -->
+<!-- 				  <thead> -->
+<!-- 				  	<tr> -->
+<!-- 				  		<th>Position</th> -->
+<!-- 				  		<th>Player</th> -->
+<!-- 				  		<th>Played</th> -->
+<!-- 				  		<th>Points</th> -->
+<!-- 				  	</tr> -->
+<!-- 				  </thead> -->
+<!-- 				  <tbody> -->
+<!-- 				  	<tr th:each="leader : ${wcLeaders}"> -->
+<!-- 				  		<td th:text="${leader.position}"></td> -->
+<!-- 				  		<td th:text="${leader.player}"></td> -->
+<!-- 				  		<td th:text="${leader.played}"></td> -->
+<!-- 				  		<td th:text="${leader.points}"></td> -->
+<!-- 				  	</tr> -->
+<!-- 				  </tbody> -->
+<!-- 				</table> -->
 			</div>
 		</div>
 	</div>

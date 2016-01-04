@@ -51,7 +51,7 @@
 						    </div>
 						    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 						      <div class="panel-body">
-						        <p th:text="${lastTournament.venueName} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
+						        <p th:text="${tournament.venueName} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p>
 						  		<table class="table">
 								  <thead>
 								  	<tr>
@@ -62,7 +62,7 @@
 								  	</tr>
 								  </thead>
 								  <tbody>
-								  	<tr th:each="result : ${lastTournament.finalResults}">
+								  	<tr th:each="result : ${tournament.finalResults}">
 								  		<td th:text="${result.position}"></td>
 								  		<td th:text="${result.name}"></td>
 								  		<td th:text="${result.handicap}"></td>
@@ -93,6 +93,8 @@
 					</div>
 			    </div>
 			  </div>
+			  
+			  <hr/>
 		    
 		  </div>
 		  <div class="col-md-4">
