@@ -1,7 +1,9 @@
 package org.waga.rtcb;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,7 +20,7 @@ public class Tournament extends AbstractEntity {
 	@ManyToOne
 	private Venue venue;
 	private Date date;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "tournament_id")
 	private Set<Result> results;

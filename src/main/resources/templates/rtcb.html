@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head th:include="fragments/head::head (title='WAGA')"></head>
+  <head th:include="fragments/head::head (title='RTCB')"></head>
   <body>
   	
   	<div th:replace="fragments/header::header"></div>
@@ -41,7 +41,7 @@
 				  	</tr>
 				  </tbody>
 				</table>
-							
+				
 				<hr/>
 				
 				<h4>Last Tournament</h4>
@@ -61,28 +61,6 @@
 				  		<td th:text="${result.name}"></td>
 				  		<td th:text="${result.handicap}"></td>
 				  		<td th:text="${result.score}"></td>
-				  	</tr>
-				  </tbody>
-				</table>
-				
-				<hr/>
-				
-				<h4>Woodman Cup Hall Of Fame</h4>
-		  		<table class="table table-condensed">
-				  <thead>
-				  	<tr>
-				  		<th>Position</th>
-				  		<th>Player</th>
-				  		<th>Played</th>
-				  		<th>Points</th>
-				  	</tr>
-				  </thead>
-				  <tbody>
-				  	<tr th:each="leader : ${wcLeaders}">
-				  		<td th:text="${leader.position}"></td>
-				  		<td th:text="${leader.player}"></td>
-				  		<td th:text="${leader.played}"></td>
-				  		<td th:text="${leader.points}"></td>
 				  	</tr>
 				  </tbody>
 				</table>

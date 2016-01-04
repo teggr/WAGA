@@ -6,7 +6,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.waga.news.NewsItemRepository;
-import org.waga.rtcb.RaceToCiaoBellaConstants;
 import org.waga.rtcb.RaceToCiaoBellaStatsService;
 import org.waga.wc.WoodmanCupConstants;
 import org.waga.wc.WoodmanCupStatsService;
@@ -29,20 +28,9 @@ public class HomeController {
 
 		modelMap.addAttribute("items", newsItemRepository.findFirst10ByOrderByCreatedTimeDesc());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
+		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
 		modelMap.addAttribute("helper", new ViewHelper("home"));
-
-		return "home";
-	}
-
-	@RequestMapping(value = "/racetociaobella", method = RequestMethod.GET)
-	public String racetociaobella(ModelMap modelMap) {
-
-		modelMap.addAttribute("items",
-				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
-		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
-		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
-		modelMap.addAttribute("helper", new ViewHelper("rtcb"));
 
 		return "home";
 	}
@@ -53,6 +41,7 @@ public class HomeController {
 		modelMap.addAttribute("items",
 				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(WoodmanCupConstants.NEWS_ITEM_TAG));
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
+		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
 		modelMap.addAttribute("helper", new ViewHelper("wc"));
 

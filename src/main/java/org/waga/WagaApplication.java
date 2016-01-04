@@ -17,6 +17,7 @@ import org.waga.core.VenueRepository;
 import org.waga.news.NewsItem;
 import org.waga.news.NewsItemRepository;
 import org.waga.rtcb.RaceToCiaoBella;
+import org.waga.rtcb.RaceToCiaoBellaConstants;
 import org.waga.rtcb.RaceToCiaoBellaRepository;
 import org.waga.rtcb.Result;
 import org.waga.rtcb.Tournament;
@@ -43,31 +44,63 @@ public class WagaApplication {
 	@PostConstruct
 	public void initialise() {
 
-		Venue venue = new Venue();
-		venue.setName("Shirley Park GC");
-		venueRepository.save(venue);
+		Venue shirley = new Venue();
+		shirley.setName("Shirley Park GC");
+		venueRepository.save(shirley);
 
-		Player player = new Player();
-		player.setFirstName("Thomas");
-		player.setSurname("Apperley");
-		player.setCurrentHandicap(12);
-		playerRepository.save(player);
+		Venue other = new Venue();
+		other.setName("Other Park GC");
+		venueRepository.save(other);
+
+		Player tom = new Player();
+		tom.setFirstName("Thomas");
+		tom.setSurname("Apperley");
+		tom.setCurrentHandicap(12);
+		playerRepository.save(tom);
+
+		Player dave = new Player();
+		dave.setFirstName("David");
+		dave.setSurname("Tryhorn");
+		dave.setCurrentHandicap(23);
+		playerRepository.save(dave);
+
+		Player brad = new Player();
+		brad.setFirstName("Brad");
+		brad.setSurname("Le Riche");
+		brad.setCurrentHandicap(28);
+		playerRepository.save(brad);
+
+		Player robin = new Player();
+		robin.setFirstName("Robin");
+		robin.setSurname("Tegg");
+		robin.setCurrentHandicap(15);
+		playerRepository.save(robin);
+
+		Player foist = new Player();
+		foist.setFirstName("Richard");
+		foist.setSurname("Foister");
+		foist.setCurrentHandicap(12);
+		playerRepository.save(foist);
+
+		Player mad = new Player();
+		mad.setFirstName("Andrew");
+		mad.setSurname("Stevens");
+		mad.setCurrentHandicap(28);
+		playerRepository.save(mad);
+
+		Player damo = new Player();
+		damo.setFirstName("Damien");
+		damo.setSurname("Kiernander");
+		damo.setCurrentHandicap(18);
+		playerRepository.save(damo);
 
 		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();
 		raceToCiaoBella.setSeason(2016);
-		Set<Tournament> rounds = new HashSet<>();
-		Tournament round = new Tournament();
-		round.setDate(DateUtils.create(2015, 12, 29).getTime());
-		round.setVenue(venue);
-		Set<Result> results = new HashSet<>();
-		Result result = new Result();
-		result.setPlayer(player);
-		result.setHandicap(player.getCurrentHandicap());
-		result.setScore(36);
-		results.add(result);
-		round.setResults(results);
-		rounds.add(round);
-		raceToCiaoBella.setTournaments(rounds);
+		Set<Tournament> tournaments = new HashSet<>();
+		addOther(other, tom, dave, foist, mad, damo, tournaments);
+		addShirley(shirley, tom, dave, brad, robin, tournaments);
+
+		raceToCiaoBella.setTournaments(tournaments);
 		raceToCiaoBellaRepository.save(raceToCiaoBella);
 
 		NewsItem item1 = new NewsItem();
@@ -78,8 +111,84 @@ public class WagaApplication {
 		item1.setLink("http://localhost:8080/racetociaobella/rounds/2");
 		Date createdTime = new Date();
 		item1.setCreatedTime(createdTime);
-		item1.setTag("Race to Ciao Bella");
+		item1.setTag(RaceToCiaoBellaConstants.NEWS_ITEM_TAG);
 		newsItemRepository.save(item1);
 
+	}
+
+	private void addOther(Venue venue, Player tom, Player dave, Player foist, Player mad, Player damo,
+			Set<Tournament> tournaments) {
+		Tournament shirley = new Tournament();
+		shirley.setDate(DateUtils.create(2015, 11, 15).getTime());
+		shirley.setVenue(venue);
+		Set<Result> results = new HashSet<>();
+
+		Result tomResult = new Result();
+		tomResult.setPlayer(tom);
+		tomResult.setHandicap(tom.getCurrentHandicap());
+		tomResult.setScore(28);
+		results.add(tomResult);
+
+		Result daveResult = new Result();
+		daveResult.setPlayer(dave);
+		daveResult.setHandicap(dave.getCurrentHandicap());
+		daveResult.setScore(31);
+		results.add(daveResult);
+
+		Result bradResult = new Result();
+		bradResult.setPlayer(foist);
+		bradResult.setHandicap(foist.getCurrentHandicap());
+		bradResult.setScore(32);
+		results.add(bradResult);
+
+		Result robinResult = new Result();
+		robinResult.setPlayer(mad);
+		robinResult.setHandicap(mad.getCurrentHandicap());
+		robinResult.setScore(30);
+		results.add(robinResult);
+
+		Result damoResult = new Result();
+		damoResult.setPlayer(damo);
+		damoResult.setHandicap(damo.getCurrentHandicap());
+		damoResult.setScore(24);
+		results.add(damoResult);
+
+		shirley.setResults(results);
+		tournaments.add(shirley);
+	}
+
+	private void addShirley(Venue venue, Player tom, Player dave, Player brad, Player robin,
+			Set<Tournament> tournaments) {
+		Tournament shirley = new Tournament();
+		shirley.setDate(DateUtils.create(2015, 12, 29).getTime());
+		shirley.setVenue(venue);
+		Set<Result> results = new HashSet<>();
+
+		Result tomResult = new Result();
+		tomResult.setPlayer(tom);
+		tomResult.setHandicap(tom.getCurrentHandicap());
+		tomResult.setScore(34);
+		results.add(tomResult);
+
+		Result daveResult = new Result();
+		daveResult.setPlayer(dave);
+		daveResult.setHandicap(dave.getCurrentHandicap());
+		daveResult.setScore(26);
+		results.add(daveResult);
+
+		Result bradResult = new Result();
+		bradResult.setPlayer(brad);
+		bradResult.setHandicap(brad.getCurrentHandicap());
+		bradResult.setScore(30);
+		results.add(bradResult);
+
+		Result robinResult = new Result();
+		robinResult.setPlayer(robin);
+		robinResult.setHandicap(robin.getCurrentHandicap());
+		robinResult.setScore(32);
+		results.add(robinResult);
+
+		shirley.setResults(results);
+		tournaments.add(shirley);
 	}
 }

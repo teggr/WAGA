@@ -1,6 +1,9 @@
 package org.waga.rtcb;
 
-public class RaceToCiaoBellaRanking {
+import org.waga.core.Rankable;
+
+public class RaceToCiaoBellaRanking implements Rankable {
+
 	private int position;
 	private String player;
 	private int played;
@@ -36,6 +39,16 @@ public class RaceToCiaoBellaRanking {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+
+	@Override
+	public int getRankableValue() {
+		return points;
+	}
+
+	@Override
+	public void setRanking(int ranking) {
+		position = ranking;
 	}
 
 	@Override

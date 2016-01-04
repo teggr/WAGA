@@ -40,4 +40,8 @@ public class Player extends AbstractEntity {
 		return "Player [firstName=" + firstName + ", surname=" + surname + ", currentHandicap=" + currentHandicap + "]";
 	}
 
+	public String getFullName() {
+		return firstName + " " + surname;
+	}
+
 }

@@ -10,12 +10,20 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.waga.core.Player;
+import org.waga.core.Ranking;
 
 @Component
 public class RaceToCiaoBellaStatsService {
 
 	@Autowired
 	private RaceToCiaoBellaRepository raceToCiaoBellaRepository;
+
+	public TournamentSummary getLastTournamentSummary() {
+
+		return new TournamentSummary(raceToCiaoBellaRepository.findLastByOrderBySeason().getTournaments().stream()
+				.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get());
+
+	}
 
 	public List<RaceToCiaoBellaRanking> getRankings() {
 
@@ -38,17 +46,16 @@ public class RaceToCiaoBellaStatsService {
 
 		}
 
-		List<RaceToCiaoBellaRanking> rankings = leaders.values().stream()
-				.map(t -> {
-					RaceToCiaoBellaRanking rl = new RaceToCiaoBellaRanking();
-					rl.setPlayed(t.getSize());
-					rl.setPlayer(t.getPlayer().getSurname());
-					rl.setPosition(1);
-					rl.setPoints(t.getTotal());
-					return rl;
-				})
-				.sorted((t1, t2) -> Integer.compare(t1.getPoints(), t2.getPoints()))
-				.collect(Collectors.toList());
+		List<RaceToCiaoBellaRanking> rankings = leaders.values().stream().map(t -> {
+			RaceToCiaoBellaRanking rl = new RaceToCiaoBellaRanking();
+			rl.setPlayed(t.getSize());
+			rl.setPlayer(t.getPlayer().getSurname());
+			rl.setPosition(1);
+			rl.setPoints(t.getTotal());
+			return rl;
+		}).sorted((t1, t2) -> Integer.compare(t2.getPoints(), t1.getPoints())).collect(Collectors.toList());
+		
+		Ranking.rank(rankings);
 
 		return rankings;
 
