@@ -12,12 +12,18 @@ public class TournamentSummary {
 	private String name;
 	private Date date;
 	private List<FinalResult> orderResults;
+	private String venueName;
 
 	public TournamentSummary(Tournament tournament) {
-		name = tournament.getVenue().getName();
+		name = tournament.getName();
+		venueName = tournament.getVenue().getName();
 		date = tournament.getDate();
 		orderResults = orderResults(tournament.getResults());
 		Ranking.rank(orderResults);
+	}
+
+	public String getVenueName() {
+		return venueName;
 	}
 
 	public String getName() {

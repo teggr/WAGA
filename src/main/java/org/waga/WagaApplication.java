@@ -119,6 +119,7 @@ public class WagaApplication {
 	private void addOther(Venue venue, Player tom, Player dave, Player foist, Player mad, Player damo,
 			Set<Tournament> tournaments) {
 		Tournament shirley = new Tournament();
+		shirley.setName("Toms Comp");
 		shirley.setDate(DateUtils.create(2015, 11, 15).getTime());
 		shirley.setVenue(venue);
 		Set<Result> results = new HashSet<>();
@@ -160,6 +161,7 @@ public class WagaApplication {
 	private void addShirley(Venue venue, Player tom, Player dave, Player brad, Player robin,
 			Set<Tournament> tournaments) {
 		Tournament shirley = new Tournament();
+		shirley.setName("Brads comp");
 		shirley.setDate(DateUtils.create(2015, 12, 29).getTime());
 		shirley.setVenue(venue);
 		Set<Result> results = new HashSet<>();

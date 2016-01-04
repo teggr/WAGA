@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  
+  <body th:fragment="table">
+  	
+		<h4>Last Tournament</h4>
+		<h5 th:text="${lastTournament.name}"></h5>
+		<p th:text="${lastTournament.venueName} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
+  		<table class="table table-condensed">
+		  <thead>
+		  	<tr>
+		  		<th>Position</th>
+		  		<th>Player</th>
+		  		<th>Handicap</th>
+		  		<th>Points</th>
+		  	</tr>
+		  </thead>
+		  <tbody>
+		  	<tr th:each="result : ${lastTournament.finalResults}">
+		  		<td th:text="${result.position}"></td>
+		  		<td th:text="${result.name}"></td>
+		  		<td th:text="${result.handicap}"></td>
+		  		<td th:text="${result.score}"></td>
+		  	</tr>
+		  </tbody>
+		</table>
+  
+  </body>
+
+</html>

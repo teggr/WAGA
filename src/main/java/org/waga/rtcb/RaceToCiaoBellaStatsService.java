@@ -54,7 +54,7 @@ public class RaceToCiaoBellaStatsService {
 			rl.setPoints(t.getTotal());
 			return rl;
 		}).sorted((t1, t2) -> Integer.compare(t2.getPoints(), t1.getPoints())).collect(Collectors.toList());
-		
+
 		Ranking.rank(rankings);
 
 		return rankings;
@@ -84,6 +84,14 @@ public class RaceToCiaoBellaStatsService {
 		public int getTotal() {
 			return totals.stream().mapToInt(Integer::intValue).sum();
 		}
+	}
+
+	public List<TournamentSummary> getTournamentSummaries() {
+
+		return raceToCiaoBellaRepository.findLastByOrderBySeason().getTournaments().stream()
+				.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).map(t -> new TournamentSummary(t))
+				.collect(Collectors.toList());
+
 	}
 
 }

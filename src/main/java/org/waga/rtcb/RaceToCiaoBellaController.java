@@ -24,6 +24,7 @@ public class RaceToCiaoBellaController {
 		modelMap.addAttribute("items",
 				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
+		modelMap.addAttribute("tournaments", raceToCiaoBellaStatsService.getTournamentSummaries());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("helper", new ViewHelper("rtcb"));
 

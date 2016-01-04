@@ -20,10 +20,19 @@ public class Tournament extends AbstractEntity {
 	@ManyToOne
 	private Venue venue;
 	private Date date;
+	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "tournament_id")
 	private Set<Result> results;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
 
 	public Venue getVenue() {
 		return venue;
@@ -51,7 +60,7 @@ public class Tournament extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Tournament [venue=" + venue + ", date=" + date + ", results=" + results + "]";
+		return "Tournament [venue=" + venue + ", date=" + date + ", name=" + name + ", results=" + results + "]";
 	}
 
 }
