@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head::head (title='WAGA ADMIN')"></head>
+<body>
+
+	<div th:replace="fragments/header::header"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Admin Centre</h1>
+				<!-- List group -->
+				<ul class="list-group">
+					<li class="list-group-item">Players</li>
+					<li class="list-group-item">Venues</li>
+					<li class="list-group-item">Race To Ciao Bella</li>
+					<li class="list-group-item">News</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="fragments/scripts::scripts"></div>
+
+</body>
+</html>
