@@ -6,14 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminHome(ModelMap modelMap) {
-
 		modelMap.addAttribute("helper", new ViewHelper("home"));
-
 		return "admin";
 	}
 
