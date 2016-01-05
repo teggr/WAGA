@@ -13,12 +13,12 @@ public class ViewHelper {
 		this.viewName = viewName;
 	}
 
-	public String elapsedTime(Date createdTime) {
-		Period period = Period.between(createdTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+	public String elapsedTime(Date createdDate) {
+		Period period = Period.between(createdDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
 				LocalDate.now());
 		return period.getDays() + "d";
 	}
-	
+
 	public boolean isActive(String viewName) {
 		return viewName.equalsIgnoreCase(this.viewName);
 	}

@@ -20,7 +20,7 @@
 			  <div class="media-body">
 			    <h4 class="media-heading" ><a th:href="${item.link}" th:text="${item.title}">Media heading</a></h4>
 			    <p th:text="${item.summary}"></p>
-			    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdTime)}"></span> | <span th:text="${item.tag}"></span></p>
+			    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${helper.elapsedTime(item.createdDate)}"></span> | <span th:text="${item.tag}"></span></p>
 			  </div>
 			</div>
 			

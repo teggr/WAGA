@@ -26,7 +26,7 @@ public class HomeController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String home(ModelMap modelMap) {
 
-		modelMap.addAttribute("items", newsItemRepository.findFirst10ByOrderByCreatedTimeDesc());
+		modelMap.addAttribute("items", newsItemRepository.findFirst10ByOrderByCreatedDateDesc());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
@@ -39,7 +39,7 @@ public class HomeController {
 	public String woodmancup(ModelMap modelMap) {
 
 		modelMap.addAttribute("items",
-				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(WoodmanCupConstants.NEWS_ITEM_TAG));
+				newsItemRepository.findFirst10ByTagOrderByCreatedDateDesc(WoodmanCupConstants.NEWS_ITEM_TAG));
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());

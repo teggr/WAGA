@@ -109,8 +109,6 @@ public class DataLoader implements CommandLineRunner {
 				"Thomas Apperley shows strong will power to take the lead as David Tryhorn slumps to fourth place");
 		item1.setImageUrl("http://cdn.gdol.com/app/courses/image/preview/56855.jpg");
 		item1.setLink("http://localhost:8080/racetociaobella/rounds/2");
-		Date createdTime = new Date();
-		item1.setCreatedTime(createdTime);
 		item1.setTag(RaceToCiaoBellaConstants.NEWS_ITEM_TAG);
 		newsItemRepository.save(item1);
 

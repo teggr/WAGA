@@ -48,4 +48,11 @@ public class Venue extends AbstractEntity {
 				+ "]";
 	}
 
+	public void update(Venue venue) {
+		this.name = venue.name;
+		this.link = venue.link;
+		this.googleMapLink = venue.googleMapLink;
+		this.imageUrl = venue.imageUrl;
+	}
+
 }

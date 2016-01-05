@@ -22,7 +22,7 @@ public class RaceToCiaoBellaController {
 	public String racetociaobella(ModelMap modelMap) {
 
 		modelMap.addAttribute("items",
-				newsItemRepository.findFirst10ByTagOrderByCreatedTimeDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
+				newsItemRepository.findFirst10ByTagOrderByCreatedDateDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("tournaments", raceToCiaoBellaStatsService.getTournamentSummaries());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());

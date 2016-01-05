@@ -1,15 +1,15 @@
 package org.waga.rtcb;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.waga.core.AbstractEntity;
 import org.waga.core.Venue;
@@ -19,6 +19,8 @@ public class Tournament extends AbstractEntity {
 
 	@ManyToOne
 	private Venue venue;
+	
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	private String name;
 

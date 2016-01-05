@@ -22,18 +22,18 @@ public class VenueAdminController {
 	}
 
 	@RequestMapping(value = "/admin/venues", method = RequestMethod.GET)
-	public String playerAdmin(ModelMap modelMap) {
+	public String venueAdmin(ModelMap modelMap) {
 		modelMap.addAttribute("helper", new ViewHelper("venueAdmin"));
 		modelMap.addAttribute("venues", venueRepository.findAll());
 		return "venuesAdmin";
 	}
 
 	@RequestMapping(value = "/admin/venues", method = RequestMethod.POST)
-	public String adminHome(ModelMap modelMap, @ModelAttribute Venue venue, BindingResult result) {
+	public String createVenue(ModelMap modelMap, @ModelAttribute Venue venue, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(venue);
-			return playerAdmin(modelMap);
+			return venueAdmin(modelMap);
 		}
 
 		venueRepository.save(venue);
@@ -42,16 +42,17 @@ public class VenueAdminController {
 	}
 
 	@RequestMapping(value = "/admin/venues/{id}", method = RequestMethod.POST)
-	public String adminHome(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Venue venue,
+	public String updateVenue(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Venue venue,
 			BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(venue);
-			return playerAdmin(modelMap);
+			return venueAdmin(modelMap);
 		}
 
-		venue.setId(id);
-		venueRepository.save(venue);
+		Venue existing = venueRepository.findOne(id);
+		existing.update(venue);
+		venueRepository.save(existing);
 
 		return "redirect:/admin/venues";
 	}

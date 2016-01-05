@@ -1,8 +1,6 @@
 package org.waga.core;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 @Entity
 public class Player extends AbstractEntity {
@@ -42,6 +40,12 @@ public class Player extends AbstractEntity {
 
 	public String getFullName() {
 		return firstName + " " + surname;
+	}
+
+	public void update(Player player) {
+		this.firstName = player.firstName;
+		this.surname = player.surname;
+		this.currentHandicap = player.currentHandicap;
 	}
 
 }

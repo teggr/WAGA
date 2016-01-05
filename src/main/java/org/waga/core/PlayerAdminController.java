@@ -29,7 +29,7 @@ public class PlayerAdminController {
 	}
 
 	@RequestMapping(value = "/admin/players", method = RequestMethod.POST)
-	public String adminHome(ModelMap modelMap, @ModelAttribute Player player, BindingResult result) {
+	public String createPlayer(ModelMap modelMap, @ModelAttribute Player player, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(player);
@@ -42,7 +42,7 @@ public class PlayerAdminController {
 	}
 
 	@RequestMapping(value = "/admin/players/{id}", method = RequestMethod.POST)
-	public String adminHome(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Player player,
+	public String updatePlayer(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Player player,
 			BindingResult result) {
 
 		if (result.hasErrors()) {
@@ -50,8 +50,9 @@ public class PlayerAdminController {
 			return playerAdmin(modelMap);
 		}
 
-		player.setId(id);
-		playerRepository.save(player);
+		Player existing = playerRepository.findOne(id);
+		existing.update(player);
+		playerRepository.save(existing);
 
 		return "redirect:/admin/players";
 	}

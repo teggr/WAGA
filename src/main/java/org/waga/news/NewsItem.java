@@ -1,22 +1,17 @@
 package org.waga.news;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import org.waga.core.AbstractEntity;
 
 @Entity
 public class NewsItem extends AbstractEntity {
 
-	private String imageUrl;
 	private String title;
 	private String summary;
+	private String imageUrl;
 	private String link;
 	private String tag;
-	private Date createdTime;
 
 	public String getTag() {
 		return tag;
@@ -58,18 +53,18 @@ public class NewsItem extends AbstractEntity {
 		this.link = link;
 	}
 
-	public Date getCreatedTime() {
-		return createdTime;
-	}
-
-	public void setCreatedTime(Date createdTime) {
-		this.createdTime = createdTime;
-	}
-
 	@Override
 	public String toString() {
-		return "NewsItem [imageUrl=" + imageUrl + ", title=" + title + ", summary=" + summary + ", link=" + link
-				+ ", tag=" + tag + ", createdTime=" + createdTime + "]";
+		return "NewsItem [title=" + title + ", summary=" + summary + ", imageUrl=" + imageUrl + ", link=" + link
+				+ ", tag=" + tag + "]";
+	}
+
+	public void update(NewsItem newsItem) {
+		this.title = newsItem.title;
+		this.summary = newsItem.summary;
+		this.imageUrl = newsItem.imageUrl;
+		this.tag = newsItem.tag;
+		this.link = newsItem.link;
 	}
 
 }
