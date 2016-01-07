@@ -49,7 +49,6 @@ public class TournamentForm {
 	public void update(Tournament tour) {
 		tour.setName(name);
 		tour.setDate(date);
-		tour.setVenueId(venueId);
 	}
 
 }

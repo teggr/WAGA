@@ -16,10 +16,9 @@ public class TournamentSummary {
 	private List<FinalResult> orderResults;
 	private String venueName;
 
-	public TournamentSummary(Tournament tournament, VenueRepository venueRepository,
-			PlayerRepository playerRepository) {
+	public TournamentSummary(Tournament tournament) {
 		name = tournament.getName();
-		venueName = venueRepository.findOne(tournament.getVenueId()).getName();
+		venueName = tournament.getVenue().getName();
 		date = tournament.getDate();
 		orderResults = orderResults(tournament.getResults());
 		Ranking.rank(orderResults);

@@ -12,30 +12,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.waga.core.AbstractEntity;
+import org.waga.core.Venue;
 
 @Entity
 public class Tournament extends AbstractEntity {
 
 	@ManyToOne
-	@JoinColumn(name = "race_season_id")
 	private RaceToCiaoBella raceToCiaoBella;
 
-	private Long venueId;
+	@ManyToOne
+	private Venue venue;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "tournament")
 	private Set<Result> results;
-	
-	public void setVenueId(Long venueId) {
-		this.venueId = venueId;
-	}
-	
-	public Long getVenueId() {
-		return venueId;
-	}
 
 	public RaceToCiaoBella getRaceToCiaoBella() {
 		return raceToCiaoBella;
@@ -51,6 +44,14 @@ public class Tournament extends AbstractEntity {
 
 	public String getName() {
 		return name;
+	}
+
+	public Venue getVenue() {
+		return venue;
+	}
+
+	public void setVenue(Venue venue) {
+		this.venue = venue;
 	}
 
 	public Date getDate() {
@@ -76,7 +77,7 @@ public class Tournament extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Tournament [venueId=" + venueId + ", date=" + date + ", name=" + name + ", results=" + results + "]";
+		return "Tournament [venue=" + venue + ", date=" + date + ", name=" + name + ", results=" + results + "]";
 	}
 
 }

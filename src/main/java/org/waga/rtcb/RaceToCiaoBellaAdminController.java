@@ -84,8 +84,10 @@ public class RaceToCiaoBellaAdminController {
 		}
 
 		RaceToCiaoBella race = raceRepository.findOne(tournamentForm.getRaceId());
+		Venue venue = venueRepository.findOne(tournamentForm.getVenueId());
 		Tournament tour = new Tournament();
 		tournamentForm.update(tour);
+		tour.setVenue(venue);
 		race.addTournaments(tour);
 
 		raceRepository.save(race);
