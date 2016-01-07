@@ -17,6 +17,9 @@ public class RaceToCiaoBellaController {
 
 	@Autowired
 	private RaceToCiaoBellaStatsService raceToCiaoBellaStatsService;
+	
+	@Autowired
+	private RaceToCiaoBellaRepository raceRepository;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String racetociaobella(ModelMap modelMap) {
@@ -24,7 +27,7 @@ public class RaceToCiaoBellaController {
 		modelMap.addAttribute("items",
 				newsItemRepository.findFirst10ByTagOrderByCreatedDateDesc(RaceToCiaoBellaConstants.NEWS_ITEM_TAG));
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
-		modelMap.addAttribute("tournaments", raceToCiaoBellaStatsService.getTournamentSummaries());
+		modelMap.addAttribute("races", raceRepository.findAll());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("helper", new ViewHelper("rtcb"));
 

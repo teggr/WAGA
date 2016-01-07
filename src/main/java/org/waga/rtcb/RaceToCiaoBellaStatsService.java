@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,11 +24,13 @@ public class RaceToCiaoBellaStatsService {
 
 		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findLastByOrderBySeason();
 		if (lastRace != null) {
-			return new TournamentSummary(lastRace.getTournaments().stream()
-					.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get());
-		} else {
-			return null;
+			Optional<Tournament> first = lastRace.getTournaments().stream()
+					.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst();
+			if (first.isPresent()) {
+				return new TournamentSummary(first.get());
+			}
 		}
+		return null;
 
 	}
 

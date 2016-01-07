@@ -48,39 +48,39 @@
 						<div class="waga-tab-content">
 							<div class="panel-group" id="accordion" role="tablist"
 								aria-multiselectable="true"
-								th:each="tournament : ${tournaments}">
+								th:each="race : ${races}">
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="headingOne">
 										<h4 class="panel-title">
 											<a role="button" data-toggle="collapse"
 												data-parent="#accordion" href="#collapseOne"
 												aria-expanded="true" aria-controls="collapseOne"
-												th:text="${tournament.name}"></a>
+												th:text="${race.season}"></a>
 										</h4>
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse in"
 										role="tabpanel" aria-labelledby="headingOne">
 										<div class="panel-body">
-											<p
-												th:text="${tournament.venueName} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p>
-											<table class="table">
-												<thead>
-													<tr>
-														<th>Position</th>
-														<th>Player</th>
-														<th>Handicap</th>
-														<th>Points</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr th:each="result : ${tournament.finalResults}">
-														<td th:text="${result.position}"></td>
-														<td th:text="${result.name}"></td>
-														<td th:text="${result.handicap}"></td>
-														<td th:text="${result.score}"></td>
-													</tr>
-												</tbody>
-											</table>
+<!-- 											<p -->
+<!-- 												th:text="${tournament.venueName} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p> -->
+<!-- 											<table class="table"> -->
+<!-- 												<thead> -->
+<!-- 													<tr> -->
+<!-- 														<th>Position</th> -->
+<!-- 														<th>Player</th> -->
+<!-- 														<th>Handicap</th> -->
+<!-- 														<th>Points</th> -->
+<!-- 													</tr> -->
+<!-- 												</thead> -->
+<!-- 												<tbody> -->
+<!-- 													<tr th:each="result : ${tournament.finalResults}"> -->
+<!-- 														<td th:text="${result.position}"></td> -->
+<!-- 														<td th:text="${result.name}"></td> -->
+<!-- 														<td th:text="${result.handicap}"></td> -->
+<!-- 														<td th:text="${result.score}"></td> -->
+<!-- 													</tr> -->
+<!-- 												</tbody> -->
+<!-- 											</table> -->
 										</div>
 									</div>
 								</div>
@@ -144,7 +144,7 @@
 		</div>
 	</div>
 
-	<div th:replace="fragments/scripts::scripts"></div>
+	<th:block th:include="fragments/scripts::scripts"></th:block>
 
 </body>
 </html>

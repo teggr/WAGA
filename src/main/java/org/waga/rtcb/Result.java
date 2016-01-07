@@ -1,6 +1,7 @@
 package org.waga.rtcb;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.waga.core.AbstractEntity;
@@ -9,10 +10,21 @@ import org.waga.core.Player;
 @Entity
 public class Result extends AbstractEntity {
 
+	@JoinColumn(name = "tournament_id")
+	private Tournament tournament;
+
 	@ManyToOne
 	private Player player;
 	private int handicap;
 	private int score;
+
+	public Tournament getTournament() {
+		return tournament;
+	}
+
+	public void setTournament(Tournament tournament) {
+		this.tournament = tournament;
+	}
 
 	public Player getPlayer() {
 		return player;

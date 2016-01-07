@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import org.waga.core.AbstractEntity;
@@ -14,8 +13,7 @@ public class RaceToCiaoBella extends AbstractEntity {
 
 	private int season;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "race_season_id")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "raceToCiaoBella")
 	private Set<Tournament> tournaments;
 
 	public int getSeason() {
@@ -37,6 +35,15 @@ public class RaceToCiaoBella extends AbstractEntity {
 	@Override
 	public String toString() {
 		return "RaceToCiaoBella [season=" + season + ", tournaments=" + tournaments + "]";
+	}
+
+	public void update(RaceToCiaoBella rtcb) {
+		this.season = rtcb.season;
+	}
+
+	public void addTournaments(Tournament tour) {
+		tournaments.add(tour);
+		tour.setRaceToCiaoBella(this);
 	}
 
 }

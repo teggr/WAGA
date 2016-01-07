@@ -12,36 +12,45 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.waga.core.AbstractEntity;
-import org.waga.core.Venue;
 
 @Entity
 public class Tournament extends AbstractEntity {
 
 	@ManyToOne
-	private Venue venue;
-	
+	@JoinColumn(name = "race_season_id")
+	private RaceToCiaoBella raceToCiaoBella;
+
+	private Long venueId;
+
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "tournament_id")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "tournament")
 	private Set<Result> results;
 	
+	public void setVenueId(Long venueId) {
+		this.venueId = venueId;
+	}
+	
+	public Long getVenueId() {
+		return venueId;
+	}
+
+	public RaceToCiaoBella getRaceToCiaoBella() {
+		return raceToCiaoBella;
+	}
+
+	public void setRaceToCiaoBella(RaceToCiaoBella raceToCiaoBella) {
+		this.raceToCiaoBella = raceToCiaoBella;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
-	}
-
-	public Venue getVenue() {
-		return venue;
-	}
-
-	public void setVenue(Venue venue) {
-		this.venue = venue;
 	}
 
 	public Date getDate() {
@@ -60,9 +69,14 @@ public class Tournament extends AbstractEntity {
 		this.results = results;
 	}
 
+	public void addResult(Result result) {
+		results.add(result);
+		result.setTournament(this);
+	}
+
 	@Override
 	public String toString() {
-		return "Tournament [venue=" + venue + ", date=" + date + ", name=" + name + ", results=" + results + "]";
+		return "Tournament [venueId=" + venueId + ", date=" + date + ", name=" + name + ", results=" + results + "]";
 	}
 
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.waga.core.PlayerRepository;
 import org.waga.core.Ranking;
+import org.waga.core.VenueRepository;
 
 public class TournamentSummary {
 
@@ -14,9 +16,10 @@ public class TournamentSummary {
 	private List<FinalResult> orderResults;
 	private String venueName;
 
-	public TournamentSummary(Tournament tournament) {
+	public TournamentSummary(Tournament tournament, VenueRepository venueRepository,
+			PlayerRepository playerRepository) {
 		name = tournament.getName();
-		venueName = tournament.getVenue().getName();
+		venueName = venueRepository.findOne(tournament.getVenueId()).getName();
 		date = tournament.getDate();
 		orderResults = orderResults(tournament.getResults());
 		Ranking.rank(orderResults);

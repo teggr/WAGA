@@ -94,14 +94,14 @@ public class DataLoader implements CommandLineRunner {
 		damo.setCurrentHandicap(18);
 		playerRepository.save(damo);
 
-		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();
-		raceToCiaoBella.setSeason(2016);
-		Set<Tournament> tournaments = new HashSet<>();
-		addOther(theAddington, tom, dave, foist, mad, damo, tournaments);
-		addShirley(shirleyPark, tom, dave, brad, robin, tournaments);
-
-		raceToCiaoBella.setTournaments(tournaments);
-		raceToCiaoBellaRepository.save(raceToCiaoBella);
+//		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();
+//		raceToCiaoBella.setSeason(2016);
+//		Set<Tournament> tournaments = new HashSet<>();
+//		addOther(theAddington, tom, dave, foist, mad, damo, tournaments);
+//		addShirley(shirleyPark, tom, dave, brad, robin, tournaments);
+//
+//		raceToCiaoBella.setTournaments(tournaments);
+//		raceToCiaoBellaRepository.save(raceToCiaoBella);
 
 		NewsItem item1 = new NewsItem();
 		item1.setTitle("Apperley storms to top of leaderboard");
