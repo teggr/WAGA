@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.waga.core.AbstractEntity;
-import org.waga.core.Venue;
+import org.waga.venue.Venue;
 
 @Entity
 public class Tournament extends AbstractEntity {

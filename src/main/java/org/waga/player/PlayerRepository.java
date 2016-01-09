@@ -1,4 +1,4 @@
-package org.waga.core;
+package org.waga.player;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

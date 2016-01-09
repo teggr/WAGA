@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import org.waga.core.AbstractEntity;
-import org.waga.core.Player;
+import org.waga.player.Player;
 
 @Entity
 public class Result extends AbstractEntity {

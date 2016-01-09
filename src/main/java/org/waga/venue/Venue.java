@@ -1,6 +1,8 @@
-package org.waga.core;
+package org.waga.venue;
 
 import javax.persistence.Entity;
+
+import org.waga.core.AbstractEntity;
 
 @Entity
 public class Venue extends AbstractEntity {

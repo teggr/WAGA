@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.waga.core.Player;
 import org.waga.core.Ranking;
+import org.waga.player.Player;
 
 @Component
 public class RaceToCiaoBellaStatsService {

@@ -9,17 +9,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.util.DateUtils;
-import org.waga.core.Player;
-import org.waga.core.PlayerRepository;
-import org.waga.core.Venue;
-import org.waga.core.VenueRepository;
 import org.waga.news.NewsItem;
 import org.waga.news.NewsItemRepository;
+import org.waga.player.Player;
+import org.waga.player.PlayerRepository;
 import org.waga.rtcb.RaceToCiaoBella;
 import org.waga.rtcb.RaceToCiaoBellaConstants;
 import org.waga.rtcb.RaceToCiaoBellaRepository;
 import org.waga.rtcb.Result;
 import org.waga.rtcb.Tournament;
+import org.waga.venue.Venue;
+import org.waga.venue.VenueRepository;
 
 @Profile("dev")
 @Component

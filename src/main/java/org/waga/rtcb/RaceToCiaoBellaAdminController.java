@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.waga.core.Venue;
-import org.waga.core.VenueRepository;
+import org.waga.venue.Venue;
+import org.waga.venue.VenueRepository;
 import org.waga.web.ViewHelper;
 
 @Controller
