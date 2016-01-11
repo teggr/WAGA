@@ -24,7 +24,7 @@
 						  <div class="form-group">
 						    <label for="exampleInputEmail1">Player</label>
 						    <select class="form-control" th:field="*{playerId}">
-							  <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.fullName}"></option>
+							  <option th:each="player : ${players}" th:value="${player.id}" th:text="${player.fullName} + ' [' + ${player.currentHandicap} + ']'"></option>
 							</select>
 						  </div>
 						  <div class="form-group">

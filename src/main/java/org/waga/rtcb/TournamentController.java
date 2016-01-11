@@ -55,7 +55,11 @@ public class TournamentController {
 		Tournament tournament = existing.findTournamentById(tid);
 		Result tourResult = new Result();
 		resultForm.update(tourResult);
-		tourResult.setPlayer(playerRepository.findOne(resultForm.getPlayerId()));
+		Player player = playerRepository.findOne(resultForm.getPlayerId());
+		if (tourResult.getHandicap() == 0) {
+			tourResult.setHandicap(player.getCurrentHandicap());
+		}
+		tourResult.setPlayer(player);
 		tournament.addResult(tourResult);
 		raceRepository.save(existing);
 
