@@ -1,11 +1,11 @@
-drop table news_item if exists;
+drop table if exists news_item ;
 
-drop table player if exists;
+drop table if exists player;
 
-drop table race_to_ciao_bella if exists;
+drop table if exists race_to_ciao_bella;
 
-drop table result if exists;
+drop table if exists result;
 
-drop table tournament if exists;
+drop table if exists tournament;
 
-drop table venue if exists;
+drop table if exists venue;
