@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.waga.venue.Venue;
 import org.waga.venue.VenueRepository;
 import org.waga.web.ViewHelper;
@@ -58,6 +59,14 @@ public class RaceController {
 		return "redirect:/admin/races/" + saved.getId();
 	}
 
+	@RequestMapping(value = "/admin/races", method = RequestMethod.POST, params = { "remove" })
+	public String removeRace(ModelMap modelMap, @RequestParam("raceId") Long id) {
+
+		raceRepository.delete(id);
+
+		return "redirect:/admin/races";
+	}
+
 	@RequestMapping(value = "/admin/races/{id}", method = RequestMethod.GET)
 	public String raceAdmin(@PathVariable("id") Long id, ModelMap modelMap) {
 		modelMap.addAttribute("helper", new ViewHelper("raceAdmin"));
@@ -80,6 +89,17 @@ public class RaceController {
 		RaceToCiaoBella saved = raceRepository.save(existing);
 
 		return "redirect:/admin/races/" + saved.getId();
+	}
+
+	@RequestMapping(value = "/admin/races/{id}", method = RequestMethod.POST, params = { "remove" })
+	public String removeTournament(ModelMap modelMap, @PathVariable("id") Long id,
+			@RequestParam("tournamentId") Long tid) {
+
+		RaceToCiaoBella race = raceRepository.findOne(id);
+		race.removeTournament(tid);
+		raceRepository.save(race);
+
+		return "redirect:/admin/races/ " + id;
 	}
 
 	@RequestMapping(value = "/admin/races/{id}", params = { "tournament" }, method = RequestMethod.POST)

@@ -41,18 +41,30 @@ public class PlayerAdminController {
 		return "redirect:/admin/players";
 	}
 
-	@RequestMapping(value = "/admin/players/{id}", method = RequestMethod.POST)
-	public String updatePlayer(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Player player,
-			BindingResult result) {
+	@RequestMapping(value = "/admin/players", method = RequestMethod.POST, params = { "update" })
+	public String updatePlayer(ModelMap modelMap, @ModelAttribute Player player, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(player);
 			return playerAdmin(modelMap);
 		}
 
-		Player existing = playerRepository.findOne(id);
+		Player existing = playerRepository.findOne(player.getId());
 		existing.update(player);
 		playerRepository.save(existing);
+
+		return "redirect:/admin/players";
+	}
+
+	@RequestMapping(value = "/admin/players", method = RequestMethod.POST, params = { "remove" })
+	public String removePlayer(ModelMap modelMap, @ModelAttribute Player player, BindingResult result) {
+
+		if (result.hasErrors()) {
+			modelMap.addAttribute(player);
+			return playerAdmin(modelMap);
+		}
+
+		playerRepository.delete(player.getId());
 
 		return "redirect:/admin/players";
 	}

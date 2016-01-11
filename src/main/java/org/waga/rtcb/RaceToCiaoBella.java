@@ -67,4 +67,10 @@ public class RaceToCiaoBella extends AbstractEntity {
 		return tournaments.stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get();
 	}
 
+	public void removeTournament(Long tid) {
+		Tournament tour = findTournamentById(tid);
+		tournaments.remove(tour);
+		tour.setRaceToCiaoBella(null);
+	}
+
 }

@@ -41,18 +41,30 @@ public class VenueAdminController {
 		return "redirect:/admin/venues";
 	}
 
-	@RequestMapping(value = "/admin/venues/{id}", method = RequestMethod.POST)
-	public String updateVenue(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute Venue venue,
-			BindingResult result) {
+	@RequestMapping(value = "/admin/venues", method = RequestMethod.POST, params = { "update" })
+	public String updateVenue(ModelMap modelMap, @ModelAttribute Venue venue, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(venue);
 			return venueAdmin(modelMap);
 		}
 
-		Venue existing = venueRepository.findOne(id);
+		Venue existing = venueRepository.findOne(venue.getId());
 		existing.update(venue);
 		venueRepository.save(existing);
+
+		return "redirect:/admin/venues";
+	}
+
+	@RequestMapping(value = "/admin/venues", method = RequestMethod.POST, params = { "remove" })
+	public String removeVenue(ModelMap modelMap, @ModelAttribute Venue venue, BindingResult result) {
+
+		if (result.hasErrors()) {
+			modelMap.addAttribute(venue);
+			return venueAdmin(modelMap);
+		}
+
+		venueRepository.delete(venue.getId());
 
 		return "redirect:/admin/venues";
 	}

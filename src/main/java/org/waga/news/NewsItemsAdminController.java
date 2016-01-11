@@ -35,26 +35,36 @@ public class NewsItemsAdminController {
 			modelMap.addAttribute(newsItem);
 			return newsAdmin(modelMap);
 		}
-		
+
 		newsItemsRepository.save(newsItem);
 
 		return "redirect:/admin/news";
 	}
 
-	@RequestMapping(value = "/admin/news/{id}", method = RequestMethod.POST)
-	public String updateNewsItem(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute NewsItem newsItem,
-			BindingResult result) {
+	@RequestMapping(value = "/admin/news", method = RequestMethod.POST, params = { "update" })
+	public String updateNewsItem(ModelMap modelMap, @ModelAttribute NewsItem newsItem, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(newsItem);
-			return newsAdmin(modelMap);	
+			return newsAdmin(modelMap);
 		}
-		
-		NewsItem existing = newsItemsRepository.findOne(id);
+
+		NewsItem existing = newsItemsRepository.findOne(newsItem.getId());
 		existing.update(newsItem);
 		newsItemsRepository.save(existing);
-		
-//		service.update(id,newsItem);
+
+		return "redirect:/admin/news";
+	}
+
+	@RequestMapping(value = "/admin/news", method = RequestMethod.POST, params = { "remove" })
+	public String removeNewsItem(ModelMap modelMap, @ModelAttribute NewsItem newsItem, BindingResult result) {
+
+		if (result.hasErrors()) {
+			modelMap.addAttribute(newsItem);
+			return newsAdmin(modelMap);
+		}
+
+		newsItemsRepository.delete(newsItem.getId());
 
 		return "redirect:/admin/news";
 	}

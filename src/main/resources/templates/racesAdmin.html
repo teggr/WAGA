@@ -29,10 +29,20 @@
 				
 				<h2>Races</h2>
 				
-					<!-- List group -->
-				  <ul class="list-group">
-				    <li class="list-group-item" th:each="race : ${races}"><a th:href="@{/admin/races/{id}(id=${race.id})}" th:text="${race.season}"></a></li>
-				  </ul>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Season</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="race : ${races}">
+								<td><a th:href="@{/admin/races/{id}(id=${race.id})}" th:text="${race.season}"></a></td>
+								<td><form th:action="@{/admin/races}" method="post"><input type="hidden" name="raceId" th:value="${race.id}"></input><input type="submit" class="btn btn-default" name="remove" value="Remove"></input></form></td>
+							</tr>
+						</tbody>
+					</table>
 				
 			</div>
 		</div>
