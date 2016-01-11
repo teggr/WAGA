@@ -56,27 +56,30 @@
 									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 										<div class="panel-body">
 										
-											
+											<div class="panel panel-default" th:each="tournament : ${race.tournaments}">
+											  <div class="panel-heading" th:text="${tournament.venue.name} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></div>
+											  <div class="panel-body">
+													<table class="table">
+														<thead>
+															<tr>
+																<th>Position</th>
+																<th>Player</th>
+																<th>Handicap</th>
+																<th>Points</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="result,iterstat : ${tournament.sortedResults()}">
+																<td th:text="${iterstat.count}"></td>
+																<td th:text="${result.player.fullName}"></td>
+																<td th:text="${result.handicap}"></td>
+																<td th:text="${result.score}"></td>
+															</tr>
+														</tbody>
+													</table>
+											  </div>
+											</div>
 										
-<!-- 											<p th:text="${tournament.venue.name} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p> -->
-<!-- 											<table class="table"> -->
-<!-- 												<thead> -->
-<!-- 													<tr> -->
-<!-- 														<th>Position</th> -->
-<!-- 														<th>Player</th> -->
-<!-- 														<th>Handicap</th> -->
-<!-- 														<th>Points</th> -->
-<!-- 													</tr> -->
-<!-- 												</thead> -->
-<!-- 												<tbody> -->
-<!-- 													<tr th:each="result : ${tournament.finalResults}"> -->
-<!-- 														<td th:text="${result.position}"></td> -->
-<!-- 														<td th:text="${result.name}"></td> -->
-<!-- 														<td th:text="${result.handicap}"></td> -->
-<!-- 														<td th:text="${result.score}"></td> -->
-<!-- 													</tr> -->
-<!-- 												</tbody> -->
-<!-- 											</table> -->
 											
 											
 											

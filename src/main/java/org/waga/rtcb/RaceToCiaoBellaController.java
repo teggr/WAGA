@@ -21,7 +21,6 @@ public class RaceToCiaoBellaController {
 	@Autowired
 	private RaceToCiaoBellaRepository raceRepository;
 
-
 	@RequestMapping(method = RequestMethod.GET)
 	public String racetociaobella(ModelMap modelMap) {
 

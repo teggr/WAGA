@@ -20,15 +20,11 @@ public class RaceToCiaoBellaStatsService {
 	@Autowired
 	private RaceToCiaoBellaRepository raceToCiaoBellaRepository;
 
-	public TournamentSummary getLastTournamentSummary() {
+	public Tournament getLastTournamentSummary() {
 
-		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findLastByOrderBySeason();
+		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findFirstByOrderBySeasonDesc();
 		if (lastRace != null) {
-			Optional<Tournament> first = lastRace.getTournaments().stream()
-					.sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst();
-			if (first.isPresent()) {
-				return new TournamentSummary(first.get());
-			}
+			return lastRace.findLastTournament();
 		}
 		return null;
 
@@ -36,7 +32,7 @@ public class RaceToCiaoBellaStatsService {
 
 	public List<RaceToCiaoBellaRanking> getRankings() {
 
-		RaceToCiaoBella race = raceToCiaoBellaRepository.findLastByOrderBySeason();
+		RaceToCiaoBella race = raceToCiaoBellaRepository.findFirstByOrderBySeasonDesc();
 
 		Map<String, Totals> leaders = new HashMap<>();
 
@@ -95,18 +91,6 @@ public class RaceToCiaoBellaStatsService {
 		public int getTotal() {
 			return totals.stream().mapToInt(Integer::intValue).sum();
 		}
-	}
-
-	public List<TournamentSummary> getTournamentSummaries() {
-
-		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findLastByOrderBySeason();
-		if (lastRace != null) {
-			return lastRace.getTournaments().stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate()))
-					.map(t -> new TournamentSummary(t)).collect(Collectors.toList());
-		} else {
-			return Collections.emptyList();
-		}
-
 	}
 
 }

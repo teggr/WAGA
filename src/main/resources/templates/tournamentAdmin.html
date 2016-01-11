@@ -52,7 +52,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="result : ${tournament.results}">
+						<tr th:each="result : ${tournament.sortedResults()}">
 							<td th:text="${result.player.fullName}"></td>
 							<td th:text="${result.handicap}"></td>
 							<td th:text="${result.score}"></td>							

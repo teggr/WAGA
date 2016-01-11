@@ -1,8 +1,10 @@
 package org.waga.rtcb;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -68,6 +70,10 @@ public class Tournament extends AbstractEntity {
 
 	public void setResults(Set<Result> results) {
 		this.results = results;
+	}
+
+	public List<Result> sortedResults() {
+		return results.stream().sorted((r1, r2) -> r2.getScore() - r1.getScore()).collect(Collectors.toList());
 	}
 
 	public void addResult(Result result) {

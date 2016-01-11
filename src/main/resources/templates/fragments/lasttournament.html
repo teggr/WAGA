@@ -6,7 +6,7 @@
   	
 		<h4 th:if="${lastTournament}">Last Tournament</h4>
 		<h5 th:if="${lastTournament}" th:text="${lastTournament.name}"></h5>
-		<p th:if="${lastTournament}" th:text="${lastTournament.venueName} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
+		<p th:if="${lastTournament}" th:text="${lastTournament.venue.name} + ' | ' + ${#dates.format(lastTournament.date, 'dd-MMM-yyyy')}"></p>
   		<table th:if="${lastTournament}" class="table table-condensed">
 		  <thead>
 		  	<tr>
@@ -17,9 +17,9 @@
 		  	</tr>
 		  </thead>
 		  <tbody>
-		  	<tr th:each="result : ${lastTournament.finalResults}">
-		  		<td th:text="${result.position}"></td>
-		  		<td th:text="${result.name}"></td>
+		  	<tr th:each="result,iterstat : ${lastTournament.sortedResults()}">
+		  		<td th:text="${iterstat.count}"></td>
+		  		<td th:text="${result.player.fullName}"></td>
 		  		<td th:text="${result.handicap}"></td>
 		  		<td th:text="${result.score}"></td>
 		  	</tr>
