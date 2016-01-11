@@ -25,7 +25,11 @@
 					<li th:classappend="${helper.isActive('home')}? 'active'"><a th:href="@{/}">Home</a></li>
 					<li th:classappend="${helper.isActive('rtcb')}? 'active'"><a th:href="@{/racetociaobella}">Race to Ciao Bella 2016</a></li>
 <!-- 					<li th:classappend="${helper.isActive('wc')}? 'active'"><a th:href="@{woodmancup}">Woodman Cup</a></li> -->
+					<li th:if="${#httpServletRequest.remoteUser}"><form class="navbar-form" th:action="@{/logout}" method="post"><input class="btn btn-link nav-link" type="submit" value="Sign Out"/></form> </li>
+
 				</ul>
+				
+				
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
