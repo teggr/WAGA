@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dspring.datasource.url=$JDBC_DATABASE_URL -Dspring.datasource.driverClassName=org.postgresql.Driver -jar  target/WAGA-0.0.1-SNAPSHOT.jar
