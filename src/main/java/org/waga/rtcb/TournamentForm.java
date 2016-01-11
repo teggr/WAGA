@@ -4,18 +4,9 @@ import java.util.Date;
 
 public class TournamentForm {
 
-	private Long raceId;
 	private Long venueId;
 	private String name;
 	private Date date;
-
-	public Long getRaceId() {
-		return raceId;
-	}
-
-	public void setRaceId(Long raceId) {
-		this.raceId = raceId;
-	}
 
 	public Long getVenueId() {
 		return venueId;
@@ -43,7 +34,7 @@ public class TournamentForm {
 
 	@Override
 	public String toString() {
-		return "TournamentForm [raceId=" + raceId + ", venueId=" + venueId + ", name=" + name + ", date=" + date + "]";
+		return "TournamentForm [venueId=" + venueId + ", name=" + name + ", date=" + date + "]";
 	}
 
 	public void update(Tournament tour) {

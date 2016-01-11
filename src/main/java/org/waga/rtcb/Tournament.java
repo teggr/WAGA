@@ -1,11 +1,11 @@
 package org.waga.rtcb;
 
 import java.util.Date;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -78,6 +78,16 @@ public class Tournament extends AbstractEntity {
 	@Override
 	public String toString() {
 		return "Tournament [venue=" + venue + ", date=" + date + ", name=" + name + ", results=" + results + "]";
+	}
+
+	public void deleteResult(Long resultId) {
+		Optional<Result> match = results.stream().filter(t -> t.getId().equals(resultId)).findFirst();
+		if (match.isPresent()) {
+			Result result = match.get();
+			results.remove(result);
+			result.setTournament(null);
+		}
+
 	}
 
 }

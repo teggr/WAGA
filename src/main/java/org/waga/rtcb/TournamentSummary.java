@@ -6,8 +6,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.waga.core.Ranking;
-import org.waga.player.PlayerRepository;
-import org.waga.venue.VenueRepository;
 
 public class TournamentSummary {
 

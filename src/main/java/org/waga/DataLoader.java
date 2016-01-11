@@ -1,8 +1,6 @@
 package org.waga;
 
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -36,15 +34,9 @@ public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	private RaceToCiaoBellaRepository raceToCiaoBellaRepository;
-	
+
 	@Override
 	public void run(String... arg0) throws Exception {
-
-		Venue shirleyPark = new Venue();
-		shirleyPark.setName("Shirley Park GC");
-		shirleyPark.setImageUrl("http://www.shirleyparkgolfclub.co.uk/assets/img/course_shots/golf_hole1_tee.jpg");
-		shirleyPark.setLink("http://www.shirleyparkgolfclub.co.uk/");
-		venueRepository.save(shirleyPark);
 
 		Venue theAddington = new Venue();
 		theAddington.setName("The Addington");
@@ -94,102 +86,62 @@ public class DataLoader implements CommandLineRunner {
 		damo.setCurrentHandicap(18);
 		playerRepository.save(damo);
 
-//		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();
-//		raceToCiaoBella.setSeason(2016);
-//		Set<Tournament> tournaments = new HashSet<>();
-//		addOther(theAddington, tom, dave, foist, mad, damo, tournaments);
-//		addShirley(shirleyPark, tom, dave, brad, robin, tournaments);
-//
-//		raceToCiaoBella.setTournaments(tournaments);
-//		raceToCiaoBellaRepository.save(raceToCiaoBella);
+		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();
+		raceToCiaoBella.setSeason(2016);
+		raceToCiaoBella.setTournaments(new HashSet<>());
+		raceToCiaoBella.addTournaments(aai(theAddington, tom, dave, foist, mad, damo));
+		raceToCiaoBellaRepository.save(raceToCiaoBella);
 
 		NewsItem item1 = new NewsItem();
 		item1.setTitle("Apperley storms to top of leaderboard");
 		item1.setSummary(
 				"Thomas Apperley shows strong will power to take the lead as David Tryhorn slumps to fourth place");
 		item1.setImageUrl("http://cdn.gdol.com/app/courses/image/preview/56855.jpg");
-		item1.setLink("http://localhost:8080/racetociaobella/rounds/2");
+		item1.setLink("/racetociaobella");
 		item1.setTag(RaceToCiaoBellaConstants.NEWS_ITEM_TAG);
 		newsItemRepository.save(item1);
 
 	}
 
-	private void addOther(Venue venue, Player tom, Player dave, Player foist, Player mad, Player damo,
-			Set<Tournament> tournaments) {
-		Tournament shirley = new Tournament();
-		shirley.setName("The Apperley Autumn Invitational");
-		shirley.setDate(DateUtils.create(2015, 10, 24).getTime());
-		shirley.setVenue(venue);
-		Set<Result> results = new HashSet<>();
+	private Tournament aai(Venue venue, Player tom, Player dave, Player foist, Player mad, Player damo) {
+
+		Tournament tournament = new Tournament();
+		tournament.setResults(new HashSet<>());
+		tournament.setName("The Apperley Autumn Invitational");
+		tournament.setDate(DateUtils.create(2015, 10, 24).getTime());
+		tournament.setVenue(venue);
 
 		Result tomResult = new Result();
 		tomResult.setPlayer(tom);
 		tomResult.setHandicap(tom.getCurrentHandicap());
 		tomResult.setScore(28);
-		results.add(tomResult);
+		tournament.addResult(tomResult);
 
 		Result daveResult = new Result();
 		daveResult.setPlayer(dave);
 		daveResult.setHandicap(dave.getCurrentHandicap());
 		daveResult.setScore(31);
-		results.add(daveResult);
+		tournament.addResult(daveResult);
 
 		Result bradResult = new Result();
 		bradResult.setPlayer(foist);
 		bradResult.setHandicap(foist.getCurrentHandicap());
 		bradResult.setScore(32);
-		results.add(bradResult);
+		tournament.addResult(bradResult);
 
 		Result robinResult = new Result();
 		robinResult.setPlayer(mad);
 		robinResult.setHandicap(mad.getCurrentHandicap());
 		robinResult.setScore(30);
-		results.add(robinResult);
+		tournament.addResult(robinResult);
 
 		Result damoResult = new Result();
 		damoResult.setPlayer(damo);
 		damoResult.setHandicap(damo.getCurrentHandicap());
 		damoResult.setScore(24);
-		results.add(damoResult);
+		tournament.addResult(damoResult);
 
-		shirley.setResults(results);
-		tournaments.add(shirley);
+		return tournament;
 	}
 
-	private void addShirley(Venue venue, Player tom, Player dave, Player brad, Player robin,
-			Set<Tournament> tournaments) {
-		Tournament shirley = new Tournament();
-		shirley.setName("Stableford and Wine Invitational");
-		shirley.setDate(DateUtils.create(2015, 12, 29).getTime());
-		shirley.setVenue(venue);
-		Set<Result> results = new HashSet<>();
-
-		Result tomResult = new Result();
-		tomResult.setPlayer(tom);
-		tomResult.setHandicap(tom.getCurrentHandicap());
-		tomResult.setScore(34);
-		results.add(tomResult);
-
-		Result daveResult = new Result();
-		daveResult.setPlayer(dave);
-		daveResult.setHandicap(dave.getCurrentHandicap());
-		daveResult.setScore(26);
-		results.add(daveResult);
-
-		Result bradResult = new Result();
-		bradResult.setPlayer(brad);
-		bradResult.setHandicap(brad.getCurrentHandicap());
-		bradResult.setScore(30);
-		results.add(bradResult);
-
-		Result robinResult = new Result();
-		robinResult.setPlayer(robin);
-		robinResult.setHandicap(robin.getCurrentHandicap());
-		robinResult.setScore(32);
-		results.add(robinResult);
-
-		shirley.setResults(results);
-		tournaments.add(shirley);
-	}
-	
 }

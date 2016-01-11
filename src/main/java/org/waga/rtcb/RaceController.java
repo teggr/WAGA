@@ -15,7 +15,7 @@ import org.waga.venue.VenueRepository;
 import org.waga.web.ViewHelper;
 
 @Controller
-public class RaceToCiaoBellaAdminController {
+public class RaceController {
 
 	@Autowired
 	private RaceToCiaoBellaRepository raceRepository;
@@ -38,61 +38,70 @@ public class RaceToCiaoBellaAdminController {
 		return venueRepository.findAll();
 	}
 
-	@RequestMapping(value = "/admin/rtcb", method = RequestMethod.GET)
-	public String rtcbAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("rtcbAdmin"));
+	@RequestMapping(value = "/admin/races", method = RequestMethod.GET)
+	public String racesAdmin(ModelMap modelMap) {
+		modelMap.addAttribute("helper", new ViewHelper("racesAdmin"));
 		modelMap.addAttribute("races", raceRepository.findAll());
-		return "rtcbAdmin";
+		return "racesAdmin";
 	}
 
-	@RequestMapping(value = "/admin/rtcb", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/races", method = RequestMethod.POST)
 	public String createRace(ModelMap modelMap, @ModelAttribute RaceToCiaoBella raceToCiaoBella, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(raceToCiaoBella);
-			return rtcbAdmin(modelMap);
+			return racesAdmin(modelMap);
 		}
 
-		raceRepository.save(raceToCiaoBella);
+		RaceToCiaoBella saved = raceRepository.save(raceToCiaoBella);
 
-		return "redirect:/admin/rtcb";
+		return "redirect:/admin/races/" + saved.getId();
 	}
 
-	@RequestMapping(value = "/admin/rtcb/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/races/{id}", method = RequestMethod.GET)
+	public String raceAdmin(@PathVariable("id") Long id, ModelMap modelMap) {
+		modelMap.addAttribute("helper", new ViewHelper("raceAdmin"));
+		modelMap.addAttribute("races", raceRepository.findAll());
+		modelMap.addAttribute("race", raceRepository.findOne(id));
+		return "raceAdmin";
+	}
+
+	@RequestMapping(value = "/admin/races/{id}", method = RequestMethod.POST)
 	public String updateRace(ModelMap modelMap, @PathVariable("id") Long id, @ModelAttribute RaceToCiaoBella rtcb,
 			BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(rtcb);
-			return rtcbAdmin(modelMap);
+			return raceAdmin(id, modelMap);
 		}
 
 		RaceToCiaoBella existing = raceRepository.findOne(id);
 		existing.update(rtcb);
-		raceRepository.save(existing);
+		RaceToCiaoBella saved = raceRepository.save(existing);
 
-		return "redirect:/admin/players";
+		return "redirect:/admin/races/" + saved.getId();
 	}
 
-	@RequestMapping(value = "/admin/rtcb/tournament", method = RequestMethod.POST)
-	public String createTournament(ModelMap modelMap, @ModelAttribute TournamentForm tournamentForm,
-			BindingResult result) {
+	@RequestMapping(value = "/admin/races/{id}", params = { "tournament" }, method = RequestMethod.POST)
+	public String createTournament(ModelMap modelMap, @PathVariable("id") Long id,
+			@ModelAttribute TournamentForm tournamentForm, BindingResult result) {
 
 		if (result.hasErrors()) {
 			modelMap.addAttribute(tournamentForm);
-			return rtcbAdmin(modelMap);
+			return raceAdmin(id, modelMap);
 		}
 
-		RaceToCiaoBella race = raceRepository.findOne(tournamentForm.getRaceId());
+		RaceToCiaoBella race = raceRepository.findOne(id);
 		Venue venue = venueRepository.findOne(tournamentForm.getVenueId());
 		Tournament tour = new Tournament();
 		tournamentForm.update(tour);
 		tour.setVenue(venue);
 		race.addTournaments(tour);
 
-		raceRepository.save(race);
+		RaceToCiaoBella saved = raceRepository.save(race);
+		Tournament savedTour = saved.findTournamentByName(tour.getName());
 
-		return "redirect:/admin/rtcb";
+		return "redirect:/admin/races/" + saved.getId() + "/tournaments/" + savedTour.getId();
 	}
 
 }

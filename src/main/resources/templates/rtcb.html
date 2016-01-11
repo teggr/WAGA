@@ -46,23 +46,19 @@
 					</div>
 					<div role="tabpanel" class="tab-pane" id="tournaments">
 						<div class="waga-tab-content">
-							<div class="panel-group" id="accordion" role="tablist"
-								aria-multiselectable="true"
-								th:each="race : ${races}">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" th:each="race : ${races}">
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="headingOne">
 										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse"
-												data-parent="#accordion" href="#collapseOne"
-												aria-expanded="true" aria-controls="collapseOne"
-												th:text="${race.season}"></a>
+											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" th:text="${race.season}"></a>
 										</h4>
 									</div>
-									<div id="collapseOne" class="panel-collapse collapse in"
-										role="tabpanel" aria-labelledby="headingOne">
+									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 										<div class="panel-body">
-<!-- 											<p -->
-<!-- 												th:text="${tournament.venueName} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p> -->
+										
+											
+										
+<!-- 											<p th:text="${tournament.venue.name} + ' | ' + ${#dates.format(tournament.date, 'dd-MMM-yyyy')}"></p> -->
 <!-- 											<table class="table"> -->
 <!-- 												<thead> -->
 <!-- 													<tr> -->
@@ -81,6 +77,9 @@
 <!-- 													</tr> -->
 <!-- 												</tbody> -->
 <!-- 											</table> -->
+											
+											
+											
 										</div>
 									</div>
 								</div>

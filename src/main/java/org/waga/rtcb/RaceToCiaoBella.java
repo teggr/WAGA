@@ -1,5 +1,6 @@
 package org.waga.rtcb;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -44,6 +45,24 @@ public class RaceToCiaoBella extends AbstractEntity {
 	public void addTournaments(Tournament tour) {
 		tournaments.add(tour);
 		tour.setRaceToCiaoBella(this);
+	}
+
+	public Tournament findTournamentById(Long tid) {
+		Optional<Tournament> match = tournaments.stream().filter(t -> t.getId().equals(tid)).findFirst();
+		if (match.isPresent()) {
+			return match.get();
+		} else {
+			return null;
+		}
+	}
+
+	public Tournament findTournamentByName(String name) {
+		Optional<Tournament> match = tournaments.stream().filter(t -> t.getName().equals(name)).findFirst();
+		if (match.isPresent()) {
+			return match.get();
+		} else {
+			return null;
+		}
 	}
 
 }
