@@ -1,3 +1,5 @@
+create sequence hibernate_sequence;
+
 create sequence news_item_seq;
 create table news_item (id bigint NOT NULL DEFAULT nextval('news_item_seq'), created_date timestamp, last_modified_date timestamp, image_url varchar(255), link varchar(255), summary varchar(255), tag varchar(255), title varchar(255), primary key (id));
 alter sequence news_item_seq owned by news_item.id;
