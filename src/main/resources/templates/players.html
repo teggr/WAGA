@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head::head (title='News')"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header::header"></div>
+  	
+  	<div class="container-fluid">
+  		<div class="row">
+		  <div class="col-md-8">
+		  
+		  	<h2 th:if="${players.size() == 0}">No players yet. Check back later</h2>
+		    
+		    <div class="media" th:each="player : ${players}">
+			  <div class="media-left">
+			    <a>
+			      <img class="media-object" th:src="${#strings.isEmpty(player.imageUrl)} ? 'http://placehold.it/550x300' : ${player.imageUrl} " alt="..."></img>
+			    </a>
+			  </div>
+			  <div class="media-body">
+			    <h4 class="media-heading" ><a th:text="${player.fullName}">Media heading</a></h4>
+			    <p >Handicap: <span th:text="${player.currentHandicap}"></span></p>
+			  </div>
+			</div>
+			
+			<hr/>
+			
+		  </div>
+		  
+		</div>
+	</div>
+	
+	<th:block th:include="fragments/scripts::scripts"></th:block>
+	
+  </body>
+</html>

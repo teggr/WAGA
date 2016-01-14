@@ -10,6 +10,15 @@ public class Player extends AbstractEntity {
 	private String firstName;
 	private String surname;
 	private int currentHandicap;
+	private String imageUrl;
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -37,7 +46,8 @@ public class Player extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return "Player [firstName=" + firstName + ", surname=" + surname + ", currentHandicap=" + currentHandicap + "]";
+		return "Player [firstName=" + firstName + ", surname=" + surname + ", currentHandicap=" + currentHandicap
+				+ ", imageUrl=" + imageUrl + "]";
 	}
 
 	public String getFullName() {
@@ -48,6 +58,7 @@ public class Player extends AbstractEntity {
 		this.firstName = player.firstName;
 		this.surname = player.surname;
 		this.currentHandicap = player.currentHandicap;
+		this.imageUrl = player.imageUrl;
 	}
 
 }

@@ -48,42 +48,49 @@ public class DataLoader implements CommandLineRunner {
 		tom.setFirstName("Thomas");
 		tom.setSurname("Apperley");
 		tom.setCurrentHandicap(12);
+		tom.setImageUrl("http://www.parforegolf.net/wp-content/uploads/2015/08/1.jpg");
 		playerRepository.save(tom);
 
 		Player dave = new Player();
 		dave.setFirstName("David");
 		dave.setSurname("Tryhorn");
 		dave.setCurrentHandicap(23);
+		dave.setImageUrl("http://www.hdnicewallpapers.com/Walls/Big/Golf/Player_Hit_the_Golf_Ball_Pics.jpg");
 		playerRepository.save(dave);
 
 		Player brad = new Player();
 		brad.setFirstName("Brad");
 		brad.setSurname("Le Riche");
 		brad.setCurrentHandicap(28);
+		brad.setImageUrl("http://www.golfersavenue.com/wp-content/uploads/2012/08/how-to-look-like-a-real-golf-player.jpg");
 		playerRepository.save(brad);
 
 		Player robin = new Player();
 		robin.setFirstName("Robin");
 		robin.setSurname("Tegg");
 		robin.setCurrentHandicap(15);
+		robin.setImageUrl("http://wpmedia.o.canada.com/2013/11/australia_world_cup_of_golf.jpg");
 		playerRepository.save(robin);
 
 		Player foist = new Player();
 		foist.setFirstName("Richard");
 		foist.setSurname("Foister");
 		foist.setCurrentHandicap(12);
+		foist.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/6/6e/Golfer_swing.jpg");
 		playerRepository.save(foist);
 
 		Player mad = new Player();
 		mad.setFirstName("Andrew");
 		mad.setSurname("Stevens");
 		mad.setCurrentHandicap(28);
+		mad.setImageUrl("http://helpingisraelfund.com/wp-content/uploads/2014/12/Tiger-Woods-best-golf-player-hd-posters1.jpg");
 		playerRepository.save(mad);
 
 		Player damo = new Player();
 		damo.setFirstName("Damien");
 		damo.setSurname("Kiernander");
 		damo.setCurrentHandicap(18);
+		damo.setImageUrl("http://garyplayer.com/images/uploads/news/GabonGolf.jpg");
 		playerRepository.save(damo);
 
 		RaceToCiaoBella raceToCiaoBella = new RaceToCiaoBella();

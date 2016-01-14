@@ -1,0 +1,1 @@
+ALTER TABLE player ADD image_url character varying(255);
