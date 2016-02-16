@@ -36,20 +36,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@ConfigurationProperties("waga.admin.security")
 	@Bean
-	AdminCredentials adminCredentials() {
+	public AdminCredentials adminCredentials() {
 		return new AdminCredentials();
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/admin/**").authenticated().and().formLogin().permitAll().and().logout()
-				.permitAll();
+		http.authorizeRequests()
+			.antMatchers("/admin/**").authenticated().and()
+			.formLogin().permitAll().and()
+			.logout().permitAll().logoutSuccessUrl("/");
+		
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth, AdminCredentials adminCredentials) throws Exception {
-		auth.inMemoryAuthentication().withUser(adminCredentials.getUsername()).password(adminCredentials.getPassword())
-				.roles("USER");
+		
+		auth.inMemoryAuthentication()
+			.withUser(adminCredentials.getUsername())
+			.password(adminCredentials.getPassword())
+			.roles("USER");
+		
 	}
 }
