@@ -22,7 +22,7 @@ public class PlayerAdminController {
 
 	@RequestMapping(value = "/admin/players", method = RequestMethod.GET)
 	public String playerAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("playerAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("players", playerRepository.findAll());
 		return "playersAdmin";
 	}

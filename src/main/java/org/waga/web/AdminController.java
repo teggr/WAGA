@@ -10,7 +10,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminHome(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("home"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		return "admin";
 	}
 

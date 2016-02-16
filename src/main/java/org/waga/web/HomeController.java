@@ -30,7 +30,7 @@ public class HomeController {
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
-		modelMap.addAttribute("helper", new ViewHelper("home"));
+		modelMap.addAttribute("helper", new ViewHelper());
 
 		return "home";
 	}
@@ -43,7 +43,7 @@ public class HomeController {
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("wcLeaders", woodmanCupStatsService.getLeaders());
-		modelMap.addAttribute("helper", new ViewHelper("wc"));
+		modelMap.addAttribute("helper", new ViewHelper());
 
 		return "home";
 	}

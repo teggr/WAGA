@@ -41,7 +41,7 @@ public class RaceController {
 
 	@RequestMapping(value = "/admin/races", method = RequestMethod.GET)
 	public String racesAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("racesAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("races", raceRepository.findAll());
 		return "racesAdmin";
 	}
@@ -69,7 +69,7 @@ public class RaceController {
 
 	@RequestMapping(value = "/admin/races/{id}", method = RequestMethod.GET)
 	public String raceAdmin(@PathVariable("id") Long id, ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("raceAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("races", raceRepository.findAll());
 		modelMap.addAttribute("race", raceRepository.findOne(id));
 		return "raceAdmin";

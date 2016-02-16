@@ -23,7 +23,7 @@ public class VenueAdminController {
 
 	@RequestMapping(value = "/admin/venues", method = RequestMethod.GET)
 	public String venueAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("venueAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("venues", venueRepository.findAll());
 		return "venuesAdmin";
 	}

@@ -23,7 +23,7 @@ public class NewsItemsAdminController {
 
 	@RequestMapping(value = "/admin/news", method = RequestMethod.GET)
 	public String newsAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("venueAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("newsItems", newsItemsRepository.findAll());
 		return "newsAdmin";
 	}

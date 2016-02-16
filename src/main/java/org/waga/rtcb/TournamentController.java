@@ -36,7 +36,7 @@ public class TournamentController {
 
 	@RequestMapping(value = "/admin/races/{id}/tournaments/{tid}", method = RequestMethod.GET)
 	public String tournamentAdmin(@PathVariable("id") Long id, @PathVariable("tid") Long tid, ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("rtcbAdmin"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		RaceToCiaoBella race = raceRepository.findOne(id);
 		modelMap.addAttribute("race", race);
 		modelMap.addAttribute("tournament", race.findTournamentById(tid));

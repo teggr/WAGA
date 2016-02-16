@@ -15,7 +15,7 @@ public class PlayerController {
 
 	@RequestMapping(value = "/players", method = RequestMethod.GET)
 	public String newsAdmin(ModelMap modelMap) {
-		modelMap.addAttribute("helper", new ViewHelper("players"));
+		modelMap.addAttribute("helper", new ViewHelper());
 		modelMap.addAttribute("players", playerRepository.findAll());
 		return "players";
 	}

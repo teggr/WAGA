@@ -30,7 +30,7 @@ public class RaceToCiaoBellaController {
 		modelMap.addAttribute("lastTournament", raceToCiaoBellaStatsService.getLastTournamentSummary());
 		modelMap.addAttribute("races", raceRepository.findAll());
 		modelMap.addAttribute("rtcbRankings", raceToCiaoBellaStatsService.getRankings());
-		modelMap.addAttribute("helper", new ViewHelper("rtcb"));
+		modelMap.addAttribute("helper", new ViewHelper());
 
 		return "rtcb";
 	}
