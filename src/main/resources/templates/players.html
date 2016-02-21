@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head th:include="fragments/head::head (title='News')"></head>
+  <head th:include="fragments/head::head (title='Players')"></head>
   <body>
   	
   	<div th:replace="fragments/header::header (location='players')"></div>
   	
   	<div class="container-fluid">
+  	
   		<div class="row">
 		  <div class="col-md-8">
 		  
@@ -19,8 +20,12 @@
 			  </div>
 			  <div class="media-body">
 			    <h4 class="media-heading" ><a th:text="${player.fullName}">Media heading</a></h4>
-			    <p >Handicap: <span th:text="${player.currentHandicap}"></span></p>
+			    <p>Current Handicap: <span th:text="${player.currentHandicap}"></span></p>
+			    
+			    <div th:id="${'handicap-graph-' + player.id}" class="ct-chart ct-perfect-fourth" style="max-height: 150px;"></div>
+			    
 			  </div>
+			  
 			</div>
 			
 			<hr/>
@@ -31,6 +36,9 @@
 	</div>
 	
 	<th:block th:include="fragments/scripts::scripts"></th:block>
+	<th:block th:each="player : ${players}">
+		<th:block th:include="fragments/graphs :: handicap(id=${'handicap-graph-' + player.id}, handicaps=${player.last10Handicaps})"></th:block>
+	</th:block>
 	
   </body>
 </html>
