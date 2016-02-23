@@ -14,23 +14,23 @@
 		  </div>
   		
   		<th:block th:each="player : ${players}">
-  		<div class="row" >
-		  <div class="col-sm-6 col-md-4">
-		  
-			    <a>
-			      <img class="player-img" th:src="${#strings.isEmpty(player.imageUrl)} ? 'http://placehold.it/550x300' : ${player.imageUrl} " alt="..."></img>
-			    </a>
-		  </div>
-		  <div class="col-sm-6 col-md-8">
+	  		<div class="row" >
+			  <div class="col-sm-6 col-md-4">
 			  
-			    <h4><a th:text="${player.fullName}">Media heading</a></h4>
-			    <p>Current Handicap: <span th:text="${player.currentHandicap}"></span></p>
-			    
-			    <div th:id="${'handicap-graph-' + player.id}" class="ct-chart ct-double-octave"></div>
-			  
-		  </div>
-		</div>
-		  <hr/>
+				    <a>
+				      <img class="player-img" th:src="${#strings.isEmpty(player.imageUrl)} ? 'http://placehold.it/550x300' : ${player.imageUrl} " alt="..."></img>
+				    </a>
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a th:text="${player.fullName}">Media heading</a></h4>
+				    <p>Current Handicap: <span th:text="${player.currentHandicap}"></span></p>
+				    
+				    <div th:id="${'handicap-graph-' + player.id}" class="ct-chart ct-double-octave"></div>
+				  
+			  </div>
+			</div>
+			  <hr/>
 		  </th:block>
 	</div>
 	
