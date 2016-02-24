@@ -8,11 +8,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.util.StringUtils;
 import org.waga.core.AbstractEntity;
 
 @Entity
@@ -27,6 +29,13 @@ public class Player extends AbstractEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "player")
 	private Set<HistoricHandicap> handicapHistory;
+
+	@Embedded
+	private EmailAddress emailAddress;
+
+	public EmailAddress getEmailAddress() {
+		return emailAddress;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -60,6 +69,9 @@ public class Player extends AbstractEntity {
 		this.surname = player.surname;
 		updateHandicap(player.currentHandicap);
 		this.imageUrl = player.imageUrl;
+		if (player.emailAddress != null && !StringUtils.isEmpty(player.emailAddress.getAddress())) {
+			this.emailAddress = player.getEmailAddress();
+		}
 	}
 
 	private void updateHandicap(int handicap) {
