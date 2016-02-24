@@ -75,9 +75,11 @@ public class Player extends AbstractEntity {
 	}
 
 	private void updateHandicap(int handicap) {
-		auditHandicap();
-		this.currentHandicap = handicap;
-		this.handicapDate = new Date();
+		if(this.currentHandicap!=handicap) {
+			auditHandicap();
+			this.currentHandicap = handicap;
+			this.handicapDate = new Date();
+		}
 	}
 
 	private void auditHandicap() {
