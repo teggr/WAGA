@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,11 @@ public class PlayerAdminController {
 
 	@Autowired
 	private PlayerRepository playerRepository;
+
+	@InitBinder
+	void initBinder(WebDataBinder binder) {
+		binder.initDirectFieldAccess();
+	}
 
 	@ModelAttribute
 	public Player player() {
@@ -35,7 +42,7 @@ public class PlayerAdminController {
 			return playerAdmin(modelMap);
 		}
 
-		playerRepository.save(player);
+		playerRepository.save(Player.with(player));
 
 		return "redirect:/admin/players";
 	}
@@ -49,7 +56,7 @@ public class PlayerAdminController {
 		}
 
 		Player existing = playerRepository.findOne(player.getId());
-		existing.update(player);
+		existing.updateFrom(player);
 		playerRepository.save(existing);
 
 		return "redirect:/admin/players";

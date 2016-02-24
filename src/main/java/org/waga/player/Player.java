@@ -28,10 +28,6 @@ public class Player extends AbstractEntity {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "player")
 	private Set<HistoricHandicap> handicapHistory;
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
 	public String getImageUrl() {
 		return imageUrl;
 	}
@@ -40,27 +36,12 @@ public class Player extends AbstractEntity {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public String getSurname() {
 		return surname;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
 	public int getCurrentHandicap() {
 		return currentHandicap;
-	}
-
-	public void setCurrentHandicap(int currentHandicap) {
-		this.currentHandicap = currentHandicap;
-		if(handicapDate==null) {
-			handicapDate = new Date();
-		}
 	}
 
 	public Set<HistoricHandicap> getHandicapHistory() {
@@ -74,23 +55,27 @@ public class Player extends AbstractEntity {
 		return firstName + " " + surname;
 	}
 
-	public void update(Player player) {
+	public void updateFrom(Player player) {
 		this.firstName = player.firstName;
 		this.surname = player.surname;
-		if (this.currentHandicap != player.currentHandicap) {
-			auditHandicap();
-			this.currentHandicap = player.currentHandicap;
-			this.handicapDate = new Date();
-		}
+		updateHandicap(player.currentHandicap);
 		this.imageUrl = player.imageUrl;
 	}
 
+	private void updateHandicap(int handicap) {
+		auditHandicap();
+		this.currentHandicap = handicap;
+		this.handicapDate = new Date();
+	}
+
 	private void auditHandicap() {
-		HistoricHandicap current = new HistoricHandicap();
-		current.setExpiredDate(handicapDate);
-		current.setHandicap(currentHandicap);
-		current.setPlayer(this);
-		handicapHistory.add(current);
+		if (handicapDate != null) {
+			HistoricHandicap current = new HistoricHandicap();
+			current.setExpiredDate(handicapDate);
+			current.setHandicap(currentHandicap);
+			current.setPlayer(this);
+			handicapHistory.add(current);
+		}
 	}
 
 	public HistoricHandicaps getLast10Handicaps() {
@@ -103,11 +88,10 @@ public class Player extends AbstractEntity {
 		return new HistoricHandicaps(historic);
 	}
 
-	@Override
-	public String toString() {
-		return "Player [firstName=" + firstName + ", surname=" + surname + ", currentHandicap=" + currentHandicap
-				+ ", handicapDate=" + handicapDate + ", imageUrl=" + imageUrl + ", handicapHistory=" + handicapHistory
-				+ "]";
+	public static Player with(Player player) {
+		Player newPlayer = new Player();
+		newPlayer.updateFrom(player);
+		return newPlayer;
 	}
 
 }
