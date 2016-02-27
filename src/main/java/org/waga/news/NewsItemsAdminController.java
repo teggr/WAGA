@@ -8,13 +8,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.waga.pub.PublishingService;
 import org.waga.web.ViewHelper;
 
 @Controller
 public class NewsItemsAdminController {
 
-	@Autowired
 	private NewsItemRepository newsItemsRepository;
+	private PublishingService publishingService;
+
+	@Autowired
+	public NewsItemsAdminController(NewsItemRepository newsItemRepository, PublishingService publishingService) {
+		this.newsItemsRepository = newsItemRepository;
+		this.publishingService = publishingService;
+	}
 
 	@ModelAttribute
 	public NewsItem newsItem() {
@@ -52,6 +60,16 @@ public class NewsItemsAdminController {
 		NewsItem existing = newsItemsRepository.findOne(newsItem.getId());
 		existing.update(newsItem);
 		newsItemsRepository.save(existing);
+
+		return "redirect:/admin/news";
+	}
+
+	@RequestMapping(value = "/admin/news", method = RequestMethod.POST, params = { "publish" })
+	public String publishNewsItem(ModelMap modelMap, @RequestParam("id") Long id) {
+
+		NewsItem item = newsItemsRepository.findOne(id);
+
+		publishingService.publishNews(item);
 
 		return "redirect:/admin/news";
 	}

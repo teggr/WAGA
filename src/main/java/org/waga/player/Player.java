@@ -69,13 +69,17 @@ public class Player extends AbstractEntity {
 		this.surname = player.surname;
 		updateHandicap(player.currentHandicap);
 		this.imageUrl = player.imageUrl;
-		if (player.emailAddress != null && !StringUtils.isEmpty(player.emailAddress.getAddress())) {
-			this.emailAddress = player.getEmailAddress();
+		if (player.emailAddress != null) {
+			if (player.emailAddress.isNotEmpty()) {
+				this.emailAddress = player.getEmailAddress();
+			} else {
+				this.emailAddress = null;
+			}
 		}
 	}
 
 	private void updateHandicap(int handicap) {
-		if(this.currentHandicap!=handicap) {
+		if (this.currentHandicap != handicap) {
 			auditHandicap();
 			this.currentHandicap = handicap;
 			this.handicapDate = new Date();
