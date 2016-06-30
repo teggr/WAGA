@@ -89,7 +89,7 @@ public class RaceToCiaoBellaStatsService {
 		}
 
 		public int getTotal() {
-			return totals.stream().mapToInt(Integer::intValue).sum();
+			return totals.stream().sorted((t1, t2) -> t2.compareTo(t1)).limit(4).mapToInt(Integer::intValue).sum();
 		}
 	}
 
