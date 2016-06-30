@@ -43,6 +43,10 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+	
+	<div th:if="${result.hasErrors()}" class="alert alert-danger" role="alert">
+		<strong th:text="#{header.error.lead}"></strong> <span th:text="#{header.error.text}"></span>
+	</div>
 
 </body>
 
