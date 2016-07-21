@@ -8,8 +8,19 @@ import java.util.Date;
 public class ViewHelper {
 
 	public String elapsedTime(Date createdDate) {
-		Period period = Period.between(createdDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-				LocalDate.now());
+
+		LocalDate localDate = createdDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+		LocalDate now = LocalDate.now();
+
+		Period period = Period.between(localDate, now);
+
+		if (period.getYears() > 0) {
+			return period.getYears() + "y";
+		}
+		if (period.getMonths() > 0) {
+			return period.getMonths() + "m";
+		}
 		return period.getDays() + "d";
 	}
 

@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 
 import org.waga.core.AbstractEntity;
 
-@Entity
-public class Venue extends AbstractEntity {
+public class Venue {
 
 	private String name;
 	private String link;

@@ -8,12 +8,10 @@ import javax.persistence.OneToMany;
 
 import org.waga.core.AbstractEntity;
 
-@Entity
-public class RaceToCiaoBella extends AbstractEntity {
+public class RaceToCiaoBella {
 
 	private int season;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "raceToCiaoBella")
 	private Set<Tournament> tournaments;
 
 	public int getSeason() {

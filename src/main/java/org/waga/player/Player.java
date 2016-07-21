@@ -17,20 +17,16 @@ import javax.persistence.TemporalType;
 import org.springframework.util.StringUtils;
 import org.waga.core.AbstractEntity;
 
-@Entity
-public class Player extends AbstractEntity {
+public class Player  {
 
 	private String firstName;
 	private String surname;
 	private int currentHandicap;
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date handicapDate;
 	private String imageUrl;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "player")
 	private Set<HistoricHandicap> handicapHistory;
 
-	@Embedded
 	private EmailAddress emailAddress;
 
 	public EmailAddress getEmailAddress() {

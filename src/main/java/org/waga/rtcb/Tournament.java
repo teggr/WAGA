@@ -6,30 +6,18 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.waga.core.AbstractEntity;
 import org.waga.venue.Venue;
 
-@Entity
 public class Tournament extends AbstractEntity {
 
-	@ManyToOne
 	private RaceToCiaoBella raceToCiaoBella;
 
-	@ManyToOne
 	private Venue venue;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "tournament")
 	private Set<Result> results;
 
 	public RaceToCiaoBella getRaceToCiaoBella() {
