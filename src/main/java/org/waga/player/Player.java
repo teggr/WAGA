@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PlayerProfile  {
+public class Player  {
 	
-	public static PlayerProfile with(String firstName, String surname, int currentHandicap, String imageUrl) {
-		PlayerProfile player = new PlayerProfile();
+	public static Player with(String firstName, String surname, int currentHandicap, String imageUrl) {
+		Player player = new Player();
 		player.firstName = firstName;
 		player.surname = surname;
 		player.currentHandicap = currentHandicap;
@@ -87,7 +87,7 @@ public class PlayerProfile  {
 	}
 
 	public HistoricHandicaps getLast10Handicaps() {
-		List<HistoricHandicap> historic = new ArrayList<>(handicapHistory).stream()
+		List<HistoricHandicap> historic = new ArrayList<>(getHandicapHistory()).stream()
 				.sorted(HistoricHandicap.REVERSE_DATE_ORDER).limit(9).collect(Collectors.toList());
 		HistoricHandicap current = new HistoricHandicap();
 		current.setExpiredDate(new Date());

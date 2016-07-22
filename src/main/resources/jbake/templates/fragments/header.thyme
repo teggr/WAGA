@@ -20,17 +20,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand hidden-sm hidden-md hidden-lg" th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')"  th:href="${rootpath}">WAGA</a>
+				<a class="navbar-brand hidden-sm hidden-md hidden-lg" th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')"  th:href="${rootpath} + '/index.html'">WAGA</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li th:classappend="${'home'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}"><span>Home</span></a></li>
-					<li th:classappend="${'race'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'racetociaobella'"><span>Race to Ciao Bella 2016</span></a></li>
-					<li th:classappend="${'news'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'news'"><span>News</span></a></li>
-					<li th:classappend="${'players'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'players'"><span>Players</span></a></li>
-					<li th:classappend="${'venues'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'venues'"><span>Venues</span></a></li>
+					<li th:classappend="${'home'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'index.html'"><span>Home</span></a></li>
+					<li th:classappend="${'race'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'racetociaobella/race.html'"><span>Race to Ciao Bella 2016</span></a></li>
+					<li th:classappend="${'news'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'news/news.html'"><span>News</span></a></li>
+					<li th:classappend="${'players'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'players/players.html'"><span>Players</span></a></li>
+					<li th:classappend="${'venues'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'venues/venues.html'"><span>Venues</span></a></li>
 				</ul>
 				
 				

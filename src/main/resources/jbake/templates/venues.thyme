@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head th:include="fragments/head::head (title='News')"></head>
+  <head th:include="fragments/head.thyme::head"></head>
   <body>
   	
-  	<div th:replace="fragments/header::header (location='venues')"></div>
+  	<div th:replace="fragments/header.thyme::header"></div>
   	
   	<div class="container-fluid">
   	
-  		<div class="row" th:if="${venues.size() == 0}">
+  		<div class="row" th:if="${config.data.venues.size() == 0}">
 		  <div class="col-md-8">
 		  	<h2>No venues yet. Check back later</h2>
 		  </div>
 		</div>
   	
-  	<th:block  th:each="venue : ${venues}">
+  	<th:block  th:each="venue : ${config.data.venues}">
   		<div class="row">
 		  <div class="col-sm-6 col-md-6">
 		  
@@ -36,7 +36,7 @@
 	</th:block>
 	</div>
 	
-	<th:block th:include="fragments/scripts::scripts"></th:block>
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
 	
   </body>
 </html>

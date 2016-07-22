@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.waga.player.PlayerProfile;
+import org.waga.player.Player;
 
 public class ViewHelper {
 
@@ -29,11 +29,13 @@ public class ViewHelper {
 		return period.getDays() + "d";
 	}
 
-	public List<PlayerProfile> byListAppearanceDate(List<PlayerProfile> profiles) {
-
+	public List<Player> byListAppearanceDate(List<Player> profiles) {
 		return profiles.stream().sorted((p1, p2) -> p1.getLastAppearance().compareTo(p2.getLastAppearance()))
 				.collect(Collectors.toList());
+	}
 
+	public String getProfileId(Player profile) {
+		return profile.getFullName().toLowerCase().replaceAll(" ", "-").replaceAll("'", "");
 	}
 
 }

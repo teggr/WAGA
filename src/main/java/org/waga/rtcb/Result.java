@@ -1,13 +1,13 @@
 package org.waga.rtcb;
 
 import org.waga.core.AbstractEntity;
-import org.waga.player.PlayerProfile;
+import org.waga.player.Player;
 
 public class Result {
 
 	private Tournament tournament;
 
-	private PlayerProfile player;
+	private Player player;
 	private int handicap;
 	private int score;
 
@@ -19,11 +19,11 @@ public class Result {
 		this.tournament = tournament;
 	}
 
-	public PlayerProfile getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(PlayerProfile player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
 

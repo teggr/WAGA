@@ -1,10 +1,15 @@
 package org.waga.venue;
 
-import javax.persistence.Entity;
-
-import org.waga.core.AbstractEntity;
-
 public class Venue {
+
+	public static Venue with(String name, String link, String googleMapLink, String imageUrl) {
+		Venue venue = new Venue();
+		venue.name = name;
+		venue.link = link;
+		venue.googleMapLink = googleMapLink;
+		venue.imageUrl = imageUrl;
+		return venue;
+	}
 
 	private String name;
 	private String link;
@@ -47,13 +52,6 @@ public class Venue {
 	public String toString() {
 		return "Venue [name=" + name + ", link=" + link + ", googleMapLink=" + googleMapLink + ", imageUrl=" + imageUrl
 				+ "]";
-	}
-
-	public void update(Venue venue) {
-		this.name = venue.name;
-		this.link = venue.link;
-		this.googleMapLink = venue.googleMapLink;
-		this.imageUrl = venue.imageUrl;
 	}
 
 }

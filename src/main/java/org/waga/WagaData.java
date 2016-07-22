@@ -2,10 +2,13 @@ package org.waga;
 
 import java.util.List;
 
-import org.waga.player.PlayerProfile;
+import org.waga.player.Player;
+import org.waga.venue.Venue;
 
 public interface WagaData {
 	
-	List<PlayerProfile> getPlayerProfiles();
+	List<Player> getPlayers();
+	
+	List<Venue> getVenues();
 
 }

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.waga.core.Ranking;
-import org.waga.player.PlayerProfile;
+import org.waga.player.Player;
 
 @Component
 public class RaceToCiaoBellaStatsService {
@@ -41,7 +41,7 @@ public class RaceToCiaoBellaStatsService {
 
 				Set<Result> results = round.getResults();
 				for (Result result : results) {
-					PlayerProfile player = result.getPlayer();
+					Player player = result.getPlayer();
 					Totals totals = leaders.get(player.getSurname());
 					if (totals == null) {
 						totals = new Totals(player);
@@ -70,9 +70,9 @@ public class RaceToCiaoBellaStatsService {
 
 	private static class Totals {
 		private List<Integer> totals = new ArrayList<>();
-		private PlayerProfile player;
+		private Player player;
 
-		public Totals(PlayerProfile player) {
+		public Totals(Player player) {
 			this.player = player;
 		}
 
@@ -80,7 +80,7 @@ public class RaceToCiaoBellaStatsService {
 			return totals.size();
 		}
 
-		public PlayerProfile getPlayer() {
+		public Player getPlayer() {
 			return player;
 		}
 
