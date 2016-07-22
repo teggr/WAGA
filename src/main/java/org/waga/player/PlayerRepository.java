@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PlayerRepository extends JpaRepository<Player, Long> {
+public interface PlayerRepository extends JpaRepository<PlayerProfile, Long> {
 
-	List<Player> findByEmailAddressIsNotNull();
+	List<PlayerProfile> findByEmailAddressIsNotNull();
 
 }

@@ -7,23 +7,31 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.util.StringUtils;
-import org.waga.core.AbstractEntity;
-
-public class Player  {
+public class PlayerProfile  {
+	
+	public static PlayerProfile with(String firstName, String surname, int currentHandicap, String imageUrl) {
+		PlayerProfile player = new PlayerProfile();
+		player.firstName = firstName;
+		player.surname = surname;
+		player.currentHandicap = currentHandicap;
+		player.imageUrl = imageUrl;
+		return player;
+	}
 
 	private String firstName;
 	private String surname;
 	private int currentHandicap;
 	private Date handicapDate;
 	private String imageUrl;
+	private Date lastAppearance = new java.sql.Date(0);
+	
+	public void recordAppearance(Date appearanceDate) {
+		this.lastAppearance = appearanceDate;
+	}
+	
+	public Date getLastAppearance() {
+		return lastAppearance;
+	}
 
 	private Set<HistoricHandicap> handicapHistory;
 
@@ -60,20 +68,6 @@ public class Player  {
 		return firstName + " " + surname;
 	}
 
-	public void updateFrom(Player player) {
-		this.firstName = player.firstName;
-		this.surname = player.surname;
-		updateHandicap(player.currentHandicap);
-		this.imageUrl = player.imageUrl;
-		if (player.emailAddress != null) {
-			if (player.emailAddress.isNotEmpty()) {
-				this.emailAddress = player.getEmailAddress();
-			} else {
-				this.emailAddress = null;
-			}
-		}
-	}
-
 	private void updateHandicap(int handicap) {
 		if (this.currentHandicap != handicap) {
 			auditHandicap();
@@ -100,12 +94,6 @@ public class Player  {
 		current.setHandicap(currentHandicap);
 		historic.add(current);
 		return new HistoricHandicaps(historic);
-	}
-
-	public static Player with(Player player) {
-		Player newPlayer = new Player();
-		newPlayer.updateFrom(player);
-		return newPlayer;
 	}
 
 }

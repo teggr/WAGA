@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
+  	
+  	<div class="row" th:if="${config.data.playerProfiles.size() == 0}">
+		  <div class="col-md-12">
+		  <h2>No players yet. Check back later</h2>
+		  </div>
+		  </div>
+  		
+  		<th:block th:each="player : ${config.data.playerProfiles}">
+	  		<div class="row" >
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" th:src="${#strings.isEmpty(player.imageUrl)} ? 'http://placehold.it/550x300' : ${player.imageUrl} " alt="..."></img>
+				    </a>
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a th:text="${player.fullName}">Media heading</a></h4>
+				    <p>Current Handicap: <span th:text="${player.currentHandicap}"></span></p>
+				    
+				    
+			  </div>
+			</div>
+			  <hr/>
+		  </th:block>
+	</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+	
+  </body>
+</html>

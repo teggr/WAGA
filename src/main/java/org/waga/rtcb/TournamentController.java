@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.waga.player.Player;
+import org.waga.ViewHelper;
+import org.waga.player.PlayerProfile;
 import org.waga.player.PlayerRepository;
-import org.waga.web.ViewHelper;
 
 @Controller
 public class TournamentController {
@@ -30,7 +30,7 @@ public class TournamentController {
 	}
 
 	@ModelAttribute("players")
-	public List<Player> players() {
+	public List<PlayerProfile> players() {
 		return playerRepository.findAll();
 	}
 
@@ -55,7 +55,7 @@ public class TournamentController {
 		Tournament tournament = existing.findTournamentById(tid);
 		Result tourResult = new Result();
 		resultForm.update(tourResult);
-		Player player = playerRepository.findOne(resultForm.getPlayerId());
+		PlayerProfile player = playerRepository.findOne(resultForm.getPlayerId());
 		if (tourResult.getHandicap() == 0) {
 			tourResult.setHandicap(player.getCurrentHandicap());
 		}
