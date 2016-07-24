@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class Belfry extends WoodmanCupEventDataProvider {
+public class Belfry2014 extends WoodmanCupEventDataProvider {
 
-	static void belfry(List<WoodmanCupEvent> list) {
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+	
 		Team team1 = Team.newInstanceAsWinner("#ciddysback", "Blue", Players.east);
 		addPlayer(team1, Players.sturdy);
 		addPlayer(team1, Players.teggy);
@@ -38,13 +40,13 @@ public class Belfry extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.sturdy).beat(Players.apps), list);
 		addMatch(new MatchBuilder().teamOf(Players.teggy).beat(Players.foist), list);
@@ -53,14 +55,14 @@ public class Belfry extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.teggy, Players.snakes).beat(Players.foist, Players.apps), list);
 		addMatch(new MatchBuilder().teamOf(Players.east, Players.sturdy).beat(Players.maddog, Players.brad), list);
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.sturdy, Players.snakes).drewWith(Players.brad, Players.apps), list);
 		addMatch(new MatchBuilder().teamOf(Players.teggy, Players.east).beat(Players.foist, Players.maddog), list);

@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.waga.player.Player;
 import org.waga.player.Players;
-import org.waga.woodmancup.Match.MatchBuilder;
 
 public class Match {
 
@@ -49,37 +48,25 @@ public class Match {
 
 	}
 
-	public static final String DRAW = "draw";
+	private List<Player> teamA;
+	private List<Player> teamB;
+	private Result teamAResult;
 
 	public Match(MatchBuilder matchBuilder) {
-		// TODO Auto-generated constructor stub
+		teamA = matchBuilder.teamA;
+		teamB = matchBuilder.teamB;
+		teamAResult = matchBuilder.result;
 	}
 
-	public static Match newInstance(String winningTeamId, Group... groups) {
-		Match match = new Match();
-		match.winningTeamId = winningTeamId;
-		match.groups = Arrays.asList(groups);
-		return match;
+	public List<Player> getTeamA() {
+		return teamA;
 	}
 
-	private List<Group> groups;
-	private String winningTeamId;
-
-	public List<Group> getGroups() {
-		return groups;
+	public Result getTeamAResult() {
+		return teamAResult;
 	}
 
-	public String getWinningTeamId() {
-		return winningTeamId;
+	public List<Player> getTeamB() {
+		return teamB;
 	}
-
-	public boolean containsMember(String memberId) {
-		for (Group group : groups) {
-			if (group.containsMember(memberId)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 }

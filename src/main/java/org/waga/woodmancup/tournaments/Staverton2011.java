@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class Staverton extends WoodmanCupEventDataProvider {
+public class Staverton2011 extends WoodmanCupEventDataProvider {
 
-	static void staverton(List<WoodmanCupEvent> list) {
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+
 		Team team1 = Team.newInstance("Pink Shirts And Cts", "Pink", Players.foist);
 		addPlayer(team1, Players.apps);
 		addPlayer(team1, Players.snakes);
@@ -43,15 +45,15 @@ public class Staverton extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
-		addMatch(new MatchBuilder().teamOf(Players.foist).drewWith(Players.sturdy,Players.east), list);
+		addMatch(new MatchBuilder().teamOf(Players.foist).drewWith(Players.sturdy, Players.east), list);
 		addMatch(new MatchBuilder().teamOf(Players.apps).beat(Players.teggy), list);
 		addMatch(new MatchBuilder().teamOf(Players.greg).beat(Players.henso), list);
 		addMatch(new MatchBuilder().teamOf(Players.snakes).lostTo(Players.brad), list);
@@ -59,7 +61,7 @@ public class Staverton extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.apps, Players.snakes).beat(Players.brad, Players.east), list);
 		addMatch(new MatchBuilder().teamOf(Players.putts, Players.greg).lostTo(Players.teggy, Players.henso), list);
@@ -67,7 +69,7 @@ public class Staverton extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.snakes, Players.apps).beat(Players.brad, Players.maddog), list);
 		addMatch(new MatchBuilder().teamOf(Players.gav, Players.putts).lostTo(Players.sturdy, Players.henso), list);

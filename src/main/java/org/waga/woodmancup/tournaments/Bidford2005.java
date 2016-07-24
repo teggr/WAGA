@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class Bidford extends WoodmanCupEventDataProvider {
+public class Bidford2005 extends WoodmanCupEventDataProvider {
 
-	static void bidford(List<WoodmanCupEvent> list) {
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+	
 		Team team1 = Team.newInstanceAsWinner("The Gash", "Pink", Players.sturdy);
 		addPlayer(team1, Players.apps);
 		addPlayer(team1, Players.sturdy);
@@ -42,13 +44,13 @@ public class Bidford extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.apps).beat(Players.mitchell), list);
 		addMatch(new MatchBuilder().teamOf(Players.sturdy).beat(Players.mac), list);
@@ -59,7 +61,7 @@ public class Bidford extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.apps, Players.kempo).beat(Players.teggy, Players.greg), list);
 		addMatch(new MatchBuilder().teamOf(Players.shifty, Players.brad).lostTo(Players.east, Players.mitchell), list);
@@ -67,7 +69,7 @@ public class Bidford extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.sturdy, Players.apps).beat(Players.teggy, Players.mitchell), list);
 		addMatch(new MatchBuilder().teamOf(Players.shifty, Players.kempo).lostTo(Players.east, Players.henso), list);

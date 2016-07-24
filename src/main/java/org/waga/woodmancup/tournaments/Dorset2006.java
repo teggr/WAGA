@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class Dorset extends WoodmanCupEventDataProvider {
-
-	static void dorset(List<WoodmanCupEvent> list) {
+public class Dorset2006 extends WoodmanCupEventDataProvider {
+	
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+	
 		Team team1 = Team.newInstance("Team Scuzz", "Yellow", Players.apps);
 		addPlayer(team1, Players.apps);
 		addPlayer(team1, Players.snakes);
@@ -42,13 +44,13 @@ public class Dorset extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.flaps).lostTo(Players.teggy), list);
 		addMatch(new MatchBuilder().teamOf(Players.snakes).lostTo(Players.sturdy), list);
@@ -59,7 +61,7 @@ public class Dorset extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.apps, Players.flaps).drewWith(Players.teggy, Players.maddog), list);
 		addMatch(new MatchBuilder().teamOf(Players.east, Players.snakes).beat(Players.mac, Players.brad), list);
@@ -67,7 +69,7 @@ public class Dorset extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.snakes, Players.apps).lostTo(Players.teggy, Players.mitchell), list);
 		addMatch(new MatchBuilder().teamOf(Players.east, Players.henso).beat(Players.brad, Players.maddog), list);

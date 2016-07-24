@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class EssexGc extends WoodmanCupEventDataProvider {
-
-	static void essecgc(List<WoodmanCupEvent> list) {
+public class EssexGc2013 extends WoodmanCupEventDataProvider {
+	
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+		
 		Team team1 = Team.newInstanceAsWinner("Head Up The Snakes", "Blue", Players.snakes);
 		addPlayer(team1, Players.teggy);
 		addPlayer(team1, Players.dan);
@@ -42,13 +44,13 @@ public class EssexGc extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.snakes).drewWith(Players.sturdy), list);
 		addMatch(new MatchBuilder().teamOf(Players.dan).lostTo(Players.neil), list);
@@ -59,7 +61,7 @@ public class EssexGc extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.foist, Players.dan).beat(Players.brad, Players.neil), list);
 		addMatch(new MatchBuilder().teamOf(Players.snakes, Players.teggy).beat(Players.sturdy, Players.east), list);
@@ -67,7 +69,7 @@ public class EssexGc extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.teggy, Players.dan).drewWith(Players.sturdy, Players.steve), list);
 		addMatch(new MatchBuilder().teamOf(Players.foist, Players.maddog).lostTo(Players.east, Players.neil), list);

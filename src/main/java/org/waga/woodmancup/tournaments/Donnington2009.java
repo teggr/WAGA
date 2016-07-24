@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class Donnington extends WoodmanCupEventDataProvider {
+public class Donnington2009 extends WoodmanCupEventDataProvider {
 
-	static void donnington(List<WoodmanCupEvent> list) {
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+
 		Team team1 = Team.newInstance("Prince Of Snakes", "Lime Green", Players.snakes);
 		addPlayer(team1, Players.sturdy);
 		addPlayer(team1, Players.snakes);
@@ -45,24 +47,24 @@ public class Donnington extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.ego).lostTo(Players.snakes), list);
-		addMatch(new MatchBuilder().teamOf(Players. brad).lostTo(Players.gav), list);
+		addMatch(new MatchBuilder().teamOf(Players.brad).lostTo(Players.gav), list);
 		addMatch(new MatchBuilder().teamOf(Players.greg).lostTo(Players.sturdy), list);
 		addMatch(new MatchBuilder().teamOf(Players.mitchell).beat(Players.henso), list);
 		addMatch(new MatchBuilder().teamOf(Players.richg).beat(Players.maddog), list);
-		addMatch(new MatchBuilder().teamOf(Players.apps,Players.east).beat(Players.foist,Players.teggy), list);
+		addMatch(new MatchBuilder().teamOf(Players.apps, Players.east).beat(Players.foist, Players.teggy), list);
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.apps).lostTo(Players.foist), list);
 		addMatch(new MatchBuilder().teamOf(Players.mitchell, Players.east).beat(Players.sturdy, Players.henso), list);
@@ -71,12 +73,13 @@ public class Donnington extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.east).beat(Players.teggy), list);
 		addMatch(new MatchBuilder().teamOf(Players.apps, Players.greg).beat(Players.gav, Players.snakes), list);
 		addMatch(new MatchBuilder().teamOf(Players.brad, Players.ego).beat(Players.henso, Players.foist), list);
-		addMatch(new MatchBuilder().teamOf(Players.sturdy, Players.maddog).lostTo(Players.mitchell, Players.richg), list);
+		addMatch(new MatchBuilder().teamOf(Players.sturdy, Players.maddog).lostTo(Players.mitchell, Players.richg),
+				list);
 		return list;
 	}
 

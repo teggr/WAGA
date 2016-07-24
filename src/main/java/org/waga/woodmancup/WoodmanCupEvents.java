@@ -1,37 +1,33 @@
 package org.waga.woodmancup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.waga.woodmancup.tournaments.Abbotsley;
-import org.waga.woodmancup.tournaments.Belfry;
-import org.waga.woodmancup.tournaments.Bidford;
-import org.waga.woodmancup.tournaments.Donnington;
-import org.waga.woodmancup.tournaments.Dorset;
-import org.waga.woodmancup.tournaments.EssexGc;
-import org.waga.woodmancup.tournaments.Hastings;
-import org.waga.woodmancup.tournaments.ManorOfGroves;
-import org.waga.woodmancup.tournaments.OldThorns;
-import org.waga.woodmancup.tournaments.Oxfordshire;
-import org.waga.woodmancup.tournaments.Staverton;
+import org.waga.woodmancup.tournaments.Abbotsley2007;
+import org.waga.woodmancup.tournaments.Belfry2014;
+import org.waga.woodmancup.tournaments.Bidford2005;
+import org.waga.woodmancup.tournaments.Donnington2009;
+import org.waga.woodmancup.tournaments.Dorset2006;
+import org.waga.woodmancup.tournaments.EssexGc2013;
+import org.waga.woodmancup.tournaments.Hastings2008;
+import org.waga.woodmancup.tournaments.ManorOfGroves2012;
+import org.waga.woodmancup.tournaments.OldThorns2010;
+import org.waga.woodmancup.tournaments.Oxfordshire2015;
+import org.waga.woodmancup.tournaments.Staverton2011;
 
 public class WoodmanCupEvents {
 
 	public static List<WoodmanCupEvent> events() {
 
-		List<WoodmanCupEvent> list = new ArrayList<>();
+		List<WoodmanCupEventDataProvider> providers = Arrays.asList(new Oxfordshire2015(), new Belfry2014(), new EssexGc2013(),
+				new ManorOfGroves2012(), new Staverton2011(), new OldThorns2010(), new Donnington2009(), new Hastings2008(),
+				new Abbotsley2007(), new Dorset2006(), new Bidford2005());
 
-		Oxfordshire.oxfordshire(list);
-		Belfry.belfry(list);
-		EssexGc.essecgc(list);
-		ManorOfGroves.manorofgroves(list);
-		Staverton.staverton(list);
-		OldThorns.oldthorns(list);
-		Donnington.donnington(list);
-		Hastings.hastings(list);
-		Abbotsley.abbotsley(list);
-		Dorset.dorset(list);
-		Bidford.bidford(list);
+		List<WoodmanCupEvent> list = new ArrayList<>();
+		for (WoodmanCupEventDataProvider provider : providers) {
+			provider.registerEvent(list);
+		}
 
 		return list;
 

@@ -15,9 +15,11 @@ import org.waga.woodmancup.Match.MatchBuilder;
 import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.Session.Type;
 
-public class ManorOfGroves extends WoodmanCupEventDataProvider {
+public class ManorOfGroves2012 extends WoodmanCupEventDataProvider {
 
-	static void manorofgroves(List<WoodmanCupEvent> list) {
+	@Override
+	public void registerEvent(List<WoodmanCupEvent> list) {
+
 		Team team1 = Team.newInstanceAsWinner("GUNT", "Blue", Players.greg);
 		addPlayer(team1, Players.apps);
 		addPlayer(team1, Players.snakes);
@@ -43,13 +45,13 @@ public class ManorOfGroves extends WoodmanCupEventDataProvider {
 		list.add(wc);
 	}
 
-	private static void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
+	private  void session(Type type, Format format, List<Match> matches, WoodmanCupEvent wc) {
 		Session session = new Session(type, format);
 		session.addMatches(matches);
 		wc.addSession(session);
 	}
 
-	private static List<Match> session3Matches() {
+	private  List<Match> session3Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.mannix).beat(Players.teggy), list);
 		addMatch(new MatchBuilder().teamOf(Players.east).lostTo(Players.foist), list);
@@ -60,7 +62,7 @@ public class ManorOfGroves extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session2Matches() {
+	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.mannix, Players.greg).beat(Players.teggy, Players.henso), list);
 		addMatch(new MatchBuilder().teamOf(Players.east, Players.snakes).beat(Players.sturdy, Players.coco), list);
@@ -68,7 +70,7 @@ public class ManorOfGroves extends WoodmanCupEventDataProvider {
 		return list;
 	}
 
-	private static List<Match> session1Matches() {
+	private  List<Match> session1Matches() {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.snakes, Players.apps).beat(Players.brad, Players.teggy), list);
 		addMatch(new MatchBuilder().teamOf(Players.maddog, Players.mannix).drewWith(Players.sturdy, Players.foist), list);
