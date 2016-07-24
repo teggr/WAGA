@@ -1,5 +1,8 @@
 package org.waga.rtcb;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.waga.core.Rankable;
 
 public class RaceToCiaoBellaRanking implements Rankable {
@@ -8,6 +11,7 @@ public class RaceToCiaoBellaRanking implements Rankable {
 	private String player;
 	private int played;
 	private int points;
+	private List<Integer> topScores;
 
 	public int getPosition() {
 		return position;
@@ -37,8 +41,9 @@ public class RaceToCiaoBellaRanking implements Rankable {
 		return points;
 	}
 
-	public void setPoints(int points) {
+	public void setPoints(int points, List<Integer> topScores) {
 		this.points = points;
+		this.topScores = topScores;
 	}
 
 	@Override
@@ -49,6 +54,10 @@ public class RaceToCiaoBellaRanking implements Rankable {
 	@Override
 	public void setRanking(int ranking) {
 		position = ranking;
+	}
+
+	public String getTopScores() {
+		return topScores.stream().map(i -> i.toString()).collect(Collectors.joining(" - "));
 	}
 
 	@Override

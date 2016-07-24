@@ -1,12 +1,13 @@
 package org.waga.rtcb;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class RaceToCiaoBella {
 
 	private int season;
 
-	private Set<Tournament> tournaments;
+	private Set<Tournament> tournaments = new HashSet<>();
 
 	public int getSeason() {
 		return season;
@@ -31,28 +32,6 @@ public class RaceToCiaoBella {
 
 	public void addTournaments(Tournament tour) {
 		tournaments.add(tour);
-		tour.setRaceToCiaoBella(this);
-	}
-
-	public Tournament findTournamentById(Long tid) {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().filter(t -> t.getId().equals(tid)).findFirst().get();
-	}
-
-	public Tournament findTournamentByName(String name) {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().filter(t -> t.getName().equals(name)).findFirst().get();
-	}
-
-	public Tournament findLastTournament() {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get();
 	}
 
 }

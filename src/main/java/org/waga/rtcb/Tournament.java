@@ -1,6 +1,7 @@
 package org.waga.rtcb;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ public class Tournament {
 	private Date date;
 	private String name;
 
-	private Set<Result> results;
+	private Set<Result> results = new HashSet<>();
 
 	public void setName(String name) {
 		this.name = name;
@@ -54,7 +55,6 @@ public class Tournament {
 
 	public void addResult(Result result) {
 		results.add(result);
-		result.setTournament(this);
 	}
 
 	@Override

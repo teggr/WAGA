@@ -40,7 +40,7 @@ public class RaceToCiaoBellaStats {
 			rl.setPlayed(t.getSize());
 			rl.setPlayer(t.getPlayer().getSurname());
 			rl.setPosition(1);
-			rl.setPoints(t.getTotal());
+			rl.setPoints(t.getTotal(), t.getTopScores());
 			return rl;
 		}).sorted((t1, t2) -> Integer.compare(t2.getPoints(), t1.getPoints())).collect(Collectors.toList());
 
@@ -60,6 +60,10 @@ public class RaceToCiaoBellaStats {
 			this.player = player;
 		}
 
+		public List<Integer> getTopScores() {
+			return totals.stream().sorted((t1, t2) -> t2.compareTo(t1)).limit(4).collect(Collectors.toList());
+		}
+
 		public int getSize() {
 			return totals.size();
 		}
@@ -73,7 +77,7 @@ public class RaceToCiaoBellaStats {
 		}
 
 		public int getTotal() {
-			return totals.stream().sorted((t1, t2) -> t2.compareTo(t1)).limit(4).mapToInt(Integer::intValue).sum();
+			return getTopScores().stream().mapToInt(Integer::intValue).sum();
 		}
 	}
 

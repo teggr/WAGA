@@ -4,19 +4,9 @@ import org.waga.player.Player;
 
 public class Result {
 
-	private Tournament tournament;
-
 	private Player player;
 	private int handicap;
 	private int score;
-
-	public Tournament getTournament() {
-		return tournament;
-	}
-
-	public void setTournament(Tournament tournament) {
-		this.tournament = tournament;
-	}
 
 	public Player getPlayer() {
 		return player;
