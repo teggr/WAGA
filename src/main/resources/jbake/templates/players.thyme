@@ -24,9 +24,9 @@
 				    <p>Current Handicap: <span th:text="${player.currentHandicap}"></span></p>
 				    
 				    <h4>History</h4>
-				    <li>
-				    	<ul th:each="message : ${player.handicapChangeMessages}" th:text="${message}"></ul>
-				    </li>
+				    <ul>
+				    	<li th:each="message : ${player.handicapChangeMessages}" th:text="${message}"></li>
+				    </ul>
 				    
 			  </div>
 			  <div class="col-sm-6 col-md-8">
