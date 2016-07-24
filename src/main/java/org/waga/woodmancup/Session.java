@@ -1,4 +1,4 @@
-package com.woodmancup.tournaments;
+package org.waga.woodmancup;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.woodmancup.tournaments;
+package org.waga.woodmancup.tournaments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,14 @@ import java.util.List;
 import org.waga.core.Utils;
 import org.waga.player.Players;
 import org.waga.venue.Venues;
-
-import com.woodmancup.tournaments.Session.Format;
-import com.woodmancup.tournaments.Session.Type;
-import com.woodmancup.tournaments.Match.MatchBuilder;
+import org.waga.woodmancup.Match;
+import org.waga.woodmancup.Session;
+import org.waga.woodmancup.Team;
+import org.waga.woodmancup.WoodmanCupEvent;
+import org.waga.woodmancup.WoodmanCupEventDataProvider;
+import org.waga.woodmancup.Match.MatchBuilder;
+import org.waga.woodmancup.Session.Format;
+import org.waga.woodmancup.Session.Type;
 
 public class Bidford extends WoodmanCupEventDataProvider {
 

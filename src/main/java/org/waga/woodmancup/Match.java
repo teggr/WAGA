@@ -1,4 +1,4 @@
-package com.woodmancup.tournaments;
+package org.waga.woodmancup;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 
 import org.waga.player.Player;
 import org.waga.player.Players;
-
-import com.woodmancup.tournaments.Match.MatchBuilder;
+import org.waga.woodmancup.Match.MatchBuilder;
 
 public class Match {
 

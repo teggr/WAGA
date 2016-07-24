@@ -1,4 +1,4 @@
-package com.woodmancup.statistics;
+package org.waga.woodmancup.statistics;
 
 import java.util.ArrayList;
 import java.util.List;

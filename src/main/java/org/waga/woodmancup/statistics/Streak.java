@@ -1,4 +1,4 @@
-package com.woodmancup.statistics;
+package org.waga.woodmancup.statistics;
 
 public class Streak {
 	public int currentStreak = 0;

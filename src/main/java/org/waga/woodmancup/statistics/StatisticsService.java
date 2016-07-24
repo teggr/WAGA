@@ -1,4 +1,4 @@
-package com.woodmancup.statistics;
+package org.waga.woodmancup.statistics;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,17 +8,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.woodmancup.members.Member;
-import com.woodmancup.members.MemberRepository;
-import com.woodmancup.members.MemberRepository.MemberSort;
-import com.woodmancup.tournaments.Appearance;
-import com.woodmancup.tournaments.AppearanceRepository;
-import com.woodmancup.tournaments.Session;
-import com.woodmancup.tournaments.SessionRepository;
-import com.woodmancup.tournaments.Team;
-import com.woodmancup.tournaments.WoodmanCupEvent;
-import com.woodmancup.tournaments.TournamentRepository;
+import org.waga.woodmancup.Session;
+import org.waga.woodmancup.SessionRepository;
+import org.waga.woodmancup.Team;
+import org.waga.woodmancup.WoodmanCupEvent;
+import org.waga.woodmancup.members.Member;
+import org.waga.woodmancup.members.MemberRepository;
+import org.waga.woodmancup.members.MemberRepository.MemberSort;
+import org.waga.woodmancup.tournaments.Appearance;
+import org.waga.woodmancup.tournaments.AppearanceRepository;
+import org.waga.woodmancup.tournaments.TournamentRepository;
 
 @Service
 public class StatisticsService {

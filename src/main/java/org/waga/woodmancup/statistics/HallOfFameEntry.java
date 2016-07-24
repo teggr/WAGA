@@ -1,6 +1,6 @@
-package com.woodmancup.statistics;
+package org.waga.woodmancup.statistics;
 
-import com.woodmancup.members.Member;
+import org.waga.woodmancup.members.Member;
 
 public class HallOfFameEntry {
 	
