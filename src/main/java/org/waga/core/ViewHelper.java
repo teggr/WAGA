@@ -1,4 +1,4 @@
-package org.waga;
+package org.waga.core;
 
 import java.time.LocalDate;
 import java.time.Period;

@@ -2,6 +2,7 @@ package org.waga;
 
 import java.util.List;
 
+import org.waga.open.OpenChallengeEvent;
 import org.waga.player.Player;
 import org.waga.rtcb.RaceToCiaoBella;
 import org.waga.rtcb.RaceToCiaoBellaStats;
@@ -19,5 +20,7 @@ public interface WagaData {
 	RaceToCiaoBellaStats getCurrentRaceToCiaoBellaSeasonStats();
 	
 	List<Seeding> getSeedings();
+	
+	List<OpenChallengeEvent> getOpenChallengeEvents();
 
 }

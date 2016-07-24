@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.waga.core.Utils;
+import org.waga.open.OpenChallengeEvent;
+import org.waga.open.OpenChallengeEvents;
 import org.waga.player.Player;
 import org.waga.player.Players;
 import org.waga.rtcb.RaceToCiaoBella;
@@ -53,7 +55,9 @@ public class WagaDataCompiler {
 				Utils.asDate("2016-04-21"));
 		winningScoreAdjuster.apply(currentSeason);
 
-		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings);
+		List<OpenChallengeEvent> openEvents = OpenChallengeEvents.getEvents();
+
+		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings, openEvents);
 
 	}
 
