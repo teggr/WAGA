@@ -1,35 +1,33 @@
 package com.woodmancup.tournaments;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Session {
 
-	public static Session newInstance(String tournamentId,
-			String sessionNumber, SessionFormat sessionFormat, Match... matches) {
-		Session session = new Session();
-		session.tournamentId = tournamentId;
-		session.sessionNumber = sessionNumber;
-		session.sessionFormat = sessionFormat;
-		session.matches = Arrays.asList(matches);
-		return session;
+	public static enum Type {
+		FRIDAY, SATURDAY, SUNDAY;
 	}
 
-	private String tournamentId;
-	private String sessionNumber;
-	private SessionFormat sessionFormat;
+	public static enum Format {
+		PAIRS, SINGLES;
+	}
+	
 	private List<Match> matches;
-
-	public SessionFormat getSessionFormat() {
-		return sessionFormat;
+	
+	private Type type;
+	private Format format;
+	
+	public Session(Type type, Format format) {
+		this.type = type;
+		this.format = format;
 	}
-
-	public String getSessionNumber() {
-		return sessionNumber;
+	
+	public Format getFormat() {
+		return format;
 	}
-
-	public String getTournamentId() {
-		return tournamentId;
+	
+	public Type getType() {
+		return type;
 	}
 
 	public List<Match> getMatches() {
@@ -59,5 +57,9 @@ public class Session {
 			}
 		}
 		return points;
+	}
+
+	public void addMatches(List<Match> matches) {
+		matches.addAll(matches);
 	}
 }

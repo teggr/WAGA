@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.waga.player.Player;
+import org.waga.player.Players;
 import org.waga.venue.Venue;
 
 import com.woodmancup.members.Member;
@@ -86,11 +87,11 @@ public class WoodmanCupEvent {
 		return points;
 	}
 
-	public void setPuttOffWinner(Player puttOffWinner) {
-		this.puttOffWinner = puttOffWinner;
+	public void setPuttOffWinner(Players puttOffWinner) {
+		this.puttOffWinner = puttOffWinner.asPlayer();
 	}
 
-	public void setAlternativeWoodmanCupWinner(Player alternativeWoodmanCupWinner) {
-		this.alternativeWoodmanCupWinner = alternativeWoodmanCupWinner;
+	public void setAlternativeWoodmanCupWinner(Players alternativeWoodmanCupWinner) {
+		this.alternativeWoodmanCupWinner = alternativeWoodmanCupWinner.asPlayer();
 	}
 }
