@@ -10,6 +10,7 @@
 		<div class="row">
 			<div class="col-md-12">
 
+				<h2>Leaderboard</h2>
 				
 						<div class="waga-tab-content">
 							<table class="table table-striped">
@@ -35,6 +36,8 @@
 						</div>
 
 				<hr />
+				
+				<h2>Tournaments</h2>
 				
 				<th:block  th:each="tournament : ${config.data.currentRaceToCiaBellaSeason.tournamentsSortedByRecent}">
 				<div class="panel panel-default">
