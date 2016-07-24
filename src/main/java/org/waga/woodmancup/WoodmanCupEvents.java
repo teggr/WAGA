@@ -18,7 +18,7 @@ import org.waga.woodmancup.tournaments.Staverton2011;
 
 public class WoodmanCupEvents {
 
-	public static List<WoodmanCupEvent> events() {
+	public static List<WoodmanCupEvent> getEvents() {
 
 		List<WoodmanCupEventDataProvider> providers = Arrays.asList(new Oxfordshire2015(), new Belfry2014(), new EssexGc2013(),
 				new ManorOfGroves2012(), new Staverton2011(), new OldThorns2010(), new Donnington2009(), new Hastings2008(),

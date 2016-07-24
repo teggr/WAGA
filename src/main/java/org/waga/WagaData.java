@@ -8,6 +8,7 @@ import org.waga.rtcb.RaceToCiaoBella;
 import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.seedings.Seeding;
 import org.waga.venue.Venue;
+import org.waga.woodmancup.WoodmanCupEvent;
 
 public interface WagaData {
 	
@@ -22,5 +23,7 @@ public interface WagaData {
 	List<Seeding> getSeedings();
 	
 	List<OpenChallengeEvent> getOpenChallengeEvents();
+	
+	List<WoodmanCupEvent> getWoodmanCupEvents();
 
 }

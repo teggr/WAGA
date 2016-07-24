@@ -8,6 +8,7 @@ import org.waga.rtcb.RaceToCiaoBella;
 import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.seedings.Seeding;
 import org.waga.venue.Venue;
+import org.waga.woodmancup.WoodmanCupEvent;
 
 public class AggregatedWagaData implements WagaData {
 
@@ -17,16 +18,18 @@ public class AggregatedWagaData implements WagaData {
 	private List<Venue> venues;
 	private List<Seeding> seedings;
 	private List<OpenChallengeEvent> openEvents;
+	private List<WoodmanCupEvent> woodmanCupEvents;
 
 	public AggregatedWagaData(List<Player> players, List<Venue> venues,
 			RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats, RaceToCiaoBella currentRaceToCiaBellaSeason,
-			List<Seeding> seedings, List<OpenChallengeEvent> openEvents) {
+			List<Seeding> seedings, List<OpenChallengeEvent> openEvents, List<WoodmanCupEvent> woodmanCupEvents) {
 		this.players = players;
 		this.venues = venues;
 		this.currentRaceToCiaoBellaSeasonStats = currentRaceToCiaoBellaSeasonStats;
 		this.currentRaceToCiaBellaSeason = currentRaceToCiaBellaSeason;
 		this.seedings = seedings;
 		this.openEvents = openEvents;
+		this.woodmanCupEvents = woodmanCupEvents;
 	}
 
 	@Override
@@ -57,6 +60,11 @@ public class AggregatedWagaData implements WagaData {
 	@Override
 	public List<OpenChallengeEvent> getOpenChallengeEvents() {
 		return openEvents;
+	}
+	
+	@Override
+	public List<WoodmanCupEvent> getWoodmanCupEvents() {
+		return woodmanCupEvents;
 	}
 
 }

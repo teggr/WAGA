@@ -47,4 +47,12 @@ public class Team {
 		players.add(player);
 	}
 
+	public Player getCaptain() {
+		return captain;
+	}
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
 }

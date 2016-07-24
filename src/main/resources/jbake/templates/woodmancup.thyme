@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
+  		
+  		<div class="row">
+
+		  <div class="col-md-12" >
+		  	<h2>Hall Of Fame</h2>
+		  
+		  		<table class="table  table-condensed  table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>Pos</td>
+							<td>+/-</td>
+							<td>Player</td>
+							<td>Appearances</td>
+							<td>Victories</td>
+							<td>AWC</td>
+							<td>Putt</td>
+							<td>W</td>
+							<td>D</td>
+							<td>L</td>
+							<td>Total</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="entry in halloffameentries">
+							<td>{{ entry.position }}</td>
+							<td></td>
+							<td>{{ entry.member.firstname }} {{ entry.member.surname }}</td>
+							<td>{{ entry.appearances }}</td>
+							<td>{{ entry.victories }}</td>
+							<td>{{ entry.alternativeWoodmanCupWins }}</td>
+							<td>{{ entry.puttOffWins }}</td>
+							<td>{{ entry.wins }}</td>
+							<td>{{ entry.draws }}</td>
+							<td>{{ entry.losses }}</td>
+							<td>{{ entry.points }}</td>
+						</tr>
+					</tbody>
+				</table>
+				  		
+			 
+			 </div>
+			 
+		  </div>
+		  
+		  <div class="row">
+		  
+			 <div class="col-md-4">
+		  		<h4>Woodman Cups</h4>
+				<ul class="list-group">
+				  <li class="list-group-item" th:each="event : ${config.data.woodmanCupEvents}">
+				    <span class="badge" th:text="${#dates.format(event.date, 'yyyy-MM-dd')}"></span>
+				    <span th:text="${event.venue.name}"></span>
+				  </li>
+				</ul>
+			</div>
+		  
+		  
+		  </div>
+		  
+		</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+  </body>
+</html>

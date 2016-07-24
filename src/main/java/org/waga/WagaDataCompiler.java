@@ -18,6 +18,8 @@ import org.waga.rtcb.RaceToCiaoBellaWinningHandicapAdjuster;
 import org.waga.seedings.Seeding;
 import org.waga.venue.Venue;
 import org.waga.venue.Venues;
+import org.waga.woodmancup.WoodmanCupEvent;
+import org.waga.woodmancup.WoodmanCupEvents;
 
 public class WagaDataCompiler {
 
@@ -57,7 +59,9 @@ public class WagaDataCompiler {
 
 		List<OpenChallengeEvent> openEvents = OpenChallengeEvents.getEvents();
 
-		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings, openEvents);
+		List<WoodmanCupEvent> woodmanCupEvents = WoodmanCupEvents.getEvents();
+		
+		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings, openEvents, woodmanCupEvents );
 
 	}
 

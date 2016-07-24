@@ -1,5 +1,6 @@
 package org.waga.woodmancup;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class WoodmanCupEvent {
 	private Venue venue;
 	private Team team1;
 	private Team team2;
-	private List<Session> sessions;
+	private List<Session> sessions = new ArrayList<>();
 	private Player puttOffWinner;
 	private Player alternativeWoodmanCupWinner;
 
