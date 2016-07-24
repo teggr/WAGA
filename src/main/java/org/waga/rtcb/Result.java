@@ -1,6 +1,5 @@
 package org.waga.rtcb;
 
-import org.waga.core.AbstractEntity;
 import org.waga.player.Player;
 
 public class Result {

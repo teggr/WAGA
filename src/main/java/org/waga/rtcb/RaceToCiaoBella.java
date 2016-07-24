@@ -2,12 +2,6 @@ package org.waga.rtcb;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-import org.waga.core.AbstractEntity;
-
 public class RaceToCiaoBella {
 
 	private int season;
@@ -35,10 +29,6 @@ public class RaceToCiaoBella {
 		return "RaceToCiaoBella [season=" + season + ", tournaments=" + tournaments + "]";
 	}
 
-	public void update(RaceToCiaoBella rtcb) {
-		this.season = rtcb.season;
-	}
-
 	public void addTournaments(Tournament tour) {
 		tournaments.add(tour);
 		tour.setRaceToCiaoBella(this);
@@ -63,12 +53,6 @@ public class RaceToCiaoBella {
 			return null;
 		}
 		return tournaments.stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get();
-	}
-
-	public void removeTournament(Long tid) {
-		Tournament tour = findTournamentById(tid);
-		tournaments.remove(tour);
-		tour.setRaceToCiaoBella(null);
 	}
 
 }
