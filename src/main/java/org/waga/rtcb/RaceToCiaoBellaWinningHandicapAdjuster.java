@@ -22,12 +22,13 @@ public class RaceToCiaoBellaWinningHandicapAdjuster {
 
 		for (Tournament tournament : tournaments) {
 
-			if (tournament.getDate().after(applyFromDate)) {
+			Date date = tournament.getDate();
+			if (date.after(applyFromDate)) {
 
 				Player p = tournament.getWinner();
 				String message = "Tournament winner";
 				log.info(p.getFullName() + " adjusted " + message);
-				p.decrementHandicap(1, message);
+				p.decrementHandicap(1, message, date);
 
 			}
 

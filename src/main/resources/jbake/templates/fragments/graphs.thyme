@@ -3,14 +3,14 @@
       xmlns:th="http://www.thymeleaf.org">
   <body >
   
-  	<div th:fragment="handicap (id,handicaps)">
+  	<div th:fragment="handicap (id,player)">
   		
 		<script th:inline="javascript" type="text/javascript">
 		/*<![CDATA[*/
 		$(function () {
 			var chartId = /*[[${id}]]*/ ;
-			var categories = /*[[${handicaps.keys()}]]*/ ['Current'];
-			var seriesData = /*[[${handicaps.values()}]]*/ [13];
+			var categories = /*[[${player.handicapAdjustmentDates}]]*/ ['Current'];
+			var seriesData = /*[[${player.handicapAdjustmentsTimeline}]]*/ [13];
 			
 			// Our labels and three data series
 			var data = {

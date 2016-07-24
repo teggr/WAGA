@@ -1,32 +1,52 @@
 package org.waga.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Player {
 
-	private static final int MAX_HANDICAP = 28;
+	private static final Comparator<HandicapAdjustment> ORDER_BY_DATE_OLDEST_FIRST = new Comparator<HandicapAdjustment>() {
+		@Override
+		public int compare(HandicapAdjustment o1, HandicapAdjustment o2) {
+			return o1.getAdjustmentDate().compareTo(o2.getAdjustmentDate());
+		}
+	};
 
-	public static Player with(String firstName, String surname, int currentHandicap, String imageUrl) {
+	private static final Comparator<HandicapAdjustment> REVERSE_ORDER_BY_DATE_NEWEST_FIRST = new Comparator<HandicapAdjustment>() {
+		@Override
+		public int compare(HandicapAdjustment o1, HandicapAdjustment o2) {
+			return o2.getAdjustmentDate().compareTo(o1.getAdjustmentDate());
+		}
+	};
+
+	public static Player with(String firstName, String surname, int joiningHandicap, String imageUrl, Date joinDate) {
 		Player player = new Player();
+		player.joinDate = joinDate;
 		player.firstName = firstName;
 		player.surname = surname;
-		player.currentHandicap = currentHandicap;
 		player.imageUrl = imageUrl;
+		player.setHandicap(joiningHandicap, "Joining handicap", joinDate);
 		return player;
 	}
 
+	private Date joinDate;
 	private String firstName;
 	private String surname;
-	private int currentHandicap;
-	private Date handicapDate;
 	private String imageUrl;
-	private Date lastAppearance = new java.sql.Date(0);
+	private Date lastAppearance = new java.util.Date(0);
 	private boolean current;
+
+	private List<HandicapAdjustment> handicapAdjustments = new ArrayList<>();
+
+	private Player() {
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
 
 	public Player setCurrent() {
 		current = true;
@@ -39,14 +59,6 @@ public class Player {
 
 	public Date getLastAppearance() {
 		return lastAppearance;
-	}
-
-	private Set<HistoricHandicap> handicapHistory = new HashSet<>();
-
-	private EmailAddress emailAddress;
-
-	public EmailAddress getEmailAddress() {
-		return emailAddress;
 	}
 
 	public String getImageUrl() {
@@ -62,65 +74,68 @@ public class Player {
 	}
 
 	public int getCurrentHandicap() {
-		return currentHandicap;
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+		}
+		return handicap;
 	}
 
-	public Set<HistoricHandicap> getHandicapHistory() {
-		if (handicapHistory == null) {
-			handicapHistory = new HashSet<>();
+	public List<HandicapAdjustment> getHandicapAdjustments() {
+		return handicapAdjustments;
+	}
+
+	public List<String> getHandicapAdjustmentDetails() {
+		ArrayList<String> sortedList = new ArrayList<>();
+		
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+			sortedList.add( handicap + " : " + adjustment.getMessage() );
 		}
-		return handicapHistory;
+		Collections.reverse(sortedList);
+		return sortedList;
+	}
+
+	public List<String> getHandicapAdjustmentDates() {
+		List<String> dates = new ArrayList<>();
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			dates.add(org.waga.core.Utils.dateToString(adjustment.getAdjustmentDate()));
+		}
+		return dates;
+	}
+
+	public List<Number> getHandicapAdjustmentsTimeline() {
+		List<Number> timeline = new ArrayList<>();
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+			timeline.add(handicap);
+		}
+		return timeline;
 	}
 
 	public String getFullName() {
 		return firstName + " " + surname;
 	}
 
-	private void updateHandicap(int handicap, String message) {
-		if (this.currentHandicap != handicap) {
-			auditHandicap(message);
-			this.currentHandicap = handicap;
-			this.handicapDate = new Date();
-		}
-	}
-
-	private void auditHandicap(String message) {
-		if (handicapDate != null) {
-			HistoricHandicap expiringHandicap = new HistoricHandicap();
-			expiringHandicap.setExpiredDate(handicapDate);
-			expiringHandicap.setHandicap(currentHandicap);
-			expiringHandicap.setMessage(message);
-			handicapHistory.add(expiringHandicap);
-		}
-	}
-
-	public HistoricHandicaps getLast10Handicaps() {
-		List<HistoricHandicap> historic = new ArrayList<>(getHandicapHistory()).stream()
-				.sorted(HistoricHandicap.REVERSE_DATE_ORDER).limit(9).collect(Collectors.toList());
-		HistoricHandicap current = new HistoricHandicap();
-		current.setExpiredDate(new Date());
-		current.setHandicap(currentHandicap);
-		historic.add(current);
-		return new HistoricHandicaps(historic);
-	}
-
 	public boolean isCurrent() {
 		return current;
 	}
 
-	public void incrementHandicap(int increment, String message) {
-		if (currentHandicap + increment <= MAX_HANDICAP) {
-			updateHandicap(currentHandicap + increment, message);
-		}
+	public void setHandicap(int handicap, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.SET, handicap, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
-	public void decrementHandicap(int decrement, String message) {
-		updateHandicap(currentHandicap - decrement, message);
+	public void incrementHandicap(int increment, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.INCREMENT, increment, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
-	public List<String> getHandicapChangeMessages() {
-		return new ArrayList<>(getHandicapHistory()).stream().sorted(HistoricHandicap.REVERSE_DATE_ORDER).limit(9)
-				.map(h -> h.getHandicap() + " " + h.getMessage()).collect(Collectors.toList());
+	public void decrementHandicap(int decrement, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.DECREMENT, decrement, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
 }

@@ -1,5 +1,6 @@
 package org.waga.rtcb;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,21 +20,23 @@ public class RaceToCiaoBellaScoreHandicapAdjuster {
 
 		for (Tournament tournament : tournaments) {
 
+			Date date = tournament.getDate();
+
 			Set<Result> results = tournament.getResults();
 			for (Result result : results) {
 				Player p = result.getPlayer();
 				if (result.getScore() >= 40) {
 					String message = "40 points or over";
 					log.info(p.getFullName() + " adjusted " + message);
-					p.decrementHandicap(2, message);
+					p.decrementHandicap(2, message, date);
 				} else if (result.getScore() >= 38) {
-					String message = " adjusted 38 points or over";
-					log.info(p.getFullName() + " " + message);
-					p.decrementHandicap(1, message);
+					String message = " 38 points or over";
+					log.info(p.getFullName() + " adjusted " + message, date);
+					p.decrementHandicap(1, message, date);
 				} else if (result.getScore() <= 27) {
-					String message = " adjusted 27 points or less";
-					log.info(p.getFullName() + " " + message);
-					p.incrementHandicap(1, message);
+					String message = " 27 points or less";
+					log.info(p.getFullName() + " adjusted " + message);
+					p.incrementHandicap(1, message, date);
 				}
 
 			}
