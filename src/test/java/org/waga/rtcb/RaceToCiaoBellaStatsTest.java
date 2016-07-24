@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class RaceToCiaoBellaStatsServiceTest {
+public class RaceToCiaoBellaStatsTest {
 
 	@Test
 	public void testTop4ResultsAreChosen() {

@@ -1,140 +1,31 @@
 package org.waga;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.waga.player.Player;
 import org.waga.player.Players;
 import org.waga.rtcb.RaceToCiaoBella;
-import org.waga.rtcb.Result;
-import org.waga.rtcb.Tournament;
+import org.waga.rtcb.RaceToCiaoBellaEvents;
+import org.waga.rtcb.RaceToCiaoBellaStats;
+import org.waga.venue.Venue;
 import org.waga.venue.Venues;
 
 public class WagaDataCompiler {
 
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
 	public static WagaData compile() {
 
-		return new AggregatedWagaData();
+		List<Player> players = Arrays.asList(Players.values()).stream().map(p -> p.asPlayer())
+				.collect(Collectors.toList());
 
-	}
+		List<Venue> venues = Arrays.asList(Venues.values()).stream().map(v -> v.asVenue()).collect(Collectors.toList());
 
-	public List<RaceToCiaoBella> getEvents() {
-		List<RaceToCiaoBella> list = new ArrayList<>();
+		List<RaceToCiaoBella> seasons = RaceToCiaoBellaEvents.getEvents();
+		RaceToCiaoBellaStats currentSeasonStats = new RaceToCiaoBellaStats(seasons.get(seasons.size() - 1));
 
-		RaceToCiaoBella bella = new RaceToCiaoBella();
-		bella.setSeason(2016);
+		return new AggregatedWagaData(players, venues, currentSeasonStats, seasons);
 
-		aai(bella);
-		stablefordAndWine(bella);
-		febex(bella);
-		foxhillFancy(bella);
-		aprilFool(bella);
-		slipperySilvermere(bella);
-
-		list.add(bella);
-
-		return list;
-	}
-
-	private void slipperySilvermere(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("Snakey Dave's Slippery Silvermere Challenge");
-		tour.setDate(asDate("2016-06-24"));
-		tour.setVenue(Venues.silvermere.asVenue());
-		addResult(Players.teggy.asPlayer(), 31, tour);
-		addResult(Players.apps.asPlayer(), 30, tour);
-		addResult(Players.foist.asPlayer(), 28, tour);
-		addResult(Players.maddog.asPlayer(), 22, tour);
-		addResult(Players.snakes.asPlayer(), 20, tour);
-		bella.addTournaments(tour);
-	}
-	
-	private void aprilFool(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("Maddog's April Fool");
-		tour.setDate(asDate("2016-04-22"));
-		tour.setVenue(Venues.hampton.asVenue());
-		addResult(Players.foist.asPlayer(), 38, tour);
-		addResult(Players.brad.asPlayer(), 36, tour);
-		addResult(Players.teggy.asPlayer(), 35, tour);
-		addResult(Players.apps.asPlayer(), 35, tour);
-		addResult(Players.maddog.asPlayer(), 27, tour);
-		bella.addTournaments(tour);
-	}
-
-	private void foxhillFancy(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("Foister's Foxhill Fancy");
-		tour.setDate(asDate("2016-03-20"));
-		tour.setVenue(Venues.foxhills.asVenue());
-		addResult(Players.foist.asPlayer(), 32, tour);
-		addResult(Players.brad.asPlayer(), 32, tour);
-		addResult(Players.teggy.asPlayer(), 29, tour);
-		addResult(Players.apps.asPlayer(), 29, tour);
-		addResult(Players.damo.asPlayer(), 24, tour);
-		addResult(Players.east.asPlayer(), 22, tour);
-		bella.addTournaments(tour);
-	}
-
-	private void febex(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("The Febex");
-		tour.setDate(asDate("2016-02-27"));
-		tour.setVenue(Venues.selsdon.asVenue());
-		addResult(Players.foist.asPlayer(), 36, tour);
-		addResult(Players.apps.asPlayer(), 35, tour);
-		addResult(Players.damo.asPlayer(), 32, tour);
-		addResult(Players.maddog.asPlayer(), 30, tour);
-		addResult(Players.brad.asPlayer(), 29, tour);
-		addResult(Players.teggy.asPlayer(), 27, tour);
-		bella.addTournaments(tour);
-	}
-
-	private void stablefordAndWine(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("Stableford and Wine invitational");
-		tour.setDate(asDate("2015-11-16"));
-		tour.setVenue(Venues.shirley.asVenue());
-		addResult(Players.apps.asPlayer(), 34, tour);
-		addResult(Players.teggy.asPlayer(), 32, tour);
-		addResult(Players.brad.asPlayer(), 30, tour);
-		addResult(Players.snakes.asPlayer(), 26, tour);
-		bella.addTournaments(tour);
-	}
-
-	private void aai(RaceToCiaoBella bella) {
-		Tournament tour = new Tournament();
-		tour.setName("Apperley Autumn Invitational (AAI)");
-		tour.setDate(asDate("2015-07-16"));
-		tour.setVenue(Venues.addington.asVenue());
-		addResult(Players.foist.asPlayer(), 32, tour);
-		addResult(Players.snakes.asPlayer(), 31, tour);
-		addResult(Players.maddog.asPlayer(), 30, tour);
-		addResult(Players.apps.asPlayer(), 28, tour);
-		addResult(Players.damo.asPlayer(), 24, tour);
-		bella.addTournaments(tour);
-	}
-
-	private void addResult(Player player, int points, Tournament tour) {
-		Result result = new Result();
-		result.setHandicap(player.getCurrentHandicap());
-		result.setScore(points);
-		result.setPlayer(player);
-		tour.addResult(result);
-	}
-
-	private Date asDate(String date) {
-		try {
-			return dateFormat.parse(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
 	}
 
 }

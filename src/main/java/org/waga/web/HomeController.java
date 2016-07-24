@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.waga.ViewHelper;
 import org.waga.news.NewsItemRepository;
-import org.waga.rtcb.RaceToCiaoBellaStatsService;
+import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.wc.WoodmanCupConstants;
 import org.waga.wc.WoodmanCupStatsService;
 
@@ -19,7 +19,7 @@ public class HomeController {
 	private NewsItemRepository newsItemRepository;
 
 	@Autowired
-	private RaceToCiaoBellaStatsService raceToCiaoBellaStatsService;
+	private RaceToCiaoBellaStats raceToCiaoBellaStatsService;
 
 	@Autowired
 	private WoodmanCupStatsService woodmanCupStatsService;

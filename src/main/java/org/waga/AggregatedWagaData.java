@@ -1,24 +1,45 @@
 package org.waga;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.waga.player.Player;
-import org.waga.player.Players;
+import org.waga.rtcb.RaceToCiaoBella;
+import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.venue.Venue;
-import org.waga.venue.Venues;
 
 public class AggregatedWagaData implements WagaData {
 
+	private RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats;
+	private List<RaceToCiaoBella> raceToCiaBellaSeasons;
+	private List<Player> players;
+	private List<Venue> venues;
+
+	public AggregatedWagaData(List<Player> players, List<Venue> venues,
+			RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats, List<RaceToCiaoBella> raceToCiaBellaSeasons) {
+		this.players = players;
+		this.venues = venues;
+		this.currentRaceToCiaoBellaSeasonStats = currentRaceToCiaoBellaSeasonStats;
+		this.raceToCiaBellaSeasons = raceToCiaBellaSeasons;
+	}
+
+	@Override
+	public RaceToCiaoBellaStats getCurrentRaceToCiaoBellaSeasonStats() {
+		return currentRaceToCiaoBellaSeasonStats;
+	}
+
+	@Override
+	public List<RaceToCiaoBella> getRaceToCiaBellaSeasons() {
+		return raceToCiaBellaSeasons;
+	}
+
 	@Override
 	public List<Player> getPlayers() {
-		return Arrays.asList(Players.values()).stream().map(p -> p.asPlayer()).collect(Collectors.toList());
+		return players ;
 	}
 
 	@Override
 	public List<Venue> getVenues() {
-		return Arrays.asList(Venues.values()).stream().map(v -> v.asVenue()).collect(Collectors.toList());
+		return venues;
 	}
 
 }

@@ -1,38 +1,20 @@
 package org.waga.rtcb;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.waga.core.Ranking;
 import org.waga.player.Player;
 
-@Component
-public class RaceToCiaoBellaStatsService {
+public class RaceToCiaoBellaStats {
 
-	@Autowired
-	private RaceToCiaoBellaRepository raceToCiaoBellaRepository;
+	private List<RaceToCiaoBellaRanking> rankings;
 
-	public Tournament getLastTournamentSummary() {
-
-		RaceToCiaoBella lastRace = raceToCiaoBellaRepository.findFirstByOrderBySeasonDesc();
-		if (lastRace != null) {
-			return lastRace.findLastTournament();
-		}
-		return null;
-
-	}
-
-	public List<RaceToCiaoBellaRanking> getRankings() {
-
-		RaceToCiaoBella race = raceToCiaoBellaRepository.findFirstByOrderBySeasonDesc();
+	public RaceToCiaoBellaStats(RaceToCiaoBella race) {
 
 		Map<String, Totals> leaders = new HashMap<>();
 
@@ -53,7 +35,7 @@ public class RaceToCiaoBellaStatsService {
 			}
 		}
 
-		List<RaceToCiaoBellaRanking> rankings = leaders.values().stream().map(t -> {
+		rankings = leaders.values().stream().map(t -> {
 			RaceToCiaoBellaRanking rl = new RaceToCiaoBellaRanking();
 			rl.setPlayed(t.getSize());
 			rl.setPlayer(t.getPlayer().getSurname());
@@ -64,8 +46,10 @@ public class RaceToCiaoBellaStatsService {
 
 		Ranking.rank(rankings);
 
-		return rankings;
+	}
 
+	public List<RaceToCiaoBellaRanking> getRankings() {
+		return rankings;
 	}
 
 	private static class Totals {
