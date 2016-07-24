@@ -8,7 +8,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 
 				
 						<div class="waga-tab-content">
@@ -35,6 +35,33 @@
 						</div>
 
 				<hr />
+				
+				<th:block  th:each="tournament : ${config.data.currentRaceToCiaBellaSeason.tournamentsSortedByRecent}">
+				<div class="panel panel-default">
+					  <div class="panel-heading" th:text="${tournament.venue.name} + ' | ' + ${#dates.format(tournament.date, 'yyyy-MM-dd')}"></div>
+					  <div class="panel-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Position</th>
+										<th>Player</th>
+										<th>Handicap</th>
+										<th>Points</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="result,iterstat : ${tournament.sortedResults()}">
+										<td th:text="${iterstat.count}"></td>
+										<td th:text="${result.player.fullName}"></td>
+										<td th:text="${result.handicap}"></td>
+										<td th:text="${result.score}"></td>
+									</tr>
+								</tbody>
+							</table>
+					  </div>
+					  
+					</div>
+				</th:block>
 
 			</div>
 			

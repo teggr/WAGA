@@ -10,16 +10,16 @@ import org.waga.venue.Venue;
 public class AggregatedWagaData implements WagaData {
 
 	private RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats;
-	private List<RaceToCiaoBella> raceToCiaBellaSeasons;
+	private RaceToCiaoBella currentRaceToCiaBellaSeason;
 	private List<Player> players;
 	private List<Venue> venues;
 
 	public AggregatedWagaData(List<Player> players, List<Venue> venues,
-			RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats, List<RaceToCiaoBella> raceToCiaBellaSeasons) {
+			RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats, RaceToCiaoBella currentRaceToCiaBellaSeason) {
 		this.players = players;
 		this.venues = venues;
 		this.currentRaceToCiaoBellaSeasonStats = currentRaceToCiaoBellaSeasonStats;
-		this.raceToCiaBellaSeasons = raceToCiaBellaSeasons;
+		this.currentRaceToCiaBellaSeason = currentRaceToCiaBellaSeason;
 	}
 
 	@Override
@@ -28,13 +28,13 @@ public class AggregatedWagaData implements WagaData {
 	}
 
 	@Override
-	public List<RaceToCiaoBella> getRaceToCiaBellaSeasons() {
-		return raceToCiaBellaSeasons;
+	public RaceToCiaoBella getCurrentRaceToCiaBellaSeason() {
+		return currentRaceToCiaBellaSeason;
 	}
 
 	@Override
 	public List<Player> getPlayers() {
-		return players ;
+		return players;
 	}
 
 	@Override

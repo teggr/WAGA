@@ -11,14 +11,13 @@ import org.waga.player.Players;
 import org.waga.venue.Venues;
 
 public class RaceToCiaoBellaEvents {
-	
+
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	public static List<RaceToCiaoBella> getEvents() {
 		List<RaceToCiaoBella> list = new ArrayList<>();
 
-		RaceToCiaoBella bella = new RaceToCiaoBella();
-		bella.setSeason(2016);
+		RaceToCiaoBella bella = new RaceToCiaoBella(2016);
 
 		aai(bella);
 		stablefordAndWine(bella);
@@ -42,7 +41,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.foist.asPlayer(), 28, tour);
 		addResult(Players.maddog.asPlayer(), 22, tour);
 		addResult(Players.snakes.asPlayer(), 20, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void aprilFool(RaceToCiaoBella bella) {
@@ -55,7 +54,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.teggy.asPlayer(), 35, tour);
 		addResult(Players.apps.asPlayer(), 35, tour);
 		addResult(Players.maddog.asPlayer(), 27, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void foxhillFancy(RaceToCiaoBella bella) {
@@ -69,7 +68,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.apps.asPlayer(), 29, tour);
 		addResult(Players.damo.asPlayer(), 24, tour);
 		addResult(Players.east.asPlayer(), 22, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void febex(RaceToCiaoBella bella) {
@@ -83,7 +82,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.maddog.asPlayer(), 30, tour);
 		addResult(Players.brad.asPlayer(), 29, tour);
 		addResult(Players.teggy.asPlayer(), 27, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void stablefordAndWine(RaceToCiaoBella bella) {
@@ -95,7 +94,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.teggy.asPlayer(), 32, tour);
 		addResult(Players.brad.asPlayer(), 30, tour);
 		addResult(Players.snakes.asPlayer(), 26, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void aai(RaceToCiaoBella bella) {
@@ -108,7 +107,7 @@ public class RaceToCiaoBellaEvents {
 		addResult(Players.maddog.asPlayer(), 30, tour);
 		addResult(Players.apps.asPlayer(), 28, tour);
 		addResult(Players.damo.asPlayer(), 24, tour);
-		bella.addTournaments(tour);
+		bella.addTournament(tour);
 	}
 
 	private static void addResult(Player player, int points, Tournament tour) {

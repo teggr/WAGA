@@ -22,9 +22,10 @@ public class WagaDataCompiler {
 		List<Venue> venues = Arrays.asList(Venues.values()).stream().map(v -> v.asVenue()).collect(Collectors.toList());
 
 		List<RaceToCiaoBella> seasons = RaceToCiaoBellaEvents.getEvents();
-		RaceToCiaoBellaStats currentSeasonStats = new RaceToCiaoBellaStats(seasons.get(seasons.size() - 1));
+		RaceToCiaoBella currentSeason = seasons.get(seasons.size() - 1);
+		RaceToCiaoBellaStats currentSeasonStats = new RaceToCiaoBellaStats(currentSeason);
 
-		return new AggregatedWagaData(players, venues, currentSeasonStats, seasons);
+		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason);
 
 	}
 

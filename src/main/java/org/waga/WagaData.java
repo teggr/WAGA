@@ -13,7 +13,7 @@ public interface WagaData {
 	
 	List<Venue> getVenues();
 
-	List<RaceToCiaoBella> getRaceToCiaBellaSeasons();
+	RaceToCiaoBella getCurrentRaceToCiaBellaSeason();
 
 	RaceToCiaoBellaStats getCurrentRaceToCiaoBellaSeasonStats();
 
