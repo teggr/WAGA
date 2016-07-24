@@ -7,34 +7,40 @@ public class Result {
 	private Player player;
 	private int handicap;
 	private int score;
+	private boolean countbackWinner;
+
+	public Result(Player player, int handicap, int score) {
+		this(player, handicap, score, false);
+	}
+
+	public Result(Player player, int handicap, int score, boolean countbackWinner) {
+		super();
+		this.player = player;
+		this.handicap = handicap;
+		this.score = score;
+		this.countbackWinner = countbackWinner;
+	}
 
 	public Player getPlayer() {
 		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	public int getHandicap() {
 		return handicap;
 	}
 
-	public void setHandicap(int handicap) {
-		this.handicap = handicap;
-	}
-
 	public int getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public boolean isCountbackWinner() {
+		return countbackWinner;
 	}
 
 	@Override
 	public String toString() {
-		return "Result [player=" + player + ", handicap=" + handicap + ", score=" + score + "]";
+		return "Result [player=" + player + ", handicap=" + handicap + ", score=" + score + ", countbackWinner="
+				+ countbackWinner + "]";
 	}
 
 }

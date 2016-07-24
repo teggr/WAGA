@@ -2,13 +2,13 @@ package org.waga.player;
 
 public enum Players {
 
-	brad(Player.with("Brad", "Le Riche", 28, "")),
-	teggy(Player.with("Robin", "Tegg", 15, "")),
-	sturdy(Player.with("Richard", "Sturdy", 15, "")),
-	snakes(Player.with("David", "Tryhorn", 24, "")),
-	east(Player.with("Andrew", "Easter", 18, "")),
+	brad(Player.with("Brad", "Le Riche", 28, "").setCurrent()),
+	teggy(Player.with("Robin", "Tegg", 15, "").setCurrent()),
+	sturdy(Player.with("Richard", "Sturdy", 15, "").setCurrent()),
+	snakes(Player.with("David", "Tryhorn", 24, "").setCurrent()),
+	east(Player.with("Andrew", "Easter", 18, "").setCurrent()),
 	damo(Player.with("Damien", "Kiernander", 18, "")),
-	foist(Player.with("Richard", "Foister", 14, "")),
+	foist(Player.with("Richard", "Foister", 14, "").setCurrent()),
 	henso(Player.with("Jon", "Henson", 28, "")),
 	shifty(Player.with("Mark", "Shifty", 20, "")),
 	kempo(Player.with("Nick", "Kemp", 28, "")),
@@ -29,8 +29,8 @@ public enum Players {
 	steve(Player.with("Steve", "Madden", 15, "")),
 	neil(Player.with("Neil", "Day", 18, "")),
 	sean(Player.with("Sean", "Casey", 24, "")),
-	apps(Player.with("Tom", "Apperley", 12, "")),
-	maddog(Player.with("Andrew", "Stevens", 28, ""));
+	apps(Player.with("Tom", "Apperley", 12, "").setCurrent()),
+	maddog(Player.with("Andrew", "Stevens", 28, "").setCurrent());
 
 	private Player player;
 

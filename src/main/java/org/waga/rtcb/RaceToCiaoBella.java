@@ -40,4 +40,10 @@ public class RaceToCiaoBella {
 		return "RaceToCiaoBella [season=" + season + ", tournaments=" + tournaments + "]";
 	}
 
+	public List<Tournament> getTournamentsSortedByDate() {
+		List<Tournament> sortedTournaments = new ArrayList<>(tournaments);
+		Collections.sort(sortedTournaments, (t1, t2) -> t1.getDate().compareTo(t2.getDate()));
+		return sortedTournaments;
+	}
+
 }

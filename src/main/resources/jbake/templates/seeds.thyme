@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head.thyme::head"></head>
+<body>
+
+	<div th:replace="fragments/header.thyme::header"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				
+				<div class="waga-tab-content">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Seed</th>
+								<th>Player</th>
+								<th>Handicap</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="seed,status : ${config.data.seedings}">
+								<td th:text="${status.count}"></td>
+								<td th:text="${seed.player.fullName}"></td>
+								<td th:text="${seed.handicap}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+
+</body>
+</html>

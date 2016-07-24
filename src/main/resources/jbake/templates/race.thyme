@@ -40,6 +40,7 @@
 				<div class="panel panel-default">
 					  <div class="panel-heading" th:text="${tournament.venue.name} + ' | ' + ${#dates.format(tournament.date, 'yyyy-MM-dd')}"></div>
 					  <div class="panel-body">
+					  		<h3>Winner <span th:text="${tournament.winner.fullName}"></span></h3>
 							<table class="table">
 								<thead>
 									<tr>

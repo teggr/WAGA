@@ -14,8 +14,7 @@ public class HistoricHandicap {
 
 	private Date expiredDate;
 	private int handicap;
-
-	private Player player;
+	private String message;
 
 	public Date getExpiredDate() {
 		return expiredDate;
@@ -33,12 +32,12 @@ public class HistoricHandicap {
 		return handicap;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
-	public Player getPlayer() {
-		return player;
+	public String getMessage() {
+		return message;
 	}
 
 }

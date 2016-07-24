@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Player  {
-	
+public class Player {
+
+	private static final int MAX_HANDICAP = 28;
+
 	public static Player with(String firstName, String surname, int currentHandicap, String imageUrl) {
 		Player player = new Player();
 		player.firstName = firstName;
@@ -24,16 +26,22 @@ public class Player  {
 	private Date handicapDate;
 	private String imageUrl;
 	private Date lastAppearance = new java.sql.Date(0);
-	
+	private boolean current;
+
+	public Player setCurrent() {
+		current = true;
+		return this;
+	}
+
 	public void recordAppearance(Date appearanceDate) {
 		this.lastAppearance = appearanceDate;
 	}
-	
+
 	public Date getLastAppearance() {
 		return lastAppearance;
 	}
 
-	private Set<HistoricHandicap> handicapHistory;
+	private Set<HistoricHandicap> handicapHistory = new HashSet<>();
 
 	private EmailAddress emailAddress;
 
@@ -68,21 +76,21 @@ public class Player  {
 		return firstName + " " + surname;
 	}
 
-	private void updateHandicap(int handicap) {
+	private void updateHandicap(int handicap, String message) {
 		if (this.currentHandicap != handicap) {
-			auditHandicap();
+			auditHandicap(message);
 			this.currentHandicap = handicap;
 			this.handicapDate = new Date();
 		}
 	}
 
-	private void auditHandicap() {
+	private void auditHandicap(String message) {
 		if (handicapDate != null) {
-			HistoricHandicap current = new HistoricHandicap();
-			current.setExpiredDate(handicapDate);
-			current.setHandicap(currentHandicap);
-			current.setPlayer(this);
-			handicapHistory.add(current);
+			HistoricHandicap expiringHandicap = new HistoricHandicap();
+			expiringHandicap.setExpiredDate(handicapDate);
+			expiringHandicap.setHandicap(currentHandicap);
+			expiringHandicap.setMessage(message);
+			handicapHistory.add(expiringHandicap);
 		}
 	}
 
@@ -94,6 +102,25 @@ public class Player  {
 		current.setHandicap(currentHandicap);
 		historic.add(current);
 		return new HistoricHandicaps(historic);
+	}
+
+	public boolean isCurrent() {
+		return current;
+	}
+
+	public void incrementHandicap(int increment, String message) {
+		if (currentHandicap + increment <= MAX_HANDICAP) {
+			updateHandicap(currentHandicap + increment, message);
+		}
+	}
+
+	public void decrementHandicap(int decrement, String message) {
+		updateHandicap(currentHandicap - decrement, message);
+	}
+
+	public List<String> getHandicapChangeMessages() {
+		return new ArrayList<>(getHandicapHistory()).stream().sorted(HistoricHandicap.REVERSE_DATE_ORDER).limit(9)
+				.map(h -> h.getHandicap() + " " + h.getMessage()).collect(Collectors.toList());
 	}
 
 }
