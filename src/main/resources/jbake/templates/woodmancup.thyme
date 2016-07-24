@@ -55,13 +55,17 @@
 			 <div class="col-md-4">
 		  		<h4>Woodman Cups</h4>
 				<ul class="list-group">
-				  <li class="list-group-item" th:each="event : ${config.data.woodmanCupEvents}">
-				    <span class="badge" th:text="${#dates.format(event.date, 'yyyy-MM-dd')}"></span>
-				    <span th:text="${event.venue.name}"></span>
+				  <li class="list-group-item" th:each="entry : ${woodmancupevents}">
+				    <th:block th:with="event=${config.data.getWoodmanCupEvent(entry.event)}">
+				    
+					    <span class="badge" th:text="${#dates.format(event.date, 'yyyy-MM-dd')}"></span>
+				    	<a th:href="${content.rootpath+entry.uri}" th:text='${event.venue.name}' ></a>
+				    </th:block>
 				  </li>
 				</ul>
+				
+				
 			</div>
-		  
 		  
 		  </div>
 		  
