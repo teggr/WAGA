@@ -66,5 +66,15 @@ public class AggregatedWagaData implements WagaData {
 	public List<WoodmanCupEvent> getWoodmanCupEvents() {
 		return woodmanCupEvents;
 	}
+	
+	@Override
+	public WoodmanCupEvent getWoodmanCupEvent(String year) {
+		for (WoodmanCupEvent event : woodmanCupEvents) {
+			if(event.isYear(year)) {
+				return event;
+			}
+		}
+		return null;
+	}
 
 }

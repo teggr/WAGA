@@ -1,5 +1,6 @@
 package org.waga.woodmancup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Session {
@@ -12,7 +13,7 @@ public class Session {
 		PAIRS, SINGLES;
 	}
 	
-	private List<Match> matches;
+	private List<Match> matches = new ArrayList<>();
 	private Type type;
 	private Format format;
 	
@@ -34,6 +35,22 @@ public class Session {
 	}
 
 	public void addMatches(List<Match> matches) {
-		matches.addAll(matches);
+		this.matches.addAll(matches);
+	}
+
+	public double getTeam1Points() {
+		double total = 0;
+		for (Match match : matches) {
+			total = total + match.getTeamAPoints();
+		}
+		return total;
+	}
+
+	public double getTeam2Points() {
+		double total = 0;
+		for (Match match : matches) {
+			total = total + match.getTeamBPoints();
+		}
+		return total;
 	}
 }

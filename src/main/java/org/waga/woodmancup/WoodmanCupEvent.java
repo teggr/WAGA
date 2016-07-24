@@ -1,6 +1,7 @@
 package org.waga.woodmancup;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,26 @@ public class WoodmanCupEvent {
 	private List<Session> sessions = new ArrayList<>();
 	private Player puttOffWinner;
 	private Player alternativeWoodmanCupWinner;
+	
+	public boolean hasIndividualWinners() {
+		return puttOffWinner != null || alternativeWoodmanCupWinner != null;
+	}
+	
+	public double getTeam1Points() {
+		double total = 0;
+		for (Session session : sessions) {
+			total = total + session.getTeam1Points();
+		}
+		return total;
+	}
+	
+	public double getTeam2Points() {
+		double total = 0;
+		for (Session session : sessions) {
+			total = total + session.getTeam2Points();
+		}
+		return total;
+	}
 
 	public void addSession(Session session) {
 		sessions.add(session);
@@ -65,5 +86,15 @@ public class WoodmanCupEvent {
 
 	public void setAlternativeWoodmanCupWinner(Players alternativeWoodmanCupWinner) {
 		this.alternativeWoodmanCupWinner = alternativeWoodmanCupWinner.asPlayer();
+	}
+
+	public boolean isYear(String year) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		if (calendar.get(Calendar.YEAR) == Integer.parseInt(year)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

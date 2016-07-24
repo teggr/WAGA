@@ -57,7 +57,7 @@ public class Oxfordshire2015 extends WoodmanCupEventDataProvider {
 
 	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
-		addMatch(new MatchBuilder().teamOf(Players.teggy, Players.maddog).lostTo(Players.apps, Players.east), list);
+		addMatch(new MatchBuilder().teamOf(Players.teggy, Players.maddog).drewWith(Players.apps, Players.east), list);
 		addMatch(new MatchBuilder().teamOf(Players.snakes, Players.foist).beat(Players.sturdy, Players.brad), list);
 		return list;
 	}

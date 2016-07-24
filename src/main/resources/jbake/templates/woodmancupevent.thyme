@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<th:block th:with="event=${config.data.getWoodmanCupEvent(content.event)}">
+  	
+  		<div class="container-fluid">
+  		
+	  		<div class="row">
+	
+			  <div class="col-md-12" >
+			  	
+				  	<h1><span th:text="${event.venue.name}"></span> <span th:text="${#dates.format(event.date, 'yyyy-MM-dd')}"></span></h1>
+				  	
+				  	<ul th:if="${event.hasIndividualWinners()}">
+				  		<li th:if="${event.puttOffWinner}">Putt Off Winner: <span th:text="${event.puttOffWinner.fullName}"></span></li>
+				  		<li th:if="${event.alternativeWoodmanCupWinner}">Alternative Woodman Cup Winner: <span th:text="${event.alternativeWoodmanCupWinner.fullName}"></span></li>
+				  	</ul>
+				 
+				 	<table class="table">
+				 		<thead>
+				 			<tr>
+				 				<th><h2 th:text="${event.team1.name} + ' ['+ ${event.team1Points} +']'"></h2></th><th><h2>vs</h2></th><th><h2 th:text="${event.team2.name} + ' ['+ ${event.team2Points} +']'"></h2></th>
+				 			</tr>
+				 		</thead>
+				 		<tbody>
+				 			<tr th:each="teamRow : ${config.helper.getTeamRows(event.team1,event.team2)}">
+				 				<td th:text="${teamRow.player1.fullName}"></td>
+				 				<td></td>
+				 				<td th:text="${teamRow.player2.fullName}"></td>
+				 			</tr>
+				 		</tbody>
+				 	</table>
+				 	
+				 	<th:block th:each="session : ${event.sessions}">
+				 		<h2 th:text="${session.type} + ' ' + ${session.format}"></h2>
+				 		<table class="table">
+					 		<tbody>
+					 			<tr th:each="match : ${session.matches}">
+					 				<td th:text="${match.teamAPoints}"></td>
+					 				<td th:text="${match.teamANames}"></td>
+					 				<td th:text="${match.teamAResult}"></td>
+					 				<td th:text="${match.teamBNames}"></td>
+					 				<td th:text="${match.teamBPoints}"></td>
+					 			</tr>
+					 		</tbody>
+					 	</table>
+				 	</th:block>
+				 
+			  </div>
+	
+			</div>
+		
+		</div>
+	
+	</th:block>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+  </body>
+</html>

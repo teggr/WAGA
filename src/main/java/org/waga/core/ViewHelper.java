@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.format.datetime.DateFormatter;
 import org.waga.player.Player;
+import org.waga.woodmancup.Team;
 
 public class ViewHelper {
 
@@ -39,7 +40,42 @@ public class ViewHelper {
 	public String getProfileId(Player profile) {
 		return profile.getFullName().toLowerCase().replaceAll(" ", "-").replaceAll("'", "");
 	}
-	
-	
+
+	public static class PlayerPair {
+
+		private Player player1;
+		private Player player2;
+
+		public PlayerPair(Player player1, Player player2) {
+			this.player1 = player1;
+			this.player2 = player2;
+		}
+
+		public Player getPlayer1() {
+			return player1;
+		}
+
+		public Player getPlayer2() {
+			return player2;
+		}
+
+	}
+
+	public Iterable<PlayerPair> getTeamRows(Team team1, Team team2) {
+		List<PlayerPair> list = new ArrayList<>();
+		int max = Math.max(team1.getPlayers().size(), team2.getPlayers().size());
+		for (int i = 0; i < max; i++) {
+			list.add(new PlayerPair(getPlayer(i, team1), getPlayer(i, team2)));
+		}
+		return list;
+	}
+
+	private Player getPlayer(int index, Team team2) {
+		try {
+			return team2.getPlayers().get(index);
+		} catch (IndexOutOfBoundsException e) {
+			return null;
+		}
+	}
 
 }

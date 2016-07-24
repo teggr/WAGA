@@ -25,5 +25,7 @@ public interface WagaData {
 	List<OpenChallengeEvent> getOpenChallengeEvents();
 	
 	List<WoodmanCupEvent> getWoodmanCupEvents();
+	
+	WoodmanCupEvent getWoodmanCupEvent(String event);
 
 }
