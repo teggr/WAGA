@@ -20,17 +20,17 @@ public class Oxfordshire2015 extends WoodmanCupEventDataProvider {
 	@Override
 	public void registerEvent(List<WoodmanCupEvent> list) {
 
-		Team team1 = Team.newInstance("team1", "cycling", Players.snakes);
-		addPlayer(team1, Players.sturdy);
-		addPlayer(team1, Players.east);
-		addPlayer(team1, Players.brad);
-		addPlayer(team1, Players.apps);
+		Team team1 = Team.newInstanceAsWinner("team2", "brown", Players.sturdy);
+		addPlayer(team1, Players.teggy);
+		addPlayer(team1, Players.maddog);
+		addPlayer(team1, Players.snakes);
+		addPlayer(team1, Players.foist);
 
-		Team team2 = Team.newInstanceAsWinner("team2", "brown", Players.sturdy);
-		addPlayer(team2, Players.teggy);
-		addPlayer(team2, Players.maddog);
-		addPlayer(team2, Players.snakes);
-		addPlayer(team2, Players.foist);
+		Team team2 = Team.newInstance("team1", "cycling", Players.snakes);
+		addPlayer(team2, Players.sturdy);
+		addPlayer(team2, Players.east);
+		addPlayer(team2, Players.brad);
+		addPlayer(team2, Players.apps);
 
 		WoodmanCupEvent wc = WoodmanCupEvent.newInstance(Venues.oxfordshire.asVenue(), Utils.asDate("2015-09-16"),
 				team1, team2);
