@@ -127,4 +127,12 @@ public class Match {
 		return "Match [teamA=" + teamA + ", teamAResult=" + teamAResult + ", teamB=" + teamB + "]";
 	}
 
+	public double getTeamPoints(Team team) {
+		if( team.isPlayer(teamA) ) {
+			return getTeamAPoints();
+		} else {
+			return getTeamBPoints();
+		}
+	}
+
 }

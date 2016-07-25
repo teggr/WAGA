@@ -31,21 +31,13 @@ public class WoodmanCupEvent {
 	public boolean hasIndividualWinners() {
 		return puttOffWinner != null || alternativeWoodmanCupWinner != null;
 	}
-
-	public double getTeam1Points() {
+	
+	public double getTeamPoints(Team team) {
 		double total = 0;
 		for (Session session : sessions) {
-			total = total + session.getTeam1Points();
+			total = total + session.getTeamPoints(team);
 		}
-		return total;
-	}
-
-	public double getTeam2Points() {
-		double total = 0;
-		for (Session session : sessions) {
-			total = total + session.getTeam2Points();
-		}
-		return total;
+		return total;		
 	}
 
 	public void addSession(Session session) {

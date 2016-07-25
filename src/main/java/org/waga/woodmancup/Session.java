@@ -12,20 +12,20 @@ public class Session {
 	public static enum Format {
 		PAIRS, SINGLES;
 	}
-	
+
 	private List<Match> matches = new ArrayList<>();
 	private Type type;
 	private Format format;
-	
+
 	public Session(Type type, Format format) {
 		this.type = type;
 		this.format = format;
 	}
-	
+
 	public Format getFormat() {
 		return format;
 	}
-	
+
 	public Type getType() {
 		return type;
 	}
@@ -38,19 +38,12 @@ public class Session {
 		this.matches.addAll(matches);
 	}
 
-	public double getTeam1Points() {
+	public double getTeamPoints(Team team) {
 		double total = 0;
 		for (Match match : matches) {
-			total = total + match.getTeamAPoints();
+			total = total + match.getTeamPoints(team);
 		}
 		return total;
 	}
 
-	public double getTeam2Points() {
-		double total = 0;
-		for (Match match : matches) {
-			total = total + match.getTeamBPoints();
-		}
-		return total;
-	}
 }

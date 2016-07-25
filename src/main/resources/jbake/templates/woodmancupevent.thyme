@@ -23,7 +23,7 @@
 				 	<table class="table">
 				 		<thead>
 				 			<tr>
-				 				<th><h2><span th:text="${event.team1.name} + ' ['+ ${event.team1Points} +']'"></span> <span th:if="${event.team1.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th><th><h2>vs</h2></th><th><h2><span th:text="${event.team2.name} + ' ['+ ${event.team2Points} +']'"></span> <span th:if="${event.team2.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th>
+				 				<th><h2><span th:text="${event.team1.name} + ' ['+ ${event.getTeamPoints(event.team1)} +']'"></span> <span th:if="${event.team1.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th><th><h2>vs</h2></th><th><h2><span th:text="${event.team2.name} + ' ['+ ${event.getTeamPoints(event.team2)} +']'"></span> <span th:if="${event.team2.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th>
 				 			</tr>
 				 		</thead>
 				 		<tbody>

@@ -63,4 +63,13 @@ public class Team {
 		return captain.getSurname().equals(player.getSurname());
 	}
 
+	public boolean isPlayer(List<Player> players) {
+		for (Player player : players) {
+			if (isPlayer(player)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
