@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Venues</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
+    
+    	.waga-tab-content {
+    		position: relative; 
+    		min-height: 1px; 
+    		padding: 15px 15px;
+    	}
+    	
+    	.navbar {
+			background-color: #ffdf43;
+			border-top-color: rgb(198, 175, 54);
+			border-bottom-color: black;
+			border-radius: 0px;
+			min-height: 0;
+		}
+		
+		.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		color: black;
+    		background-color: #ffdf43;
+		}
+		
+		.navbar-default .btn-link {
+    color: black;
+}
+		
+		.navbar-default .navbar-nav>li>a {
+			    color: black;
+			}
+			
+			.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+			
+			.navbar-default .navbar-toggle {
+    border-color: black;
+}
+			
+			.navbar-default .navbar-brand {
+    color: black;
+}
+
+.navbar-default .navbar-toggle {
+    color: black;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: black;
+}
+			
+			.navbar-brand {
+			    background-color: #ffdf43;
+			border-bottom-color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+			}
+			
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: black;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: black;
+}
+
+			.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: white;
+}
+
+	.player-img, .venue-img, .news-img {
+		width: 100%;
+	}
+
+		@media (max-width: 568px) {
+			.navbar {
+				margin-bottom: 0px;
+			}
+		}
+			
+			@media (min-width: 768px) {
+			
+			.navbar-default .navbar-nav>li>a>span {
+			    padding-left: 14px;
+			    padding-right: 14px;
+			    border-right-width: 1px;
+			    border-right-style: solid;
+			    border-right-color: rgb(198, 175, 54);
+			    border-left-width: 1px;
+			    border-left-style: solid;
+			    border-left-color: rgb(198, 175, 54);
+			}
+				.navbar-nav>li>a {
+				    padding-top: 4px;
+				    padding-bottom: 4px;
+				}
+				
+				
+		.navbar-default .navbar-nav>li>a {
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+			
+			.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		border-bottom-width: 4px;
+    		border-bottom-color: black;
+    		border-bottom-style: solid;
+		}
+		
+			.navbar-default .btn-link {
+			    padding-top: 0px;
+			    padding-bottom: 0px;
+			    padding-left: 14px;
+			    padding-right: 14px;
+			}
+			
+			.navbar-default .navbar-form {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			    padding-top: 3px;
+			    padding-bottom: 3px;
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+				
+				}
+
+		
+		.brand-header {
+			background-color: #ffdf43;
+			border-bottom-color: black;
+			color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+		}
+		
+		.brand-header a {
+			color: black;
+			text-decoration: none;
+		}
+		
+		.brand-header .tag-line {
+			vertical-align: top;
+			font-size: 10px;
+		}
+    
+    </style>
+    
+  </head>
+  <body>
+  	
+  	<body>
+
+	<div class="container-fluid hidden-xs brand-header">
+			<h1><a class="" href="../index.html">WAGA</a> <a class="tag-line" href="../index.html">HOME OF THE WOODMAN CUP</a></h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm hidden-md hidden-lg" href="../index.html">WAGA</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="../index.html"><span>Home</span></a></li>
+					<li><a href="../woodmancup/home.html"><span>Woodman Cup</span></a></li>
+					<li><a href="../racetociaobella/race.html"><span>Race to Ciao Bella 2016</span></a></li>
+					<li><a href="../news/news.html"><span>News</span></a></li>
+					<li><a href="../players/players.html"><span>Players</span></a></li>
+					<li><a href="../seeds/latest.html"><span>Seeds</span></a></li>
+					<li><a href="../venues/venues.html"><span>Venues</span></a></li>
+					<li><a href="../open/challenge.html"><span>Open Challenge</span></a></li>
+				</ul>
+				
+				
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+</body>
+  	
+  	<div class="container-fluid">
+  	
+  		
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.daleygolfholidays.co.uk/wp-content/uploads/2013/03/Royal-cinque-ports-golf-club2.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Royal Cinque Ports Golf Club</a></h4>
+			    <p>Link: <a href="http://www.royalcinqueports.com/"></a></p>
+			    <p>Google Maps: <a href="https://www.google.co.uk/maps?q=maps+royal+cinque+ports&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiOvLCbzozOAhWqKcAKHXiECyoQ_AUICCgB"></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="https://www.silvermere-golf.co.uk/wp-content/uploads/2013/10/COPY-mainpaigeimge.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Silvermere</a></h4>
+			    <p>Link: <a href="https://www.silvermere-golf.co.uk/golf/"></a></p>
+			    <p>Google Maps: <a href="https://www.google.co.uk/maps/place/Silvermere+Golf+%26+Leisure/@51.3354943,-0.4513397,17z/data=!3m1!4b1!4m5!3m4!1s0x4875df4334541c77:0x33f47d20b8988c94!8m2!3d51.335491!4d-0.449151"></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.golfin-london.co.uk/hampton-court-palace-golf-c.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Hampton Court Palace</a></h4>
+			    <p>Link: <a href="http://www.hamptoncourtgolf.co.uk"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://res.cloudinary.com/dmm5h0tbd/image/upload/v1458593904/waga/venues/foxhills.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Foxhills</a></h4>
+			    <p>Link: <a href="http://www.foxhills.co.uk/golf"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://res.cloudinary.com/golfbreakscom/image/upload/c_fit,w_860,h_568/selsdon-park-4star-par-73-golf-course.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Selsdon Park Golf</a></h4>
+			    <p>Link: <a href="http://www.selsdonparkcroydon.co.uk/golf/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="https://www.teeofftimes.co.uk/contentassets/0c2677bf4ff34cd4a8dfa4472ed9766b/shirley-park-golf-club-clubhouse" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Shirley Park GC</a></h4>
+			    <p>Link: <a href="http://www.shirleyparkgolfclub.co.uk/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.addingtongolf.com/assets/images/content/homepage/banner-13th-tee.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>The Addington</a></h4>
+			    <p>Link: <a href="http://www.addingtongolf.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://static.laterooms.com/hotelphotos/laterooms/72947/gallery/old-thorns-hotel-golf-country-estate-liphook_030320091543416417.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Old Thorns Manor Hotel</a></h4>
+			    <p>Link: <a href="http://www.oldthorns.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://guideimg.alibaba.com/images/trip/1/03/18/5/sedlescombe-golf-club_321055.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Sedlescombe Golf Club</a></h4>
+			    <p>Link: <a href="http://www.sedlescombegolfclub.co.uk/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.golfresortsdirect.com/dbimages/resorts/27/1.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Staverton Park Golf Course</a></h4>
+			    <p>Link: <a href="http://www.devere.co.uk/our-locations/staverton-park/golf.html"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://redteebreaks.com/wp-content/uploads/2013/05/Oxfordshire-IMG_8296-lr.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>The Oxfordshire</a></h4>
+			    <p>Link: <a href="https://www.theoxfordshire.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://anywherebutlondon.files.wordpress.com/2012/06/belfry10.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>The Belfry</a></h4>
+			    <p>Link: <a href="http://www.thebelfry.co.uk/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://golf.theessexgolfandcountryclub.com/images/thumbs/sites/ex/640x640/0/TheEssex21.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>The Essex Golf &amp; Country Club</a></h4>
+			    <p>Link: <a href="http://www.theessexgolfandcountryclub.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="https://www.golfboo.com/sites/default/files/campos_golf_images/151919/manor_of_groves_golf_and_country_club_2.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Manor of Groves</a></h4>
+			    <p>Link: <a href="http://www.manorofgroves.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://static.laterooms.com/hotelphotos/laterooms/155455/gallery/donnington-grove-country-club-newbury_070520151905111804.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Donnington Grove Country Club</a></h4>
+			    <p>Link: <a href="http://www.donnington-grove.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="https://www.golfboo.com/sites/default/files/campos_golf_images/149636/abbotsley_golf_club_hotel.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Abbotsley Golf Hotel</a></h4>
+			    <p>Link: <a href="http://www.abbotsley.com/pages.php/index.html"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.teeofftimes.co.uk/contentassets/662ba651ccb34b75947de49f809e204e/15690_the-dorset-golf-and-country-club-poole" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>The Dorset Golf And Country Club</a></h4>
+			    <p>Link: <a href="http://www.dorsetgolfresort.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://www.binbin.net/photos/bidford-grange-hotel-and-golf-club/Bid/Bidford-Grange-Hotel-and-Golf-Club-Dinner-Bed-and-Breakfast-1-night-2-rounds-of-golf.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>Bidford Grange</a></h4>
+			    <p>Link: <a href="http://www.bidfordgrange.com/"></a></p>
+			    <p>Google Maps: <a href=""></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+  	
+  	
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" alt="..." src="http://1.bp.blogspot.com/-z8QRIGwnC_M/TZYqvuKGtwI/AAAAAAAAC4Q/GFFg-H5zd_Q/s1600/St-Andrew-golf-club-Scotland.jpg" />
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a>St. Andrews Links - The Old Course</a></h4>
+			    <p>Link: <a href="https://www.standrews.com/"></a></p>
+			    <p>Google Maps: <a href="https://www.google.co.uk/maps/search/st+andrews+golf/@56.3370761,-2.8320533,13z/data=!3m1!4b1"></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr />
+	
+	</div>
+	
+	
+  	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.js"></script>
+  
+  
+	
+  </body>
+</html>

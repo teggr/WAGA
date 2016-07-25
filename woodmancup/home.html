@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Woodman Cup</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
+    
+    	.waga-tab-content {
+    		position: relative; 
+    		min-height: 1px; 
+    		padding: 15px 15px;
+    	}
+    	
+    	.navbar {
+			background-color: #ffdf43;
+			border-top-color: rgb(198, 175, 54);
+			border-bottom-color: black;
+			border-radius: 0px;
+			min-height: 0;
+		}
+		
+		.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		color: black;
+    		background-color: #ffdf43;
+		}
+		
+		.navbar-default .btn-link {
+    color: black;
+}
+		
+		.navbar-default .navbar-nav>li>a {
+			    color: black;
+			}
+			
+			.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+			
+			.navbar-default .navbar-toggle {
+    border-color: black;
+}
+			
+			.navbar-default .navbar-brand {
+    color: black;
+}
+
+.navbar-default .navbar-toggle {
+    color: black;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: black;
+}
+			
+			.navbar-brand {
+			    background-color: #ffdf43;
+			border-bottom-color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+			}
+			
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: black;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: black;
+}
+
+			.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: white;
+}
+
+	.player-img, .venue-img, .news-img {
+		width: 100%;
+	}
+
+		@media (max-width: 568px) {
+			.navbar {
+				margin-bottom: 0px;
+			}
+		}
+			
+			@media (min-width: 768px) {
+			
+			.navbar-default .navbar-nav>li>a>span {
+			    padding-left: 14px;
+			    padding-right: 14px;
+			    border-right-width: 1px;
+			    border-right-style: solid;
+			    border-right-color: rgb(198, 175, 54);
+			    border-left-width: 1px;
+			    border-left-style: solid;
+			    border-left-color: rgb(198, 175, 54);
+			}
+				.navbar-nav>li>a {
+				    padding-top: 4px;
+				    padding-bottom: 4px;
+				}
+				
+				
+		.navbar-default .navbar-nav>li>a {
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+			
+			.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		border-bottom-width: 4px;
+    		border-bottom-color: black;
+    		border-bottom-style: solid;
+		}
+		
+			.navbar-default .btn-link {
+			    padding-top: 0px;
+			    padding-bottom: 0px;
+			    padding-left: 14px;
+			    padding-right: 14px;
+			}
+			
+			.navbar-default .navbar-form {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			    padding-top: 3px;
+			    padding-bottom: 3px;
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+				
+				}
+
+		
+		.brand-header {
+			background-color: #ffdf43;
+			border-bottom-color: black;
+			color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+		}
+		
+		.brand-header a {
+			color: black;
+			text-decoration: none;
+		}
+		
+		.brand-header .tag-line {
+			vertical-align: top;
+			font-size: 10px;
+		}
+    
+    </style>
+    
+  </head>
+  <body>
+  	
+  	<body>
+
+	<div class="container-fluid hidden-xs brand-header">
+			<h1><a class="" href="../index.html">WAGA</a> <a class="tag-line" href="../index.html">HOME OF THE WOODMAN CUP</a></h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm hidden-md hidden-lg" href="../index.html">WAGA</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="../index.html"><span>Home</span></a></li>
+					<li><a href="../woodmancup/home.html"><span>Woodman Cup</span></a></li>
+					<li><a href="../racetociaobella/race.html"><span>Race to Ciao Bella 2016</span></a></li>
+					<li><a href="../news/news.html"><span>News</span></a></li>
+					<li><a href="../players/players.html"><span>Players</span></a></li>
+					<li><a href="../seeds/latest.html"><span>Seeds</span></a></li>
+					<li><a href="../venues/venues.html"><span>Venues</span></a></li>
+					<li><a href="../open/challenge.html"><span>Open Challenge</span></a></li>
+				</ul>
+				
+				
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+</body>
+  	
+  	<div class="container-fluid">
+  		
+  		<div class="row">
+
+		  <div class="col-md-12">
+		  	<h2>Hall Of Fame</h2>
+		  
+		  		<table class="table  table-condensed  table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>Pos</td>
+							<td>Player</td>
+							<td>Appearances</td>
+							<td>Victories</td>
+							<td>AWC</td>
+							<td>Putt</td>
+							<td>W</td>
+							<td>D</td>
+							<td>L</td>
+							<td>Total</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Robin Tegg</td>
+							<td>11</td>
+							<td>8</td>
+							<td>0</td>
+							<td>0</td>
+							<td>15</td>
+							<td>6</td>
+							<td>12</td>
+							<td>91</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Andrew Easter</td>
+							<td>11</td>
+							<td>4</td>
+							<td>0</td>
+							<td>2</td>
+							<td>18</td>
+							<td>3</td>
+							<td>12</td>
+							<td>85</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>David Tryhorn</td>
+							<td>11</td>
+							<td>6</td>
+							<td>0</td>
+							<td>0</td>
+							<td>17</td>
+							<td>3</td>
+							<td>14</td>
+							<td>84</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Brad Le Riche</td>
+							<td>11</td>
+							<td>7</td>
+							<td>0</td>
+							<td>1</td>
+							<td>14</td>
+							<td>2</td>
+							<td>17</td>
+							<td>83</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Andrew Stevens</td>
+							<td>10</td>
+							<td>8</td>
+							<td>0</td>
+							<td>1</td>
+							<td>11</td>
+							<td>4</td>
+							<td>15</td>
+							<td>81</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Tom Apperley</td>
+							<td>11</td>
+							<td>4</td>
+							<td>0</td>
+							<td>0</td>
+							<td>19</td>
+							<td>3</td>
+							<td>11</td>
+							<td>80</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>Richard Sturdy</td>
+							<td>11</td>
+							<td>6</td>
+							<td>0</td>
+							<td>0</td>
+							<td>12</td>
+							<td>6</td>
+							<td>15</td>
+							<td>72</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>Richard Foister</td>
+							<td>8</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>11</td>
+							<td>3</td>
+							<td>10</td>
+							<td>51</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Jon Henson</td>
+							<td>8</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>11</td>
+							<td>1</td>
+							<td>12</td>
+							<td>49</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Greg Williams</td>
+							<td>8</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>11</td>
+							<td>0</td>
+							<td>12</td>
+							<td>48</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>Andrew Mitchell</td>
+							<td>6</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>8</td>
+							<td>1</td>
+							<td>9</td>
+							<td>35</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>Gavin Reid</td>
+							<td>5</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>6</td>
+							<td>2</td>
+							<td>6</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>Bryan Egan</td>
+							<td>3</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>5</td>
+							<td>0</td>
+							<td>4</td>
+							<td>25</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>Damien Kiernander</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>6</td>
+							<td>0</td>
+							<td>0</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>Rich Goulden</td>
+							<td>3</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>6</td>
+							<td>0</td>
+							<td>3</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td>Christian Dennison</td>
+							<td>3</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>2</td>
+							<td>0</td>
+							<td>7</td>
+							<td>20</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>James Mannix</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>1</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>16</td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>Ian MacDonald</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>0</td>
+							<td>3</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>Michael Coe</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>0</td>
+							<td>3</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>Harry Bridge</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>Alisdair Putt</td>
+							<td>2</td>
+							<td>1</td>
+							<td>0</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>5</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>22</td>
+							<td>Dan Kindell</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td>Nick Kemp</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>1</td>
+							<td>0</td>
+							<td>2</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>24</td>
+							<td>Neil Day</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>2</td>
+							<td>0</td>
+							<td>1</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>25</td>
+							<td>Mark Shifty</td>
+							<td>1</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>26</td>
+							<td>Vien Phan</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>1</td>
+							<td>2</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>27</td>
+							<td>Steve Madden</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>1</td>
+							<td>2</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>Tim O&#39;Shea</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>29</td>
+							<td>Sean Casey</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>3</td>
+							<td>0</td>
+						</tr>
+					</tbody>
+				</table>
+				  		
+			 
+			 </div>
+			 
+		  </div>
+		  
+		  <div class="row">
+		  
+			 <div class="col-md-4">
+		  		<h4>Woodman Cups</h4>
+				<ul class="list-group">
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2005-09-16</span>
+				    	<a href="../woodmancup/2005/index.html">Bidford Grange</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2006-09-16</span>
+				    	<a href="../woodmancup/2006/index.html">The Dorset Golf And Country Club</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2007-09-16</span>
+				    	<a href="../woodmancup/2007/index.html">Abbotsley Golf Hotel</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2008-09-16</span>
+				    	<a href="../woodmancup/2008/index.html">Sedlescombe Golf Club</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2009-09-16</span>
+				    	<a href="../woodmancup/2009/index.html">Donnington Grove Country Club</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2010-09-16</span>
+				    	<a href="../woodmancup/2010/index.html">Old Thorns Manor Hotel</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2011-09-16</span>
+				    	<a href="../woodmancup/2011/index.html">Staverton Park Golf Course</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2012-10-16</span>
+				    	<a href="../woodmancup/2012/index.html">Manor of Groves</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2013-09-16</span>
+				    	<a href="../woodmancup/2013/index.html">The Essex Golf &amp; Country Club</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2014-09-16</span>
+				    	<a href="../woodmancup/2014/index.html">The Belfry</a>
+				    
+				  </li>
+				  <li class="list-group-item">
+				    
+				    
+					    <span class="badge">2015-09-16</span>
+				    	<a href="../woodmancup/2015/index.html">The Oxfordshire</a>
+				    
+				  </li>
+				</ul>
+				
+				
+			</div>
+		  
+		  </div>
+		  
+		</div>
+	
+	
+  	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.js"></script>
+  
+  
+	
+  </body>
+</html>

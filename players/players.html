@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Players</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
+    
+    	.waga-tab-content {
+    		position: relative; 
+    		min-height: 1px; 
+    		padding: 15px 15px;
+    	}
+    	
+    	.navbar {
+			background-color: #ffdf43;
+			border-top-color: rgb(198, 175, 54);
+			border-bottom-color: black;
+			border-radius: 0px;
+			min-height: 0;
+		}
+		
+		.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		color: black;
+    		background-color: #ffdf43;
+		}
+		
+		.navbar-default .btn-link {
+    color: black;
+}
+		
+		.navbar-default .navbar-nav>li>a {
+			    color: black;
+			}
+			
+			.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+			
+			.navbar-default .navbar-toggle {
+    border-color: black;
+}
+			
+			.navbar-default .navbar-brand {
+    color: black;
+}
+
+.navbar-default .navbar-toggle {
+    color: black;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: black;
+}
+			
+			.navbar-brand {
+			    background-color: #ffdf43;
+			border-bottom-color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+			}
+			
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: black;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: black;
+}
+
+			.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: white;
+}
+
+	.player-img, .venue-img, .news-img {
+		width: 100%;
+	}
+
+		@media (max-width: 568px) {
+			.navbar {
+				margin-bottom: 0px;
+			}
+		}
+			
+			@media (min-width: 768px) {
+			
+			.navbar-default .navbar-nav>li>a>span {
+			    padding-left: 14px;
+			    padding-right: 14px;
+			    border-right-width: 1px;
+			    border-right-style: solid;
+			    border-right-color: rgb(198, 175, 54);
+			    border-left-width: 1px;
+			    border-left-style: solid;
+			    border-left-color: rgb(198, 175, 54);
+			}
+				.navbar-nav>li>a {
+				    padding-top: 4px;
+				    padding-bottom: 4px;
+				}
+				
+				
+		.navbar-default .navbar-nav>li>a {
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+			
+			.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		border-bottom-width: 4px;
+    		border-bottom-color: black;
+    		border-bottom-style: solid;
+		}
+		
+			.navbar-default .btn-link {
+			    padding-top: 0px;
+			    padding-bottom: 0px;
+			    padding-left: 14px;
+			    padding-right: 14px;
+			}
+			
+			.navbar-default .navbar-form {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			    padding-top: 3px;
+			    padding-bottom: 3px;
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+				
+				}
+
+		
+		.brand-header {
+			background-color: #ffdf43;
+			border-bottom-color: black;
+			color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+		}
+		
+		.brand-header a {
+			color: black;
+			text-decoration: none;
+		}
+		
+		.brand-header .tag-line {
+			vertical-align: top;
+			font-size: 10px;
+		}
+    
+    </style>
+    
+  </head>
+  <body>
+  	
+  	<body>
+
+	<div class="container-fluid hidden-xs brand-header">
+			<h1><a class="" href="../index.html">WAGA</a> <a class="tag-line" href="../index.html">HOME OF THE WOODMAN CUP</a></h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm hidden-md hidden-lg" href="../index.html">WAGA</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="../index.html"><span>Home</span></a></li>
+					<li><a href="../woodmancup/home.html"><span>Woodman Cup</span></a></li>
+					<li><a href="../racetociaobella/race.html"><span>Race to Ciao Bella 2016</span></a></li>
+					<li><a href="../news/news.html"><span>News</span></a></li>
+					<li><a href="../players/players.html"><span>Players</span></a></li>
+					<li><a href="../seeds/latest.html"><span>Seeds</span></a></li>
+					<li><a href="../venues/venues.html"><span>Venues</span></a></li>
+					<li><a href="../open/challenge.html"><span>Open Challenge</span></a></li>
+				</ul>
+				
+				
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+</body>
+  	
+  	<div class="container-fluid">
+  	
+  	
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-_7B_KW4ujZA/UWkerw3QatI/AAAAAAAAAcg/hSLGN7wG1i8/s576-Ic42/IMG_1352.JPG" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Brad Le Riche</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-brad-le-riche"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-KHD2FqSTSzE/UWkfS9XySWI/AAAAAAAAAhk/lrutIDF0JUE/s576-Ic42/IMG_1394.JPG" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>15</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>15 : Tournament winner</li>
+				    	<li>16 :  27 points or less</li>
+				    	<li>15 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Robin Tegg</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-robin-tegg"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>15</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>15 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Richard Sturdy</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-richard-sturdy"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-zt1rxh0JC8M/UWkfZLuKKiI/AAAAAAAAAik/P3Y4AYvQon0/s576-Ic42/IMG_1402.JPG" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>26</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>26 :  27 points or less</li>
+				    	<li>25 :  27 points or less</li>
+				    	<li>24 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>David Tryhorn</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-david-tryhorn"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>19</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>19 :  27 points or less</li>
+				    	<li>18 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Andrew Easter</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-andrew-easter"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-U8_-o4YKq2Y/UWkget1RoYI/AAAAAAAAArQ/Lr2KxUUi4Iw/s576-Ic42/IMG_1434.JPG" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>12</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>12 : Tournament winner</li>
+				    	<li>13 :  38 points or over</li>
+				    	<li>14 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Richard Foister</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-richard-foister"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-cIxQxa_T_BI/UWkfQFOlMhI/AAAAAAAAAhM/I2wHR43asoY/s576-Ic42/IMG_1390.JPG" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>12</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>12 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Tom Apperley</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-tom-apperley"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-mkb9kUZnWLk/UWkfiEjatDI/AAAAAAAAAkU/AHuCaLLq6Jk/s576-Ic42/IMG_1416.JPG	" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 :  27 points or less</li>
+				    	<li>28 :  27 points or less</li>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Andrew Stevens</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-andrew-stevens"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="https://lh3.googleusercontent.com/-8mqF4e6Nt_4/UWk9Joc6v2I/AAAAAAAABsQ/W2hxoAg8N1o/s576-Ic42/IMG_0463.jpg" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>20</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>20 :  27 points or less</li>
+				    	<li>19 :  27 points or less</li>
+				    	<li>18 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Damien Kiernander</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-damien-kiernander"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Jon Henson</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-jon-henson"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>20</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>20 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Mark Shifty</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-mark-shifty"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Nick Kemp</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-nick-kemp"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Andrew Mitchell</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-andrew-mitchell"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Ian MacDonald</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-ian-macdonald"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Greg Williams</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-greg-williams"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Vien Phan</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-vien-phan"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Rich Goulden</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-rich-goulden"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>12</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>12 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Tim O&#39;Shea</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-tim-oshea"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Alisdair Putt</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-alisdair-putt"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Michael Coe</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-michael-coe"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>12</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>12 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Harry Bridge</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-harry-bridge"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Gavin Reid</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-gavin-reid"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Christian Dennison</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-christian-dennison"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>24</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>24 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Bryan Egan</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-bryan-egan"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>28</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>28 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>James Mannix</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-james-mannix"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>24</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>24 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Dan Kindell</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-dan-kindell"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>15</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>15 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Steve Madden</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-steve-madden"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>18</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>18 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Neil Day</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-neil-day"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+  		
+  		
+	  		<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			  
+				    <a>
+				      <img class="player-img" alt="..." src="http://placehold.it/550x300" />
+				    </a>
+				    
+				    <p>Joined: <span>2005-01-01</span></p> 
+				    
+				    <p>Current Handicap: <span>24</span></p>
+				    
+				    <h4>History</h4>
+				    <ul>
+				    	<li>24 : Joining handicap</li>
+				    </ul>
+				    
+			  </div>
+			  <div class="col-sm-6 col-md-8">
+				  
+				    <h4><a>Sean Casey</a></h4>
+				    
+				    <div class="ct-chart ct-double-octave" id="handicap-graph-sean-casey"></div>
+				    
+			  </div>
+			</div>
+			  <hr />
+		  
+	</div>
+	
+	
+  	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.js"></script>
+  
+  
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-brad-le-riche';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-robin-tegg';
+			var categories = ['2005-01-01','2016-02-27','2016-06-24'];
+			var seriesData = [15,16,15];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-richard-sturdy';
+			var categories = ['2005-01-01'];
+			var seriesData = [15];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-david-tryhorn';
+			var categories = ['2005-01-01','2015-11-16','2016-06-24'];
+			var seriesData = [24,25,26];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-andrew-easter';
+			var categories = ['2005-01-01','2016-03-20'];
+			var seriesData = [18,19];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-richard-foister';
+			var categories = ['2005-01-01','2016-04-22','2016-04-22'];
+			var seriesData = [14,13,12];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-tom-apperley';
+			var categories = ['2005-01-01'];
+			var seriesData = [12];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-andrew-stevens';
+			var categories = ['2005-01-01','2016-04-22','2016-06-24'];
+			var seriesData = [28,28,28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-damien-kiernander';
+			var categories = ['2005-01-01','2015-10-24','2016-03-20'];
+			var seriesData = [18,19,20];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-jon-henson';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-mark-shifty';
+			var categories = ['2005-01-01'];
+			var seriesData = [20];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-nick-kemp';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-andrew-mitchell';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-ian-macdonald';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-greg-williams';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-vien-phan';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-rich-goulden';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-tim-oshea';
+			var categories = ['2005-01-01'];
+			var seriesData = [12];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-alisdair-putt';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-michael-coe';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-harry-bridge';
+			var categories = ['2005-01-01'];
+			var seriesData = [12];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-gavin-reid';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-christian-dennison';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-bryan-egan';
+			var categories = ['2005-01-01'];
+			var seriesData = [24];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-james-mannix';
+			var categories = ['2005-01-01'];
+			var seriesData = [28];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-dan-kindell';
+			var categories = ['2005-01-01'];
+			var seriesData = [24];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-steve-madden';
+			var categories = ['2005-01-01'];
+			var seriesData = [15];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-neil-day';
+			var categories = ['2005-01-01'];
+			var seriesData = [18];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+		
+  		
+		<script type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = 'handicap-graph-sean-casey';
+			var categories = ['2005-01-01'];
+			var seriesData = [24];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	
+	
+	
+  </body>
+</html>
