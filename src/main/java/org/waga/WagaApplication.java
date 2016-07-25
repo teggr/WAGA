@@ -39,7 +39,7 @@ public class WagaApplication {
 
 		File source = new File(root, "/src/main/resources/jbake");
 
-		File destination = new File(root, "/target");
+		File destination = new File(root, "/target/jbake");
 
 		CompositeConfiguration config = new CompositeConfiguration();
 		config.addConfiguration(ConfigUtil.load(source));
