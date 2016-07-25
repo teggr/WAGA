@@ -9,6 +9,7 @@ import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.seedings.Seeding;
 import org.waga.venue.Venue;
 import org.waga.woodmancup.WoodmanCupEvent;
+import org.waga.woodmancup.statistics.HallOfFameEntry;
 
 public interface WagaData {
 	
@@ -27,5 +28,7 @@ public interface WagaData {
 	List<WoodmanCupEvent> getWoodmanCupEvents();
 	
 	WoodmanCupEvent getWoodmanCupEvent(String event);
+
+	List<HallOfFameEntry> getHallOfFame();
 
 }

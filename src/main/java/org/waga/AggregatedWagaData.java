@@ -9,6 +9,7 @@ import org.waga.rtcb.RaceToCiaoBellaStats;
 import org.waga.seedings.Seeding;
 import org.waga.venue.Venue;
 import org.waga.woodmancup.WoodmanCupEvent;
+import org.waga.woodmancup.statistics.HallOfFameEntry;
 
 public class AggregatedWagaData implements WagaData {
 
@@ -19,10 +20,11 @@ public class AggregatedWagaData implements WagaData {
 	private List<Seeding> seedings;
 	private List<OpenChallengeEvent> openEvents;
 	private List<WoodmanCupEvent> woodmanCupEvents;
+	private List<HallOfFameEntry> hallOfFame;
 
 	public AggregatedWagaData(List<Player> players, List<Venue> venues,
 			RaceToCiaoBellaStats currentRaceToCiaoBellaSeasonStats, RaceToCiaoBella currentRaceToCiaBellaSeason,
-			List<Seeding> seedings, List<OpenChallengeEvent> openEvents, List<WoodmanCupEvent> woodmanCupEvents) {
+			List<Seeding> seedings, List<OpenChallengeEvent> openEvents, List<WoodmanCupEvent> woodmanCupEvents, List<HallOfFameEntry> hallOfFame) {
 		this.players = players;
 		this.venues = venues;
 		this.currentRaceToCiaoBellaSeasonStats = currentRaceToCiaoBellaSeasonStats;
@@ -30,6 +32,7 @@ public class AggregatedWagaData implements WagaData {
 		this.seedings = seedings;
 		this.openEvents = openEvents;
 		this.woodmanCupEvents = woodmanCupEvents;
+		this.hallOfFame = hallOfFame;
 	}
 
 	@Override
@@ -75,6 +78,11 @@ public class AggregatedWagaData implements WagaData {
 			}
 		}
 		return null;
+	}
+	
+	@Override
+	public List<HallOfFameEntry> getHallOfFame() {
+		return hallOfFame;
 	}
 
 }

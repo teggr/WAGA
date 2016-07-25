@@ -23,14 +23,14 @@
 				 	<table class="table">
 				 		<thead>
 				 			<tr>
-				 				<th><h2 th:text="${event.team1.name} + ' ['+ ${event.team1Points} +']'"></h2></th><th><h2>vs</h2></th><th><h2 th:text="${event.team2.name} + ' ['+ ${event.team2Points} +']'"></h2></th>
+				 				<th><h2><span th:text="${event.team1.name} + ' ['+ ${event.team1Points} +']'"></span> <span th:if="${event.team1.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th><th><h2>vs</h2></th><th><h2><span th:text="${event.team2.name} + ' ['+ ${event.team2Points} +']'"></span> <span th:if="${event.team2.isWinner()}" class="glyphicon glyphicon-certificate" aria-hidden="true"></span></h2></th>
 				 			</tr>
 				 		</thead>
 				 		<tbody>
 				 			<tr th:each="teamRow : ${config.helper.getTeamRows(event.team1,event.team2)}">
-				 				<td th:text="${teamRow.player1.fullName}"></td>
+				 				<td><span th:text="${teamRow.player1.fullName}"></span> <span th:if="${event.team1.isCaptain(teamRow.player1)}">(c)</span></td>
 				 				<td></td>
-				 				<td th:text="${teamRow.player2.fullName}"></td>
+				 				<td><span th:text="${teamRow.player2.fullName}"></span> <span th:if="${event.team2.isCaptain(teamRow.player2)}">(c)</span></td>
 				 			</tr>
 				 		</tbody>
 				 	</table>

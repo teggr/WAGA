@@ -55,4 +55,12 @@ public class Team {
 		return players;
 	}
 
+	public boolean isPlayer(Player player) {
+		return players.contains(player);
+	}
+
+	public boolean isCaptain(Player player) {
+		return captain.getSurname().equals(player.getSurname());
+	}
+
 }

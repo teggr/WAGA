@@ -24,7 +24,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -62,5 +62,35 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>run-jbake</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.waga.WagaApplication</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>jbake.root</key>
+							<value>${project.basedir}</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
 
 </project>

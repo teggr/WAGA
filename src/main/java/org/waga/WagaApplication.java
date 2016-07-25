@@ -17,6 +17,10 @@ public class WagaApplication {
 	private static final Logger log = LoggerFactory.getLogger(WagaApplication.class);
 
 	public static void main(String[] args) throws ConfigurationException {
+		
+		String jbakeRoot = System.getProperty("jbake.root", ".");
+		
+		System.out.println("PROPERTY " + jbakeRoot);
 
 		log.info("Compiling data");
 
@@ -29,7 +33,7 @@ public class WagaApplication {
 
 		log.info("Start the bake");
 
-		File root = new File(".");
+		File root = new File( jbakeRoot );
 
 		log.info("Running in location: {}", root.getAbsolutePath());
 

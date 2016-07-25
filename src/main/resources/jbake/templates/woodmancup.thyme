@@ -16,7 +16,6 @@
 					<thead>
 						<tr>
 							<td>Pos</td>
-							<td>+/-</td>
 							<td>Player</td>
 							<td>Appearances</td>
 							<td>Victories</td>
@@ -29,18 +28,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="entry in halloffameentries">
-							<td>{{ entry.position }}</td>
-							<td></td>
-							<td>{{ entry.member.firstname }} {{ entry.member.surname }}</td>
-							<td>{{ entry.appearances }}</td>
-							<td>{{ entry.victories }}</td>
-							<td>{{ entry.alternativeWoodmanCupWins }}</td>
-							<td>{{ entry.puttOffWins }}</td>
-							<td>{{ entry.wins }}</td>
-							<td>{{ entry.draws }}</td>
-							<td>{{ entry.losses }}</td>
-							<td>{{ entry.points }}</td>
+						<tr th:each="entry,status : ${config.data.hallOfFame}">
+							<td th:text="${status.count}"></td>
+							<td th:text="${entry.player.fullName}"></td>
+							<td th:text="${entry.appearances}"></td>
+							<td th:text="${entry.victories}"></td>
+							<td th:text="${entry.alternativeWoodmanCupWins}"></td>
+							<td th:text="${entry.puttOffWins}"></td>
+							<td th:text="${entry.wins}"></td>
+							<td th:text="${entry.draws}"></td>
+							<td th:text="${entry.losses}"></td>
+							<td th:text="${entry.points}"></td>
 						</tr>
 					</tbody>
 				</table>

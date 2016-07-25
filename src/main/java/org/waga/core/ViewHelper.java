@@ -6,10 +6,8 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
-import org.springframework.format.datetime.DateFormatter;
 import org.waga.player.Player;
 import org.waga.woodmancup.Team;
 

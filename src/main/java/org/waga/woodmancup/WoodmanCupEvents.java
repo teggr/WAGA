@@ -20,9 +20,18 @@ public class WoodmanCupEvents {
 
 	public static List<WoodmanCupEvent> getEvents() {
 
-		List<WoodmanCupEventDataProvider> providers = Arrays.asList(new Oxfordshire2015(), new Belfry2014(), new EssexGc2013(),
-				new ManorOfGroves2012(), new Staverton2011(), new OldThorns2010(), new Donnington2009(), new Hastings2008(),
-				new Abbotsley2007(), new Dorset2006(), new Bidford2005());
+		List<WoodmanCupEventDataProvider> providers = Arrays.asList(
+				new Oxfordshire2015(), 
+				new Belfry2014(), 
+				new EssexGc2013(),
+				new ManorOfGroves2012(), 
+				new Staverton2011(), 
+				new OldThorns2010(), 
+				new Donnington2009(), 
+				new Hastings2008(),
+				new Abbotsley2007(), 
+				new Dorset2006(), 
+				new Bidford2005());
 
 		List<WoodmanCupEvent> list = new ArrayList<>();
 		for (WoodmanCupEventDataProvider provider : providers) {

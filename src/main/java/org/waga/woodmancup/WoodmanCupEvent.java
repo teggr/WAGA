@@ -27,11 +27,11 @@ public class WoodmanCupEvent {
 	private List<Session> sessions = new ArrayList<>();
 	private Player puttOffWinner;
 	private Player alternativeWoodmanCupWinner;
-	
+
 	public boolean hasIndividualWinners() {
 		return puttOffWinner != null || alternativeWoodmanCupWinner != null;
 	}
-	
+
 	public double getTeam1Points() {
 		double total = 0;
 		for (Session session : sessions) {
@@ -39,7 +39,7 @@ public class WoodmanCupEvent {
 		}
 		return total;
 	}
-	
+
 	public double getTeam2Points() {
 		double total = 0;
 		for (Session session : sessions) {
@@ -95,6 +95,22 @@ public class WoodmanCupEvent {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public boolean wasAttendedBy(Player player) {
+		return team1.isPlayer(player) || team2.isPlayer(player);
+	}
+
+	public boolean inWinningTeam(Player player) {
+		return getWinningTeam().isPlayer(player);
+	}
+
+	private Team getWinningTeam() {
+		if (team1.isWinner()) {
+			return team1;
+		} else {
+			return team2;
 		}
 	}
 }

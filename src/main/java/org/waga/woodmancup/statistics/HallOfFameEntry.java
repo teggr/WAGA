@@ -4,12 +4,6 @@ import org.waga.player.Player;
 
 public class HallOfFameEntry {
 
-	public static HallOfFameEntry newInstance(int appearances, int victories, int alternativeWoodmanCupWins,
-			int puttOffWins, int wins, int draws, int losses, Player player) {
-		return new HallOfFameEntry(appearances, victories, alternativeWoodmanCupWins, puttOffWins, wins, draws, losses,
-				player);
-	}
-
 	private int victories = 0;
 	private int alternativeWoodmanCupWins = 0;
 	private int puttOffWins = 0;
@@ -20,7 +14,7 @@ public class HallOfFameEntry {
 	private int appearances = 0;
 	private Player player;
 
-	private HallOfFameEntry(int appearances, int victories, int alternativeWoodmanCupWins, int puttOffWins, int wins,
+	public HallOfFameEntry(int appearances, int victories, int alternativeWoodmanCupWins, int puttOffWins, int wins,
 			int draws, int losses, Player player) {
 		super();
 		this.appearances = appearances;

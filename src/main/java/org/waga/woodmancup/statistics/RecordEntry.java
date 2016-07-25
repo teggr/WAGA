@@ -1,18 +1,18 @@
 package org.waga.woodmancup.statistics;
 
-import org.waga.woodmancup.members.Member;
+import org.waga.player.Player;
 
 public class RecordEntry {
-	private Member member;
+	private Player member;
 	private int value;
 
-	public RecordEntry(Member member, int value) {
+	public RecordEntry(Player member, int value) {
 		super();
 		this.member = member;
 		this.value = value;
 	}
 
-	public Member getMember() {
+	public Player getMember() {
 		return member;
 	}
 

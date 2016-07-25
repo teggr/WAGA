@@ -10,7 +10,7 @@ import org.waga.player.Players;
 public class Match {
 
 	public static enum Result {
-		BEAT, LOSE_TO, DRAW_WITH;
+		BEAT, LOST_TO, DREW_WITH;
 	}
 
 	public static class MatchBuilder {
@@ -35,13 +35,13 @@ public class Match {
 		}
 
 		public MatchBuilder drewWith(Players... players) {
-			result = Result.DRAW_WITH;
+			result = Result.DREW_WITH;
 			teamB = Arrays.asList(players).stream().map(p -> p.asPlayer()).collect(Collectors.toList());
 			return this;
 		}
 
 		public MatchBuilder lostTo(Players... players) {
-			result = Result.LOSE_TO;
+			result = Result.LOST_TO;
 			teamB = Arrays.asList(players).stream().map(p -> p.asPlayer()).collect(Collectors.toList());
 			return this;
 		}
@@ -59,22 +59,20 @@ public class Match {
 	}
 
 	public double getTeamAPoints() {
-		if (teamAResult == Result.BEAT) {
-			return 1;
-		} else if (teamAResult == Result.DRAW_WITH) {
-			return 0.5;
-		} else {
-			return 0;
-		}
+		return getPoints(teamAResult);
 	}
 
 	public double getTeamBPoints() {
-		if (teamAResult == Result.BEAT) {
-			return 0;
-		} else if (teamAResult == Result.DRAW_WITH) {
+		return getPoints(teamBResult());
+	}
+
+	private double getPoints(Result result) {
+		if (result == Result.BEAT) {
+			return 1;
+		} else if (result == Result.DREW_WITH) {
 			return 0.5;
 		} else {
-			return 1;
+			return 0;
 		}
 	}
 
@@ -99,6 +97,34 @@ public class Match {
 	}
 
 	private String getTeamNames(List<Player> team) {
-		return team.stream().map(p -> p.getSurname()).collect(Collectors.joining(","));
+		return team.stream().map(p -> p.getSurname()).collect(Collectors.joining(" - "));
 	}
+
+	public Result getResult(Player player) {
+		if (teamA.contains(player)) {
+			return teamAResult;
+		} else {
+			return teamBResult();
+		}
+	}
+
+	private Result teamBResult() {
+		if (teamAResult == Result.BEAT) {
+			return Result.LOST_TO;
+		} else if (teamAResult == Result.LOST_TO) {
+			return Result.BEAT;
+		} else {
+			return Result.DREW_WITH;
+		}
+	}
+
+	public boolean withPlayer(Player player) {
+		return teamA.contains(player) || teamB.contains(player);
+	}
+
+	@Override
+	public String toString() {
+		return "Match [teamA=" + teamA + ", teamAResult=" + teamAResult + ", teamB=" + teamB + "]";
+	}
+
 }

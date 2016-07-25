@@ -20,6 +20,8 @@ import org.waga.venue.Venue;
 import org.waga.venue.Venues;
 import org.waga.woodmancup.WoodmanCupEvent;
 import org.waga.woodmancup.WoodmanCupEvents;
+import org.waga.woodmancup.statistics.Aggy;
+import org.waga.woodmancup.statistics.HallOfFameEntry;
 
 public class WagaDataCompiler {
 
@@ -61,7 +63,13 @@ public class WagaDataCompiler {
 
 		List<WoodmanCupEvent> woodmanCupEvents = WoodmanCupEvents.getEvents();
 		
-		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings, openEvents, woodmanCupEvents );
+		Aggy aggy = new Aggy(players);
+		for (WoodmanCupEvent woodmanCupEvent : woodmanCupEvents) {
+			aggy.aggregate( woodmanCupEvent );			
+		}
+		List<HallOfFameEntry> hallOfFame = aggy.getEntries();
+		
+		return new AggregatedWagaData(players, venues, currentSeasonStats, currentSeason, seedings, openEvents, woodmanCupEvents, hallOfFame );
 
 	}
 
