@@ -1,46 +1,28 @@
 package org.waga.rtcb;
 
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.waga.core.AbstractEntity;
+import org.waga.player.Player;
 import org.waga.venue.Venue;
 
-@Entity
-public class Tournament extends AbstractEntity {
+public class Tournament {
 
-	@ManyToOne
-	private RaceToCiaoBella raceToCiaoBella;
-
-	@ManyToOne
 	private Venue venue;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "tournament")
-	private Set<Result> results;
+	private Set<Result> results = new HashSet<>();
 
-	public RaceToCiaoBella getRaceToCiaoBella() {
-		return raceToCiaoBella;
-	}
-
-	public void setRaceToCiaoBella(RaceToCiaoBella raceToCiaoBella) {
-		this.raceToCiaoBella = raceToCiaoBella;
-	}
-
-	public void setName(String name) {
+	public Tournament(String name, Date date, Venue venue) {
+		super();
+		this.venue = venue;
+		this.date = date;
 		this.name = name;
 	}
 
@@ -52,48 +34,42 @@ public class Tournament extends AbstractEntity {
 		return venue;
 	}
 
-	public void setVenue(Venue venue) {
-		this.venue = venue;
-	}
-
 	public Date getDate() {
 		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public Set<Result> getResults() {
 		return results;
 	}
 
-	public void setResults(Set<Result> results) {
-		this.results = results;
-	}
-
 	public List<Result> sortedResults() {
-		return results.stream().sorted((r1, r2) -> r2.getScore() - r1.getScore()).collect(Collectors.toList());
+		return results.stream().sorted(new Comparator<Result>() {
+			@Override
+			public int compare(Result r1, Result r2) {
+				int scoreDiff = r2.getScore() - r1.getScore();
+				if (scoreDiff == 0) {
+					if (r1.isCountbackWinner()) {
+						return -1;
+					} else {
+						return 1;
+					}
+				}
+				return scoreDiff;
+			}
+		}).collect(Collectors.toList());
 	}
 
 	public void addResult(Result result) {
 		results.add(result);
-		result.setTournament(this);
+	}
+
+	public Player getWinner() {
+		return sortedResults().stream().findFirst().get().getPlayer();
 	}
 
 	@Override
 	public String toString() {
 		return "Tournament [venue=" + venue + ", date=" + date + ", name=" + name + ", results=" + results + "]";
-	}
-
-	public void deleteResult(Long resultId) {
-		Optional<Result> match = results.stream().filter(t -> t.getId().equals(resultId)).findFirst();
-		if (match.isPresent()) {
-			Result result = match.get();
-			results.remove(result);
-			result.setTournament(null);
-		}
-
 	}
 
 }

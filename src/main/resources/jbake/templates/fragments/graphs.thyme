@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <body >
+  
+  	<div th:fragment="handicap (id,player)">
+  		
+		<script th:inline="javascript" type="text/javascript">
+		/*<![CDATA[*/
+		$(function () {
+			var chartId = /*[[${id}]]*/ ;
+			var categories = /*[[${player.handicapAdjustmentDates}]]*/ ['Current'];
+			var seriesData = /*[[${player.handicapAdjustmentsTimeline}]]*/ [13];
+			
+			// Our labels and three data series
+			var data = {
+			  labels: categories,
+			  series: [ seriesData ]
+			};
+
+			// We are setting a few options for our chart and override the defaults
+			var options = {
+	
+			  showArea: true,
+			  axisY: {
+			    onlyInteger: true,
+			    offset: 20
+			  },
+			  chartPadding: {
+				right: 40
+				},
+			
+			};
+			
+			new Chartist.Line("#"+chartId, data, options);
+			
+		});
+		/*]]>*/
+		</script>
+	
+  	</div>
+	
+  </body>
+
+</html>

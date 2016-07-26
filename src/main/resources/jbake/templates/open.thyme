@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head.thyme::head"></head>
+<body>
+
+	<div th:replace="fragments/header.thyme::header"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h1>Open Challenge</h1>
+				
+				<th:block  th:each="event : ${config.data.openChallengeEvents}">
+				<div class="panel panel-default">
+					  <div class="panel-heading" th:text="${event.venue.name} + ' | ' + ${#dates.format(event.date, 'yyyy-MM-dd')}"></div>
+					  <div class="panel-body">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Player</th>
+										<th>Points</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="result : ${event.results}">
+										<td th:text="${result.player.fullName}"></td>
+										<td th:text="${result.points}"></td>
+									</tr>
+								</tbody>
+							</table>
+					  </div>
+					  
+					</div>
+				</th:block>
+
+			</div>
+			
+		</div>
+	</div>
+
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+
+</body>
+</html>

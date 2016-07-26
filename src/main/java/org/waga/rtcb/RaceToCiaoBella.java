@@ -1,35 +1,38 @@
 package org.waga.rtcb;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-import org.waga.core.AbstractEntity;
-
-@Entity
-public class RaceToCiaoBella extends AbstractEntity {
+public class RaceToCiaoBella {
 
 	private int season;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "raceToCiaoBella")
-	private Set<Tournament> tournaments;
+	private Set<Tournament> tournaments = new HashSet<>();
+
+	public RaceToCiaoBella(int season) {
+		super();
+		this.season = season;
+	}
 
 	public int getSeason() {
 		return season;
-	}
-
-	public void setSeason(int season) {
-		this.season = season;
 	}
 
 	public Set<Tournament> getTournaments() {
 		return tournaments;
 	}
 
-	public void setTournaments(Set<Tournament> tournaments) {
-		this.tournaments = tournaments;
+	public void addTournament(Tournament tour) {
+		tournaments.add(tour);
+	}
+
+	public List<Tournament> getTournamentsSortedByRecent() {
+		List<Tournament> sortedTournaments = new ArrayList<>(tournaments);
+		Collections.sort(sortedTournaments, (t1, t2) -> t2.getDate().compareTo(t1.getDate()));
+		return sortedTournaments;
 	}
 
 	@Override
@@ -37,40 +40,10 @@ public class RaceToCiaoBella extends AbstractEntity {
 		return "RaceToCiaoBella [season=" + season + ", tournaments=" + tournaments + "]";
 	}
 
-	public void update(RaceToCiaoBella rtcb) {
-		this.season = rtcb.season;
-	}
-
-	public void addTournaments(Tournament tour) {
-		tournaments.add(tour);
-		tour.setRaceToCiaoBella(this);
-	}
-
-	public Tournament findTournamentById(Long tid) {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().filter(t -> t.getId().equals(tid)).findFirst().get();
-	}
-
-	public Tournament findTournamentByName(String name) {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().filter(t -> t.getName().equals(name)).findFirst().get();
-	}
-
-	public Tournament findLastTournament() {
-		if (tournaments.isEmpty()) {
-			return null;
-		}
-		return tournaments.stream().sorted((t1, t2) -> t2.getDate().compareTo(t1.getDate())).findFirst().get();
-	}
-
-	public void removeTournament(Long tid) {
-		Tournament tour = findTournamentById(tid);
-		tournaments.remove(tour);
-		tour.setRaceToCiaoBella(null);
+	public List<Tournament> getTournamentsSortedByDate() {
+		List<Tournament> sortedTournaments = new ArrayList<>(tournaments);
+		Collections.sort(sortedTournaments, (t1, t2) -> t1.getDate().compareTo(t2.getDate()));
+		return sortedTournaments;
 	}
 
 }

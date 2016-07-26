@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/head.thyme::head"/>
+	<body onload="prettyPrint()">
+	
+	<div th:replace="fragments/header.thyme::header"></div>
+	
+	<div class="container-fluid">
+  		
+  		<div class="row">
+
+		  <div class="col-md-8" >
+		  	<h2 th:if="${published_posts.size() == 0}">No news yet. Check back later</h2>
+		  
+		  	<th:block th:each="post : ${published_posts}">
+		  
+		  		<div class="row">
+			     <div class="col-sm-6 col-md-4">
+				    <a  th:href="${post.uri}">
+				      <img class="news-img" th:src="${post.image}" alt="..."></img>
+				    </a>
+				  </div>
+			  <div class="col-sm-6 col-md-8">
+				    <h4 class="media-heading" ><a th:href="${post.uri}" th:text="${post.title}">Media heading</a></h4>
+				    <p th:utext="${post.body}"></p>
+				    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${config.helper.elapsedTime(post.date)}"></span> | <span th:text="${post.tags}"></span></p>
+				  </div>
+				</div>
+				
+				<hr/>
+				
+			 </th:block>
+		  </div>
+		 </div>
+		</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+    </body>
+</html>

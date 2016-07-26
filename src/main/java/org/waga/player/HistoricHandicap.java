@@ -3,15 +3,7 @@ package org.waga.player;
 import java.util.Comparator;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.waga.core.AbstractEntity;
-
-@Entity
-public class HistoricHandicap extends AbstractEntity {
+public class HistoricHandicap {
 
 	public static final Comparator<HistoricHandicap> REVERSE_DATE_ORDER = new Comparator<HistoricHandicap>() {
 		@Override
@@ -20,12 +12,9 @@ public class HistoricHandicap extends AbstractEntity {
 		}
 	};
 
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date expiredDate;
 	private int handicap;
-
-	@ManyToOne
-	private Player player;
+	private String message;
 
 	public Date getExpiredDate() {
 		return expiredDate;
@@ -43,12 +32,12 @@ public class HistoricHandicap extends AbstractEntity {
 		return handicap;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
-	public Player getPlayer() {
-		return player;
+	public String getMessage() {
+		return message;
 	}
 
 }

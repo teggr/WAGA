@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
+  	
+  		<div class="row" th:if="${config.data.venues.size() == 0}">
+		  <div class="col-md-8">
+		  	<h2>No venues yet. Check back later</h2>
+		  </div>
+		</div>
+  	
+  	<th:block  th:each="venue : ${config.data.venues}">
+  		<div class="row">
+		  <div class="col-sm-6 col-md-6">
+		  
+			  
+			    <a>
+			      <img class="venue-img" th:src="${#strings.isEmpty(venue.imageUrl)} ? 'http://placehold.it/550x300' : ${venue.imageUrl} " alt="..."></img>
+			    </a>
+			  
+			
+		  </div>
+		  <div class="col-sm-6 col-md-6">
+			    <h4><a th:text="${venue.name}">Media heading</a></h4>
+			    <p>Link: <a th:href="${venue.link}"></a></p>
+			    <p>Google Maps: <a th:href="${venue.googleMapLink}"></a></p>
+			
+		  </div>
+		  
+		</div>
+			<hr/>
+	</th:block>
+	</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+  </body>
+</html>

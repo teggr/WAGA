@@ -1,40 +1,64 @@
 package org.waga.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+public class Player {
 
-import org.springframework.util.StringUtils;
-import org.waga.core.AbstractEntity;
+	private static final Comparator<HandicapAdjustment> ORDER_BY_DATE_OLDEST_FIRST = new Comparator<HandicapAdjustment>() {
+		@Override
+		public int compare(HandicapAdjustment o1, HandicapAdjustment o2) {
+			return o1.getAdjustmentDate().compareTo(o2.getAdjustmentDate());
+		}
+	};
 
-@Entity
-public class Player extends AbstractEntity {
+	private static final Comparator<HandicapAdjustment> REVERSE_ORDER_BY_DATE_NEWEST_FIRST = new Comparator<HandicapAdjustment>() {
+		@Override
+		public int compare(HandicapAdjustment o1, HandicapAdjustment o2) {
+			return o2.getAdjustmentDate().compareTo(o1.getAdjustmentDate());
+		}
+	};
 
+	public static Player with(String firstName, String surname, int joiningHandicap, String imageUrl, Date joinDate) {
+		Player player = new Player();
+		player.joinDate = joinDate;
+		player.firstName = firstName;
+		player.surname = surname;
+		player.imageUrl = imageUrl;
+		player.setHandicap(joiningHandicap, "Joining handicap", joinDate);
+		return player;
+	}
+
+	private Date joinDate;
 	private String firstName;
 	private String surname;
-	private int currentHandicap;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date handicapDate;
 	private String imageUrl;
+	private Date lastAppearance = new java.util.Date(0);
+	private boolean current;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "player")
-	private Set<HistoricHandicap> handicapHistory;
+	private List<HandicapAdjustment> handicapAdjustments = new ArrayList<>();
 
-	@Embedded
-	private EmailAddress emailAddress;
+	private Player() {
+	}
 
-	public EmailAddress getEmailAddress() {
-		return emailAddress;
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public Player setCurrent() {
+		current = true;
+		return this;
+	}
+
+	public void recordAppearance(Date appearanceDate) {
+		this.lastAppearance = appearanceDate;
+	}
+
+	public Date getLastAppearance() {
+		return lastAppearance;
 	}
 
 	public String getImageUrl() {
@@ -50,66 +74,68 @@ public class Player extends AbstractEntity {
 	}
 
 	public int getCurrentHandicap() {
-		return currentHandicap;
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+		}
+		return handicap;
 	}
 
-	public Set<HistoricHandicap> getHandicapHistory() {
-		if (handicapHistory == null) {
-			handicapHistory = new HashSet<>();
+	public List<HandicapAdjustment> getHandicapAdjustments() {
+		return handicapAdjustments;
+	}
+
+	public List<String> getHandicapAdjustmentDetails() {
+		ArrayList<String> sortedList = new ArrayList<>();
+		
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+			sortedList.add( handicap + " : " + adjustment.getMessage() );
 		}
-		return handicapHistory;
+		Collections.reverse(sortedList);
+		return sortedList;
+	}
+
+	public List<String> getHandicapAdjustmentDates() {
+		List<String> dates = new ArrayList<>();
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			dates.add(org.waga.core.Utils.dateToString(adjustment.getAdjustmentDate()));
+		}
+		return dates;
+	}
+
+	public List<Number> getHandicapAdjustmentsTimeline() {
+		List<Number> timeline = new ArrayList<>();
+		int handicap = 0;
+		for (HandicapAdjustment adjustment : handicapAdjustments) {
+			handicap = adjustment.adjust(handicap);
+			timeline.add(handicap);
+		}
+		return timeline;
 	}
 
 	public String getFullName() {
 		return firstName + " " + surname;
 	}
 
-	public void updateFrom(Player player) {
-		this.firstName = player.firstName;
-		this.surname = player.surname;
-		updateHandicap(player.currentHandicap);
-		this.imageUrl = player.imageUrl;
-		if (player.emailAddress != null) {
-			if (player.emailAddress.isNotEmpty()) {
-				this.emailAddress = player.getEmailAddress();
-			} else {
-				this.emailAddress = null;
-			}
-		}
+	public boolean isCurrent() {
+		return current;
 	}
 
-	private void updateHandicap(int handicap) {
-		if (this.currentHandicap != handicap) {
-			auditHandicap();
-			this.currentHandicap = handicap;
-			this.handicapDate = new Date();
-		}
+	public void setHandicap(int handicap, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.SET, handicap, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
-	private void auditHandicap() {
-		if (handicapDate != null) {
-			HistoricHandicap current = new HistoricHandicap();
-			current.setExpiredDate(handicapDate);
-			current.setHandicap(currentHandicap);
-			current.setPlayer(this);
-			handicapHistory.add(current);
-		}
+	public void incrementHandicap(int increment, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.INCREMENT, increment, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
-	public HistoricHandicaps getLast10Handicaps() {
-		List<HistoricHandicap> historic = new ArrayList<>(handicapHistory).stream()
-				.sorted(HistoricHandicap.REVERSE_DATE_ORDER).limit(9).collect(Collectors.toList());
-		HistoricHandicap current = new HistoricHandicap();
-		current.setExpiredDate(new Date());
-		current.setHandicap(currentHandicap);
-		historic.add(current);
-		return new HistoricHandicaps(historic);
-	}
-
-	public static Player with(Player player) {
-		Player newPlayer = new Player();
-		newPlayer.updateFrom(player);
-		return newPlayer;
+	public void decrementHandicap(int decrement, String message, Date date) {
+		handicapAdjustments.add(new HandicapAdjustment(HandicapAdjustment.Type.DECREMENT, decrement, message, date));
+		handicapAdjustments.sort(ORDER_BY_DATE_OLDEST_FIRST);
 	}
 
 }

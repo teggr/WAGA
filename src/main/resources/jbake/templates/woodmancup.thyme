@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
+  		
+  		<div class="row">
+
+		  <div class="col-md-12" >
+		  	<h2>Hall Of Fame</h2>
+		  
+		  		<table class="table  table-condensed  table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>Pos</td>
+							<td>Player</td>
+							<td>Appearances</td>
+							<td>Victories</td>
+							<td>AWC</td>
+							<td>Putt</td>
+							<td>W</td>
+							<td>D</td>
+							<td>L</td>
+							<td>Total</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="entry,status : ${config.data.hallOfFame}">
+							<td th:text="${status.count}"></td>
+							<td th:text="${entry.player.fullName}"></td>
+							<td th:text="${entry.appearances}"></td>
+							<td th:text="${entry.victories}"></td>
+							<td th:text="${entry.alternativeWoodmanCupWins}"></td>
+							<td th:text="${entry.puttOffWins}"></td>
+							<td th:text="${entry.wins}"></td>
+							<td th:text="${entry.draws}"></td>
+							<td th:text="${entry.losses}"></td>
+							<td th:text="${entry.points}"></td>
+						</tr>
+					</tbody>
+				</table>
+				  		
+			 
+			 </div>
+			 
+		  </div>
+		  
+		  <div class="row">
+		  
+			 <div class="col-md-4">
+		  		<h4>Woodman Cups</h4>
+				<ul class="list-group">
+				  <li class="list-group-item" th:each="entry : ${woodmancupevents}">
+				    <th:block th:with="event=${config.data.getWoodmanCupEvent(entry.event)}">
+				    
+					    <span class="badge" th:text="${#dates.format(event.date, 'yyyy-MM-dd')}"></span>
+				    	<a th:href="${content.rootpath+entry.uri}" th:text='${event.venue.name}' ></a>
+				    </th:block>
+				  </li>
+				</ul>
+				
+				
+			</div>
+		  
+		  </div>
+		  
+		</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+  </body>
+</html>
