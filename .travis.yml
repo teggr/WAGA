@@ -1,3 +1,8 @@
+sudo: false
 language: java
-jdk: oraclejdk8
-intall: "mvn clean package site -B -V -Dgithub.global.userName=${github_username} -Dgithub.global.password=${github_password}"
+jdk: 
+  - oraclejdk8
+# noop to override travis default
+install: true
+script:
+  - mvn clean package site -B -V -Dgithub.global.userName=${github_username} -Dgithub.global.password=${github_password}
