@@ -28,7 +28,7 @@ public enum Players {
 	ego(Player.with("Bryan", "Egan", 24, "", Utils.DEFAULT_JOIN_DATE)),
 	mannix(Player.with("James", "Mannix", 28, "", Utils.DEFAULT_JOIN_DATE)),
 	dan(Player.with("Dan", "Kindell", 24, "", Utils.DEFAULT_JOIN_DATE)),
-	steve(Player.with("Steve", "Madden", 15, "", Utils.DEFAULT_JOIN_DATE)),
+	steve(Player.with("Steve", "Orford", 15, "", Utils.DEFAULT_JOIN_DATE)),
 	neil(Player.with("Neil", "Day", 18, "", Utils.DEFAULT_JOIN_DATE)),
 	sean(Player.with("Sean", "Casey", 24, "", Utils.DEFAULT_JOIN_DATE)),
 	apps(Player.with("Tom", "Apperley", 12, "https://lh3.googleusercontent.com/-cIxQxa_T_BI/UWkfQFOlMhI/AAAAAAAAAhM/I2wHR43asoY/s576-Ic42/IMG_1390.JPG", Utils.DEFAULT_JOIN_DATE).setCurrent()),
