@@ -64,9 +64,9 @@ public class ManorOfGroves2012 extends WoodmanCupEventDataProvider {
 
 	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
-		addMatch(new MatchBuilder().teamOf(Players.mannix, Players.greg).beat(Players.teggy, Players.henso), list);
+		addMatch(new MatchBuilder().teamOf(Players.apps, Players.maddog).beat(Players.teggy, Players.henso), list);
 		addMatch(new MatchBuilder().teamOf(Players.east, Players.snakes).beat(Players.sturdy, Players.coco), list);
-		addMatch(new MatchBuilder().teamOf(Players.apps, Players.maddog).lostTo(Players.foist, Players.brad), list);
+		addMatch(new MatchBuilder().teamOf(Players.mannix, Players.greg).lostTo(Players.foist, Players.brad), list);
 		return list;
 	}
 
