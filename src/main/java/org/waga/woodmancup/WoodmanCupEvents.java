@@ -21,6 +21,7 @@ public class WoodmanCupEvents {
 	public static List<WoodmanCupEvent> getEvents() {
 
 		List<WoodmanCupEventDataProvider> providers = Arrays.asList(
+				new EastSussex2016(),
 				new Oxfordshire2015(), 
 				new Belfry2014(), 
 				new EssexGc2013(),
