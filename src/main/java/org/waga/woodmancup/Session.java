@@ -10,7 +10,7 @@ public class Session {
 	}
 
 	public static enum Format {
-		PAIRS, SINGLES;
+		PAIRS, SINGLES, TEAM;
 	}
 
 	private List<Match> matches = new ArrayList<>();

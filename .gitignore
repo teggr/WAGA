@@ -11,3 +11,4 @@ target/
 
 .factorypath
 /.apt_generated/
+.vscode/settings.json

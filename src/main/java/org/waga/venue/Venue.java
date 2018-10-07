@@ -2,18 +2,16 @@ package org.waga.venue;
 
 public class Venue {
 
-	public static Venue with(String name, String link, String googleMapLink, String imageUrl) {
+	public static Venue with(String name, String link, String imageUrl) {
 		Venue venue = new Venue();
 		venue.name = name;
 		venue.link = link;
-		venue.googleMapLink = googleMapLink;
 		venue.imageUrl = imageUrl;
 		return venue;
 	}
 
 	private String name;
 	private String link;
-	private String googleMapLink;
 	private String imageUrl;
 
 	public String getName() {
@@ -32,14 +30,6 @@ public class Venue {
 		this.link = link;
 	}
 
-	public String getGoogleMapLink() {
-		return googleMapLink;
-	}
-
-	public void setGoogleMapLink(String googleMapLink) {
-		this.googleMapLink = googleMapLink;
-	}
-
 	public String getImageUrl() {
 		return imageUrl;
 	}
@@ -50,8 +40,7 @@ public class Venue {
 
 	@Override
 	public String toString() {
-		return "Venue [name=" + name + ", link=" + link + ", googleMapLink=" + googleMapLink + ", imageUrl=" + imageUrl
-				+ "]";
+		return "Venue [name=" + name + ", link=" + link + ", imageUrl=" + imageUrl + "]";
 	}
 
 }

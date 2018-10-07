@@ -1,91 +1,56 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/head.thyme::head"/>
-	<body onload="prettyPrint()">
-	
-	<div th:replace="fragments/header.thyme::header"></div>
-	
-	<div class="container-fluid">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
   		
   		<div class="row">
 
-		  <div class="col-md-8" >
-		  	<h2 th:if="${published_posts.size() == 0}">No news yet. Check back later</h2>
+		  <div class="col-md-12" >
+		  	<h2>Hall Of Fame</h2>
 		  
-		  	<th:block th:each="post : ${published_posts}">
-		  
-		  		<div class="row">
-			     <div class="col-sm-6 col-md-4">
-				    <a  th:href="${post.uri}">
-				      <img class="news-img" th:src="${post.image}" alt="..."></img>
-				    </a>
-				  </div>
-			  <div class="col-sm-6 col-md-8">
-				    <h4 class="media-heading" ><a th:href="${post.uri}" th:text="${post.title}">Media heading</a></h4>
-				    <p th:utext="${post.body}"></p>
-				    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span th:text="${config.helper.elapsedTime(post.date)}"></span> | <span th:text="${post.tags}"></span></p>
-				  </div>
-				</div>
-				
-				<hr/>
-				
-			 </th:block>
+		  		<table class="table  table-condensed  table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>Pos</td>
+							<td>Player</td>
+							<td>Appearances</td>
+							<td>Victories</td>
+							<td>AWC</td>
+							<td>Putt</td>
+							<td>W</td>
+							<td>D</td>
+							<td>L</td>
+							<td>Total</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="entry,status : ${config.data.hallOfFame}">
+							<td th:text="${status.count}"></td>
+							<td th:text="${entry.player.fullName}"></td>
+							<td th:text="${entry.appearances}"></td>
+							<td th:text="${entry.victories}"></td>
+							<td th:text="${entry.alternativeWoodmanCupWins}"></td>
+							<td th:text="${entry.puttOffWins}"></td>
+							<td th:text="${entry.wins}"></td>
+							<td th:text="${entry.draws}"></td>
+							<td th:text="${entry.losses}"></td>
+							<td th:text="${entry.points}"></td>
+						</tr>
+					</tbody>
+				</table>
+				  		
 			 
 			 </div>
 			 
-			 <div class="col-md-4">
-		  		<h4>Race to Ciao Bella Leaderboard</h4>
-		  		<table class="table table-condensed">
-				  <thead>
-				  	<tr>
-				  		<th>Rank</th>
-				  		<th>Player</th>
-				  		<th>Played</th>
-				  		<th>Points</th>
-				  	</tr>
-				  </thead>
-				  <tbody>
-				  	<tr th:each="ranking : ${config.data.currentRaceToCiaoBellaSeasonStats.rankings}">
-				  		<td th:text="${ranking.position}"></td>
-				  		<td th:text="${ranking.player}"></td>
-				  		<td th:text="${ranking.played}"></td>
-				  		<td th:text="${ranking.points}"></td>
-				  	</tr>
-				  </tbody>
-				</table>
-							
-				<hr/>
-				
-				<!--<div th:replace="fragments/lasttournament :: table"></div>-->
-				
-				<hr/>
-				
-<!-- 				<h4>Woodman Cup Hall Of Fame</h4> -->
-<!-- 		  		<table class="table table-condensed"> -->
-<!-- 				  <thead> -->
-<!-- 				  	<tr> -->
-<!-- 				  		<th>Position</th> -->
-<!-- 				  		<th>Player</th> -->
-<!-- 				  		<th>Played</th> -->
-<!-- 				  		<th>Points</th> -->
-<!-- 				  	</tr> -->
-<!-- 				  </thead> -->
-<!-- 				  <tbody> -->
-<!-- 				  	<tr th:each="leader : ${wcLeaders}"> -->
-<!-- 				  		<td th:text="${leader.position}"></td> -->
-<!-- 				  		<td th:text="${leader.player}"></td> -->
-<!-- 				  		<td th:text="${leader.played}"></td> -->
-<!-- 				  		<td th:text="${leader.points}"></td> -->
-<!-- 				  	</tr> -->
-<!-- 				  </tbody> -->
-<!-- 				</table> -->
-			</div>
-		  </div>
+		  </div>		  
 		  
 		</div>
 	
 	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
 	
-    </body>
+  </body>
 </html>

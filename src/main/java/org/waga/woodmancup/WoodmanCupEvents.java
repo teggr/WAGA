@@ -6,14 +6,17 @@ import java.util.List;
 
 import org.waga.woodmancup.tournaments.Abbotsley2007;
 import org.waga.woodmancup.tournaments.Belfry2014;
+import org.waga.woodmancup.tournaments.Belfry2018;
 import org.waga.woodmancup.tournaments.Bidford2005;
 import org.waga.woodmancup.tournaments.Donnington2009;
 import org.waga.woodmancup.tournaments.Dorset2006;
+import org.waga.woodmancup.tournaments.EastSussex2016;
 import org.waga.woodmancup.tournaments.EssexGc2013;
 import org.waga.woodmancup.tournaments.Hastings2008;
 import org.waga.woodmancup.tournaments.ManorOfGroves2012;
 import org.waga.woodmancup.tournaments.OldThorns2010;
 import org.waga.woodmancup.tournaments.Oxfordshire2015;
+import org.waga.woodmancup.tournaments.Princes2017;
 import org.waga.woodmancup.tournaments.Staverton2011;
 
 public class WoodmanCupEvents {
@@ -21,6 +24,8 @@ public class WoodmanCupEvents {
 	public static List<WoodmanCupEvent> getEvents() {
 
 		List<WoodmanCupEventDataProvider> providers = Arrays.asList(
+				new Belfry2018(),
+				new Princes2017(),
 				new EastSussex2016(),
 				new Oxfordshire2015(), 
 				new Belfry2014(), 
