@@ -50,7 +50,7 @@ public class EastSussex2016 extends WoodmanCupEventDataProvider {
 		List<Match> list = new ArrayList<>();
 		addMatch(new MatchBuilder().teamOf(Players.maddog).beat(Players.brad), list);
 		addMatch(new MatchBuilder().teamOf(Players.snakes).beat(Players.sturdy), list);
-		addMatch(new MatchBuilder().teamOf(Players.foist).beat(Players.apps), list);
+		addMatch(new MatchBuilder().teamOf(Players.foist).drewWith(Players.apps), list);
 		addMatch(new MatchBuilder().teamOf(Players.teggy).lostTo(Players.east), list);
 		return list;
 	}
