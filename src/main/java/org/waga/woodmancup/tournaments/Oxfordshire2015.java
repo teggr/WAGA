@@ -26,7 +26,7 @@ public class Oxfordshire2015 extends WoodmanCupEventDataProvider {
 		addPlayer(team1, Players.snakes);
 		addPlayer(team1, Players.foist);
 
-		Team team2 = Team.newInstance("Angry Bears", "cycling", Players.sturdy);
+		Team team2 = Team.newInstance("Tits'n'Guts", "cycling", Players.sturdy);
 		addPlayer(team2, Players.sturdy);
 		addPlayer(team2, Players.east);
 		addPlayer(team2, Players.brad);
