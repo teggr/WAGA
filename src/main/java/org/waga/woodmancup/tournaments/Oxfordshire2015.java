@@ -20,13 +20,13 @@ public class Oxfordshire2015 extends WoodmanCupEventDataProvider {
 	@Override
 	public void registerEvent(List<WoodmanCupEvent> list) {
 
-		Team team1 = Team.newInstanceAsWinner("team2", "brown", Players.sturdy);
+		Team team1 = Team.newInstanceAsWinner("Days of the shitters", "brown", Players.maddog);
 		addPlayer(team1, Players.teggy);
 		addPlayer(team1, Players.maddog);
 		addPlayer(team1, Players.snakes);
 		addPlayer(team1, Players.foist);
 
-		Team team2 = Team.newInstance("team1", "cycling", Players.snakes);
+		Team team2 = Team.newInstance("Angry Bears", "cycling", Players.sturdy);
 		addPlayer(team2, Players.sturdy);
 		addPlayer(team2, Players.east);
 		addPlayer(team2, Players.brad);

@@ -20,13 +20,13 @@ public class Princes2017 extends WoodmanCupEventDataProvider {
 	@Override
 	public void registerEvent(List<WoodmanCupEvent> list) {
 
-		Team team1 = Team.newInstanceAsWinner("Snakes", "Various", Players.snakes);
+		Team team1 = Team.newInstanceAsWinner("Marzifans", "Various", Players.snakes);
 		addPlayer(team1, Players.snakes);
 		addPlayer(team1, Players.teggy);
 		addPlayer(team1, Players.east);
 		addPlayer(team1, Players.ghost);
 
-		Team team2 = Team.newInstance("Mad", "Black", Players.maddog);
+		Team team2 = Team.newInstance("Sea of sausage", "Black", Players.maddog);
 		addPlayer(team2, Players.foist);
 		addPlayer(team2, Players.apps);
 		addPlayer(team2, Players.maddog);
