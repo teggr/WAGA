@@ -27,7 +27,7 @@ public enum Players {
 	mannix(Player.with("James", "Mannix")),
 	dan(Player.with("Dan", "Kindell")),
 	steve(Player.with("Steve", "Orford")),
-	neil(Player.with("Neil", "Day")),
+	neil(Player.with("Neil", "Stanley")),
 	sean(Player.with("Sean", "Casey")),
 	apps(Player.with("Tom", "Apperley")),
 	maddog(Player.with("Andrew", "Stevens")),

@@ -34,6 +34,7 @@ public class Princes2017 extends WoodmanCupEventDataProvider {
 
 		WoodmanCupEvent wc = WoodmanCupEvent.newInstance(Venues.princes.asVenue(), Utils.asDate("2017-09-02"), team1,
 				team2);
+		wc.setPuttOffWinner(Players.foist);
 		session(Session.Type.FRIDAY, Session.Format.PAIRS, session1Matches(), wc);
 		session(Session.Type.SATURDAY, Session.Format.TEAM, session2Matches(), wc);
 		session(Session.Type.SUNDAY, Session.Format.SINGLES, session3Matches(), wc);
