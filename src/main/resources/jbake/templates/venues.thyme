@@ -19,7 +19,7 @@
 		  
 			  
 			    <a>
-			      <img style="width: 100%;" class="venue-img" th:src="${venue.imageUrl}" alt="..."></img>
+			      <img style="width: 100%;" class="venue-img" th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:src="${rootpath}+${venue.imageUrl}" alt="..."></img>
 			    </a>
 			  
 			

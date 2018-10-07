@@ -5,7 +5,7 @@ public enum Venues {
 	oldthorns(Venue.with("Old Thorns Manor Hotel", "http://www.oldthorns.com/", 
 			"/images/oldthorns.jpg")),
 	sedlescombe(Venue.with("Sedlescombe Golf Club", "http://www.sedlescombegolfclub.co.uk/", 
-			"/images/sedlescombe.jpg")),
+			"/images/seldescombe.jpg")),
 	staverton(Venue.with("Staverton Park Golf Course", "http://www.devere.co.uk/our-locations/staverton-park/golf.html",
 			"/images/staverton.jpg")),
 	oxfordshire(Venue.with("The Oxfordshire", "https://www.theoxfordshire.com/", 
