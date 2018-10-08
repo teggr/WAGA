@@ -27,8 +27,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li th:classappend="${'home'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'index.html'"><span>Home</span></a></li>
-					<li th:classappend="${'race'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'woodmancup/home.html'"><span>Woodman Cup</span></a></li>									
+					<li th:classappend="${'woodman'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'woodmancup/home.html'"><span>Woodman Cup</span></a></li>									
 					<li th:classappend="${'venues'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'venues/venues.html'"><span>Venues</span></a></li>
+					<li th:classappend="${'players'.equals(location)}? 'active'"><a th:with="rootpath=(${content.rootpath != null} ? ${content.rootpath} : '')" th:href="${rootpath}+'players/players.html'"><span>Players</span></a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

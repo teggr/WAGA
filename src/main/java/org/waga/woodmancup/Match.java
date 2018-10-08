@@ -1,6 +1,7 @@
 package org.waga.woodmancup;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -122,13 +123,29 @@ public class Match {
 		return teamA.contains(player) || teamB.contains(player);
 	}
 
+	public List<Player> getPartnerNames(Player player) {
+		if (teamA.contains(player)) {
+			return teamA.stream().filter(p -> p != player).collect(Collectors.toList());
+		} else {
+			return teamB.stream().filter(p -> p != player).collect(Collectors.toList());
+		}
+	}
+
+	public List<Player> getOpponentNames(Player player) {
+		if (teamA.contains(player)) {
+			return teamB.stream().collect(Collectors.toList());
+		} else {
+			return teamA.stream().collect(Collectors.toList());
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Match [teamA=" + teamA + ", teamAResult=" + teamAResult + ", teamB=" + teamB + "]";
 	}
 
 	public double getTeamPoints(Team team) {
-		if( team.isPlayer(teamA) ) {
+		if (team.isPlayer(teamA)) {
 			return getTeamAPoints();
 		} else {
 			return getTeamBPoints();

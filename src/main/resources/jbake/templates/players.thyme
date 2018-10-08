@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:include="fragments/head.thyme::head"></head>
+  <body>
+  	
+  	<div th:replace="fragments/header.thyme::header"></div>
+  	
+  	<div class="container-fluid">
+  	
+  		<div class="row" th:if="${config.data.playerStats.size() == 0}">
+		  <div class="col-md-8">
+		  	<h2>No players yet. Check back later</h2>
+		  	
+		  </div>
+		</div>
+  	
+  		<th:block  th:each="stats : ${config.data.playerStats}">
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2 th:text="${stats.player.fullName}"></h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr th:each="record : ${stats.playingRecords}">
+			  			<td th:text="${record.player.fullName}"></td>
+			  			<td th:text="${record.wins}"></td>
+			  			<td th:text="${record.losses}"></td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr th:each="match : ${stats.matches}">
+			  			<td th:text="${config.helper.teamList(match.getPartnerNames(stats.player))}"></td>
+			  			<td th:text="${match.getResult(stats.player)}"></td>
+			  			<td th:text="${config.helper.teamList(match.getOpponentNames(stats.player))}"></td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr/>
+		</th:block>
+	</div>
+	
+	<th:block th:include="fragments/scripts.thyme::scripts"></th:block>
+	
+  </body>
+</html>

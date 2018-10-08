@@ -14,6 +14,14 @@ import org.waga.woodmancup.Team;
 
 public class ViewHelper {
 
+	public String teamList(List<Player> players) {
+		if (players.isEmpty()) {
+			return "";
+		} else {
+			return players.stream().map(Player::getFullName).collect(Collectors.joining(","));
+		}
+	}
+
 	public String elapsedTime(Date createdDate) {
 
 		LocalDate localDate = createdDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

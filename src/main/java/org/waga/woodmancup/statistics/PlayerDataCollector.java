@@ -1,7 +1,10 @@
 package org.waga.woodmancup.statistics;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.waga.player.Player;
 import org.waga.woodmancup.Match;
@@ -13,6 +16,9 @@ public class PlayerDataCollector {
 
 	private Player player;
 	private List<WoodmanCupRecord> records = new ArrayList<>();
+	private List<Match> matchList = new ArrayList<>();
+	private Date lastAttended;
+	private Map<Player, PlayingRecord> playingRecords = new HashMap<>();
 
 	public PlayerDataCollector(Player player) {
 		this.player = player;
@@ -24,14 +30,21 @@ public class PlayerDataCollector {
 
 	public void aggregate(WoodmanCupEvent event) {
 		if (event.wasAttendedBy(player)) {
+			calculateLastAttended(event);
 			WoodmanCupRecord record = new WoodmanCupRecord();
 			List<Session> sessions = event.getSessions();
 			for (Session session : sessions) {
 				List<Match> matches = session.getMatches();
 				for (Match match : matches) {
-					if( match.withPlayer(player) ) {
+					if (match.withPlayer(player)) {
 						Result result = match.getResult(player);
 						record.addResult(result);
+						matchList.add(match);
+						if (result == Result.BEAT) {
+							recordVictoryAgainstPlayers(match.getOpponentNames(player));
+						} else if (result == Result.LOST_TO) {
+							recordLossAgainstPlayers(match.getOpponentNames(player));
+						}
 					}
 				}
 			}
@@ -45,6 +58,38 @@ public class PlayerDataCollector {
 				record.addWoodmanCupWin();
 			}
 			records.add(record);
+		}
+	}
+
+	private void recordLossAgainstPlayers(List<Player> opponentNames) {
+		for (Player opponent : opponentNames) {
+			PlayingRecord playingRecord = playingRecords.get(opponent);
+			if (playingRecord == null) {
+				playingRecord = new PlayingRecord(opponent);
+				playingRecords.put(opponent, playingRecord);
+			}
+			playingRecord.recordLoss();
+		}
+	}
+
+	private void recordVictoryAgainstPlayers(List<Player> opponentNames) {
+		for (Player opponent : opponentNames) {
+			PlayingRecord playingRecord = playingRecords.get(opponent);
+			if (playingRecord == null) {
+				playingRecord = new PlayingRecord(opponent);
+				playingRecords.put(opponent, playingRecord);
+			}
+			playingRecord.recordWin();
+		}
+	}
+
+	private void calculateLastAttended(WoodmanCupEvent event) {
+		if (lastAttended == null) {
+			lastAttended = event.getDate();
+		} else {
+			if (event.getDate().after(lastAttended)) {
+				lastAttended = event.getDate();
+			}
 		}
 	}
 
@@ -64,6 +109,14 @@ public class PlayerDataCollector {
 	@Override
 	public String toString() {
 		return "PlayerDataCollector [player=" + player.getFullName() + "]";
+	}
+
+	public boolean isPlayer(Player p) {
+		return p == player;
+	}
+
+	public PlayerStats getStats() {
+		return new PlayerStats(player, lastAttended, matchList, playingRecords.values());
 	}
 
 }

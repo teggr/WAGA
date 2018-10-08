@@ -1,8 +1,17 @@
 package org.waga.woodmancup.statistics;
 
+import java.util.Comparator;
+
 import org.waga.player.Player;
 
 public class HallOfFameEntry {
+	
+	public static Comparator<HallOfFameEntry> POINTS_ORDER = new Comparator<HallOfFameEntry>() {
+		@Override
+		public int compare(HallOfFameEntry o1, HallOfFameEntry o2) {
+			return o2.getPoints() - o1.getPoints();
+		}
+	};
 
 	private int victories = 0;
 	private int alternativeWoodmanCupWins = 0;

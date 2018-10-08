@@ -1,5 +1,9 @@
 package org.waga.player;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum Players {
 
 	brad(Player.with("Brad", "Le Riche")),
@@ -42,6 +46,10 @@ public enum Players {
 
 	public Player asPlayer() {
 		return player;
+	}
+
+	public static List<Player> asPlayers() {
+		return Arrays.asList(Players.values()).stream().map(p -> p.asPlayer()).collect(Collectors.toList());
 	}
 
 }

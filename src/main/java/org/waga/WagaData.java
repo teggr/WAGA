@@ -2,14 +2,14 @@ package org.waga;
 
 import java.util.List;
 
-import org.waga.player.Player;
 import org.waga.venue.Venue;
 import org.waga.woodmancup.WoodmanCupEvent;
 import org.waga.woodmancup.statistics.HallOfFameEntry;
+import org.waga.woodmancup.statistics.PlayerStats;
 
 public interface WagaData {
 	
-	List<Player> getPlayers();
+	List<PlayerStats> getPlayerStats();
 	
 	List<Venue> getVenues();
 	

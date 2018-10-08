@@ -22,7 +22,12 @@ public class Aggy implements WoodmanCupEventStatsAggregator {
 	}
 
 	public List<HallOfFameEntry> getEntries() {
-		return collectors.stream().map(c -> c.toHallOfFameEntry()).sorted((h1, h2) -> h2.getPoints() - h1.getPoints())
+		return collectors.stream().map(PlayerDataCollector::toHallOfFameEntry).sorted(HallOfFameEntry.POINTS_ORDER)
+				.collect(Collectors.toList());
+	}
+
+	public List<PlayerStats> getPlayerStats() {
+		return collectors.stream().map(PlayerDataCollector::getStats).sorted(PlayerStats.RECENT_PLAYER_STATS)
 				.collect(Collectors.toList());
 	}
 
