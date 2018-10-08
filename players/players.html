@@ -1,0 +1,5311 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Players</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css">
+    
+    	.waga-tab-content {
+    		position: relative; 
+    		min-height: 1px; 
+    		padding: 15px 15px;
+    	}
+    	
+    	.navbar {
+			background-color: #ffdf43;
+			border-top-color: rgb(198, 175, 54);
+			border-bottom-color: black;
+			border-radius: 0px;
+			min-height: 0;
+		}
+		
+		.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		color: black;
+    		background-color: #ffdf43;
+		}
+		
+		.navbar-default .btn-link {
+    color: black;
+}
+		
+		.navbar-default .navbar-nav>li>a {
+			    color: black;
+			}
+			
+			.navbar-default .navbar-toggle .icon-bar {
+    background-color: black;
+}
+			
+			.navbar-default .navbar-toggle {
+    border-color: black;
+}
+			
+			.navbar-default .navbar-brand {
+    color: black;
+}
+
+.navbar-default .navbar-toggle {
+    color: black;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: black;
+}
+			
+			.navbar-brand {
+			    background-color: #ffdf43;
+			border-bottom-color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+			}
+			
+			.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: black;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: black;
+}
+
+			.navbar-default .navbar-toggle:focus .icon-bar, .navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: white;
+}
+
+	.player-img, .venue-img, .news-img {
+		width: 100%;
+	}
+
+		@media (max-width: 568px) {
+			.navbar {
+				margin-bottom: 0px;
+			}
+		}
+			
+			@media (min-width: 768px) {
+			
+			.navbar-default .navbar-nav>li>a>span {
+			    padding-left: 14px;
+			    padding-right: 14px;
+			    border-right-width: 1px;
+			    border-right-style: solid;
+			    border-right-color: rgb(198, 175, 54);
+			    border-left-width: 1px;
+			    border-left-style: solid;
+			    border-left-color: rgb(198, 175, 54);
+			}
+				.navbar-nav>li>a {
+				    padding-top: 4px;
+				    padding-bottom: 4px;
+				}
+				
+				
+		.navbar-default .navbar-nav>li>a {
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+			
+			.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    		border-bottom-width: 4px;
+    		border-bottom-color: black;
+    		border-bottom-style: solid;
+		}
+		
+			.navbar-default .btn-link {
+			    padding-top: 0px;
+			    padding-bottom: 0px;
+			    padding-left: 14px;
+			    padding-right: 14px;
+			}
+			
+			.navbar-default .navbar-form {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			    padding-top: 3px;
+			    padding-bottom: 3px;
+			    padding-left: 0px;
+			    padding-right: 0px;
+			}
+				
+				}
+
+		
+		.brand-header {
+			background-color: #ffdf43;
+			border-bottom-color: black;
+			color: black;
+			font-family: Helvetica, Arial, freesans, sans-serif;
+		}
+		
+		.brand-header a {
+			color: black;
+			text-decoration: none;
+		}
+		
+		.brand-header .tag-line {
+			vertical-align: top;
+			font-size: 10px;
+		}
+    
+    </style>
+    
+  </head>
+  <body>
+  	
+  	<body>
+
+	<div class="container-fluid hidden-xs brand-header">
+			<h1><a class="" href="../index.html">WAGA</a> <a class="tag-line" href="../index.html">HOME OF THE WOODMAN CUP</a></h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm hidden-md hidden-lg" href="../index.html">WAGA</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="../index.html"><span>Home</span></a></li>
+					<li><a href="../woodmancup/home.html"><span>Woodman Cup</span></a></li>									
+					<li><a href="../venues/venues.html"><span>Venues</span></a></li>
+					<li><a href="../players/players.html"><span>Players</span></a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+</body>
+  	
+  	<div class="container-fluid">
+  	
+  		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Andrew Easter</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>9</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>3</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Harry Bridge</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>3</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>4</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>4</td>
+			  			<td>5</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>5</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Mark Shifty</td>
+			  			<td>3</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>6</td>
+			  			<td>6</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Neil Stanley</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>BEAT</td>
+			  			<td>Michael Coe,Alisdair Putt</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Harry Bridge</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Harry Bridge</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Ian MacDonald,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Mark Shifty,Nick Kemp</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Mark Shifty,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Mark Shifty</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Andrew Stevens</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>6</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>4</td>
+			  			<td>9</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Steve Orford</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>3</td>
+			  			<td>5</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Sean Casey</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>0</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Neil Stanley</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>3</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Neil Stanley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Sean Casey,Steve Orford</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Sean Casey</td>
+			  		</tr>
+			  		<tr>
+			  			<td>James Mannix</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Mitchell,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>LOST_TO</td>
+			  			<td>Rich Goulden,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,Vien Phan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Brad Le Riche</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>6</td>
+			  			<td>10</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>4</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>James Mannix</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>6</td>
+			  			<td>5</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>2</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Dan Kindell</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>2</td>
+			  			<td>9</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>4</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>3</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Foister,Andrew Easter,Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister,Andrew Easter,Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Richard Foister,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Richard Foister,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Sean Casey</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Neil Stanley</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Dan Kindell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>James Mannix,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Harry Bridge</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Mark Shifty</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>David Tryhorn</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>3</td>
+			  			<td>6</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>3</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>5</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>10</td>
+			  			<td>6</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>1</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Sean Casey</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>8</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>2</td>
+			  			<td>3</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Easter,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Brad Le Riche,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Sean Casey,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Gavin Reid,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Ian MacDonald,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Patrick Duckworth</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg,Tom Apperley,David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,Tom Apperley,David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Richard Foister</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>3</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>6</td>
+			  			<td>6</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>4</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>James Mannix</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>2</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>5</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ghost (Ghost) Sturdy</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Neil Stanley</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>2</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Patrick Duckworth</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Brad Le Riche,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Brad Le Riche,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Ghost (Ghost) Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Neil Stanley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Dan Kindell</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Neil Stanley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Stevens,James Mannix</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>James Mannix,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Robin Tegg</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>5</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>3</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tim O&#39;Shea</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>5</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>2</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>James Mannix</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>5</td>
+			  			<td>6</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Vien Phan</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>2</td>
+			  			<td>10</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>4</td>
+			  			<td>5</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley,Patrick Duckworth,David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Patrick Duckworth</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn,Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn,Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Dan Kindell</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,Steve Orford</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>James Mannix</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Alisdair Putt,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Gavin Reid,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>Tim O&#39;Shea,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tim O&#39;Shea</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Tom Apperley,Vien Phan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Vien Phan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Nick Kemp</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Tom Apperley</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>4</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>8</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>5</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Steve Orford</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>9</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>10</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ghost (Ghost) Sturdy</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Sean Casey</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>4</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg,Patrick Duckworth,David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg,Patrick Duckworth,David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister,Andrew Easter,Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Easter,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister,Brad Le Riche,Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Ghost (Ghost) Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Sean Casey,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Sean Casey,Steve Orford</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Steve Orford</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Alisdair Putt,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Vien Phan</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Ghost (Ghost) Sturdy</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Richard Sturdy</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>4</td>
+			  			<td>5</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>1</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>1</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>3</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Vien Phan</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>3</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>4</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Brad Le Riche,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Steve Orford</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Dan Kindell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Stevens,James Mannix</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,Alisdair Putt</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Mitchell,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Mitchell,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>BEAT</td>
+			  			<td>Vien Phan,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Ian MacDonald</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Dan Kindell</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Neil Stanley</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,Steve Orford</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Neil Stanley</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Neil Stanley</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Neil Stanley</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Dan Kindell</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Dan Kindell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Dan Kindell</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Sean Casey</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Steve Orford</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Steve Orford</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Dan Kindell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Sean Casey</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Greg Williams</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tim O&#39;Shea</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>0</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>3</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>0</td>
+			  			<td>4</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td>James Mannix</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>LOST_TO</td>
+			  			<td>Michael Coe,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Alisdair Putt</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>LOST_TO</td>
+			  			<td>Christian Dennison,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Tim O&#39;Shea,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Harry Bridge</td>
+			  			<td>BEAT</td>
+			  			<td>Tim O&#39;Shea,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Vien Phan</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Nick Kemp</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>James Mannix</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Richard Sturdy,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Jon Henson</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>4</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>0</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Mark Shifty</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,Alisdair Putt</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Alisdair Putt,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Mitchell,Andrew Easter</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tim O&#39;Shea</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Mark Shifty,Nick Kemp</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Nick Kemp</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Michael Coe</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Christian Dennison</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Mitchell</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Alisdair Putt</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Gavin Reid</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>2</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>3</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Rich Goulden,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Brad Le Riche,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>BEAT</td>
+			  			<td>Christian Dennison,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Christian Dennison</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Andrew Mitchell</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>3</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Harry Bridge</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>3</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Mark Shifty</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Alisdair Putt,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Michael Coe</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,Harry Bridge</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tim O&#39;Shea</td>
+			  			<td>LOST_TO</td>
+			  			<td>Harry Bridge,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>DREW_WITH</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Mark Shifty,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Christian Dennison</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Michael Coe,Brad Le Riche</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Foister,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Damien Kiernander,Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Gavin Reid</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Rich Goulden</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>3</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Michael Coe</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Alisdair Putt</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>BEAT</td>
+			  			<td>Michael Coe,Alisdair Putt</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Christian Dennison,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Bryan Egan</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Bryan Egan</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Rich Goulden</td>
+			  			<td>2</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Damien Kiernander</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Jon Henson,Richard Foister</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>David Tryhorn,Robin Tegg</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>BEAT</td>
+			  			<td>Greg Williams,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Rich Goulden</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Stevens</td>
+			  			<td>LOST_TO</td>
+			  			<td>Tom Apperley,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson,Damien Kiernander</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Damien Kiernander</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Bryan Egan</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>4</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Christian Dennison</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Foister</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Foister,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Gavin Reid</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Gavin Reid</td>
+			  			<td>BEAT</td>
+			  			<td>Christian Dennison,Richard Sturdy</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,Bryan Egan</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Harry Bridge</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Tim O&#39;Shea</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>2</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>BEAT</td>
+			  			<td>Tim O&#39;Shea,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Tim O&#39;Shea</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Harry Bridge</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>LOST_TO</td>
+			  			<td>Harry Bridge,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Ian MacDonald</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>David Tryhorn</td>
+			  			<td>1</td>
+			  			<td>2</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>1</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Vien Phan</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>BEAT</td>
+			  			<td>Vien Phan,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>BEAT</td>
+			  			<td>Tom Apperley</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Brad Le Riche,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>BEAT</td>
+			  			<td>Richard Sturdy,David Tryhorn</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Vien Phan</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Richard Sturdy</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Ian MacDonald</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>LOST_TO</td>
+			  			<td>Richard Sturdy,Ian MacDonald</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>DREW_WITH</td>
+			  			<td>Robin Tegg,Andrew Stevens</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Robin Tegg</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Mark Shifty</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>3</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Mitchell</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Nick Kemp</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Brad Le Riche</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Andrew Mitchell</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+  	
+  		
+  		<div class="row">
+		  <div class="col-md-4">
+		  	<h2>Nick Kemp</h2>
+		  	<h3>Playing Record vs</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Player</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Robin Tegg</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Andrew Easter</td>
+			  			<td>0</td>
+			  			<td>1</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Greg Williams</td>
+			  			<td>1</td>
+			  			<td>0</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Jon Henson</td>
+			  			<td>0</td>
+			  			<td>2</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		  <div class="col-md-4">
+		  	<h3>Matches</h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Played with</th>
+		  				<th>Result</th>
+		  				<th>Against</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr>
+			  			<td>Mark Shifty</td>
+			  			<td>LOST_TO</td>
+			  			<td>Andrew Easter,Jon Henson</td>
+			  		</tr>
+			  		<tr>
+			  			<td>Tom Apperley</td>
+			  			<td>BEAT</td>
+			  			<td>Robin Tegg,Greg Williams</td>
+			  		</tr>
+			  		<tr>
+			  			<td></td>
+			  			<td>LOST_TO</td>
+			  			<td>Jon Henson</td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
+		  </div>
+		</div>
+			<hr />
+		
+	</div>
+	
+	
+  	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.8/chartist.min.js"></script>
+  
+  
+	
+  </body>
+</html>
