@@ -28,7 +28,7 @@
 		  			</tr>
 		  		</thead>
 		  		<tbody>
-			  		<tr th:each="record : ${stats.playingRecords}">
+			  		<tr th:each="record : ${#lists.sort(stats.playingRecords)}">
 			  			<td th:text="${record.player.fullName}"></td>
 			  			<td th:text="${record.wins}"></td>
 			  			<td th:text="${record.losses}"></td>
@@ -45,7 +45,7 @@
 		  			</tr>
 		  		</thead>
 		  		<tbody>
-			  		<tr th:each="record : ${stats.formatRecords}">
+			  		<tr th:each="record : ${#lists.sort(stats.formatRecords)}">
 			  			<td th:text="${record.format}"></td>
 			  			<td th:text="${record.wins}"></td>
 			  			<td th:text="${record.losses}"></td>
@@ -62,7 +62,7 @@
 		  			</tr>
 		  		</thead>
 		  		<tbody>
-			  		<tr th:each="record : ${stats.sessionRecords}">
+			  		<tr th:each="record : ${#lists.sort(stats.sessionRecords)}">
 			  			<td th:text="${record.type}"></td>
 			  			<td th:text="${record.wins}"></td>
 			  			<td th:text="${record.losses}"></td>

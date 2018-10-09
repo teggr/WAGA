@@ -3,7 +3,7 @@ package org.waga.woodmancup.statistics;
 import org.waga.woodmancup.Session;
 import org.waga.woodmancup.Session.Format;
 
-public class SessionRecord {
+public class SessionRecord implements Comparable<SessionRecord> {
 
 	private int losses = 0;
 	private int wins = 0;
@@ -34,4 +34,9 @@ public class SessionRecord {
 		return wins;
 	}
 
+	@Override
+	public int compareTo(SessionRecord o) {
+		return type.ordinal() - o.type.ordinal();
+	}
+	
 }

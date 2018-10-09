@@ -73,14 +73,14 @@ public class PlayerDataCollector {
 			formatRecords.put(session.getFormat(), formatRecord);
 		}
 		formatRecord.recordLoss();
-		
+
 		SessionRecord sessionRecord = sessionRecords.get(session.getType());
 		if (sessionRecord == null) {
 			sessionRecord = new SessionRecord(session.getType());
 			sessionRecords.put(session.getType(), sessionRecord);
 		}
 		sessionRecord.recordLoss();
-		
+
 	}
 
 	private void recordSessionVictory(Session session) {
@@ -90,14 +90,14 @@ public class PlayerDataCollector {
 			formatRecords.put(session.getFormat(), formatRecord);
 		}
 		formatRecord.recordWin();
-		
+
 		SessionRecord sessionRecord = sessionRecords.get(session.getType());
 		if (sessionRecord == null) {
 			sessionRecord = new SessionRecord(session.getType());
 			sessionRecords.put(session.getType(), sessionRecord);
 		}
 		sessionRecord.recordWin();
-		
+
 	}
 
 	private void recordLossAgainstPlayers(Match match) {
@@ -155,8 +155,8 @@ public class PlayerDataCollector {
 	}
 
 	public PlayerStats getStats() {
-		return new PlayerStats(player, lastAttended, matchList, playingRecords.values(), formatRecords.values(),
-				sessionRecords.values());
+		return new PlayerStats(player, lastAttended, matchList, new ArrayList<>(playingRecords.values()),
+				new ArrayList<>(formatRecords.values()), new ArrayList<>(sessionRecords.values()));
 	}
 
 }

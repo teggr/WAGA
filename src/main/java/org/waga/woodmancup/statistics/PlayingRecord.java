@@ -2,7 +2,7 @@ package org.waga.woodmancup.statistics;
 
 import org.waga.player.Player;
 
-public class PlayingRecord {
+public class PlayingRecord implements Comparable<PlayingRecord> {
 
 	private final Player player;
 	private int wins = 0;
@@ -31,6 +31,11 @@ public class PlayingRecord {
 	
 	public Player getPlayer() {
 		return player;
+	}
+	
+	@Override
+	public int compareTo(PlayingRecord o) {
+		return o.wins - wins;
 	}
 
 }

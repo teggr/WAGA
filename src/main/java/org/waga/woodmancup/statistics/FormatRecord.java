@@ -1,8 +1,10 @@
 package org.waga.woodmancup.statistics;
 
+import java.nio.file.CopyOption;
+
 import org.waga.woodmancup.Session.Format;
 
-public class FormatRecord {
+public class FormatRecord implements Comparable<FormatRecord> {
 
 	private int losses = 0;
 	private int wins = 0;
@@ -33,4 +35,9 @@ public class FormatRecord {
 		return wins;
 	}
 
+	@Override
+	public int compareTo(FormatRecord o) {
+		return format.ordinal() - o.format.ordinal();
+	}
+	
 }

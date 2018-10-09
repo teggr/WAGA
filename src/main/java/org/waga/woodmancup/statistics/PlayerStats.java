@@ -24,15 +24,12 @@ public class PlayerStats {
 	private final Player player;
 	private final List<Match> matches;
 	private final Date lastAttended;
+	private final List<PlayingRecord> playingRecords;
+	private final List<FormatRecord> formatRecords;
+	private final List<SessionRecord> sessionRecords;
 
-	private Collection<PlayingRecord> playingRecords;
-
-	private Collection<FormatRecord> formatRecords;
-
-	private Collection<SessionRecord> sessionRecords;
-
-	public PlayerStats(Player player, Date lastAttended, List<Match> matches, Collection<PlayingRecord> playingRecords,
-			Collection<FormatRecord> formatRecords, Collection<SessionRecord> sessionRecords) {
+	public PlayerStats(Player player, Date lastAttended, List<Match> matches, List<PlayingRecord> playingRecords,
+			List<FormatRecord> formatRecords, List<SessionRecord> sessionRecords) {
 		this.player = player;
 		this.lastAttended = lastAttended;
 		this.matches = matches;
