@@ -63,7 +63,7 @@ public class Staverton2011 extends WoodmanCupEventDataProvider {
 
 	private  List<Match> session2Matches() {
 		List<Match> list = new ArrayList<>();
-		addMatch(new MatchBuilder().teamOf(Players.apps, Players.snakes).beat(Players.brad, Players.east), list);
+		addMatch(new MatchBuilder().teamOf(Players.apps, Players.gav).beat(Players.brad, Players.east), list);
 		addMatch(new MatchBuilder().teamOf(Players.putts, Players.greg).lostTo(Players.teggy, Players.henso), list);
 		addMatch(new MatchBuilder().teamOf(Players.foist, Players.snakes).lostTo(Players.sturdy, Players.maddog), list);
 		return list;
