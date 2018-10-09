@@ -29,15 +29,22 @@ public class PlayerStats {
 
 	private Collection<FormatRecord> formatRecords;
 
-	public PlayerStats(Player player, Date lastAttended, List<Match> matches,
-			Collection<PlayingRecord> playingRecords, Collection<FormatRecord> formatRecords) {
+	private Collection<SessionRecord> sessionRecords;
+
+	public PlayerStats(Player player, Date lastAttended, List<Match> matches, Collection<PlayingRecord> playingRecords,
+			Collection<FormatRecord> formatRecords, Collection<SessionRecord> sessionRecords) {
 		this.player = player;
 		this.lastAttended = lastAttended;
 		this.matches = matches;
 		this.playingRecords = playingRecords;
 		this.formatRecords = formatRecords;
+		this.sessionRecords = sessionRecords;
 	}
-	
+
+	public Collection<SessionRecord> getSessionRecords() {
+		return sessionRecords;
+	}
+
 	public Collection<FormatRecord> getFormatRecords() {
 		return formatRecords;
 	}

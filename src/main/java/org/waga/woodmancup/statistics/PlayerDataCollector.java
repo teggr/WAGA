@@ -21,6 +21,7 @@ public class PlayerDataCollector {
 	private Date lastAttended;
 	private Map<Player, PlayingRecord> playingRecords = new HashMap<>();
 	private Map<Format, FormatRecord> formatRecords = new HashMap<>();
+	private Map<Session.Type, SessionRecord> sessionRecords = new HashMap<>();
 
 	public PlayerDataCollector(Player player) {
 		this.player = player;
@@ -72,6 +73,14 @@ public class PlayerDataCollector {
 			formatRecords.put(session.getFormat(), formatRecord);
 		}
 		formatRecord.recordLoss();
+		
+		SessionRecord sessionRecord = sessionRecords.get(session.getType());
+		if (sessionRecord == null) {
+			sessionRecord = new SessionRecord(session.getType());
+			sessionRecords.put(session.getType(), sessionRecord);
+		}
+		sessionRecord.recordLoss();
+		
 	}
 
 	private void recordSessionVictory(Session session) {
@@ -81,6 +90,14 @@ public class PlayerDataCollector {
 			formatRecords.put(session.getFormat(), formatRecord);
 		}
 		formatRecord.recordWin();
+		
+		SessionRecord sessionRecord = sessionRecords.get(session.getType());
+		if (sessionRecord == null) {
+			sessionRecord = new SessionRecord(session.getType());
+			sessionRecords.put(session.getType(), sessionRecord);
+		}
+		sessionRecord.recordWin();
+		
 	}
 
 	private void recordLossAgainstPlayers(Match match) {
@@ -138,7 +155,8 @@ public class PlayerDataCollector {
 	}
 
 	public PlayerStats getStats() {
-		return new PlayerStats(player, lastAttended, matchList, playingRecords.values(), formatRecords.values());
+		return new PlayerStats(player, lastAttended, matchList, playingRecords.values(), formatRecords.values(),
+				sessionRecords.values());
 	}
 
 }

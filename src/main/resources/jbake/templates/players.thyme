@@ -52,6 +52,23 @@
 			  		</tr>
 		  		</tbody>
 		  	</table>
+		  	<h3>Session Record </h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Session</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr th:each="record : ${stats.sessionRecords}">
+			  			<td th:text="${record.type}"></td>
+			  			<td th:text="${record.wins}"></td>
+			  			<td th:text="${record.losses}"></td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
 		  </div>
 		  <div class="col-md-4">
 		  	<h3>Matches</h3>
