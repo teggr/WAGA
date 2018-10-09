@@ -10,6 +10,7 @@ import org.waga.player.Player;
 import org.waga.woodmancup.Match;
 import org.waga.woodmancup.Match.Result;
 import org.waga.woodmancup.Session;
+import org.waga.woodmancup.Session.Format;
 import org.waga.woodmancup.WoodmanCupEvent;
 
 public class PlayerDataCollector {
@@ -19,6 +20,7 @@ public class PlayerDataCollector {
 	private List<Match> matchList = new ArrayList<>();
 	private Date lastAttended;
 	private Map<Player, PlayingRecord> playingRecords = new HashMap<>();
+	private Map<Format, FormatRecord> formatRecords = new HashMap<>();
 
 	public PlayerDataCollector(Player player) {
 		this.player = player;
@@ -41,9 +43,11 @@ public class PlayerDataCollector {
 						record.addResult(result);
 						matchList.add(match);
 						if (result == Result.BEAT) {
-							recordVictoryAgainstPlayers(match.getOpponentNames(player));
+							recordVictoryAgainstPlayers(match);
+							recordSessionVictory(session);
 						} else if (result == Result.LOST_TO) {
-							recordLossAgainstPlayers(match.getOpponentNames(player));
+							recordLossAgainstPlayers(match);
+							recordSessionLoss(session);
 						}
 					}
 				}
@@ -61,8 +65,26 @@ public class PlayerDataCollector {
 		}
 	}
 
-	private void recordLossAgainstPlayers(List<Player> opponentNames) {
-		for (Player opponent : opponentNames) {
+	private void recordSessionLoss(Session session) {
+		FormatRecord formatRecord = formatRecords.get(session.getFormat());
+		if (formatRecord == null) {
+			formatRecord = new FormatRecord(session.getFormat());
+			formatRecords.put(session.getFormat(), formatRecord);
+		}
+		formatRecord.recordLoss();
+	}
+
+	private void recordSessionVictory(Session session) {
+		FormatRecord formatRecord = formatRecords.get(session.getFormat());
+		if (formatRecord == null) {
+			formatRecord = new FormatRecord(session.getFormat());
+			formatRecords.put(session.getFormat(), formatRecord);
+		}
+		formatRecord.recordWin();
+	}
+
+	private void recordLossAgainstPlayers(Match match) {
+		for (Player opponent : match.getOpponents(player)) {
 			PlayingRecord playingRecord = playingRecords.get(opponent);
 			if (playingRecord == null) {
 				playingRecord = new PlayingRecord(opponent);
@@ -72,8 +94,8 @@ public class PlayerDataCollector {
 		}
 	}
 
-	private void recordVictoryAgainstPlayers(List<Player> opponentNames) {
-		for (Player opponent : opponentNames) {
+	private void recordVictoryAgainstPlayers(Match match) {
+		for (Player opponent : match.getOpponents(player)) {
 			PlayingRecord playingRecord = playingRecords.get(opponent);
 			if (playingRecord == null) {
 				playingRecord = new PlayingRecord(opponent);
@@ -116,7 +138,7 @@ public class PlayerDataCollector {
 	}
 
 	public PlayerStats getStats() {
-		return new PlayerStats(player, lastAttended, matchList, playingRecords.values());
+		return new PlayerStats(player, lastAttended, matchList, playingRecords.values(), formatRecords.values());
 	}
 
 }

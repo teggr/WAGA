@@ -123,7 +123,7 @@ public class Match {
 		return teamA.contains(player) || teamB.contains(player);
 	}
 
-	public List<Player> getPartnerNames(Player player) {
+	public List<Player> getPartners(Player player) {
 		if (teamA.contains(player)) {
 			return teamA.stream().filter(p -> p != player).collect(Collectors.toList());
 		} else {
@@ -131,7 +131,7 @@ public class Match {
 		}
 	}
 
-	public List<Player> getOpponentNames(Player player) {
+	public List<Player> getOpponents(Player player) {
 		if (teamA.contains(player)) {
 			return teamB.stream().collect(Collectors.toList());
 		} else {

@@ -27,12 +27,19 @@ public class PlayerStats {
 
 	private Collection<PlayingRecord> playingRecords;
 
+	private Collection<FormatRecord> formatRecords;
+
 	public PlayerStats(Player player, Date lastAttended, List<Match> matches,
-			Collection<PlayingRecord> playingRecords) {
+			Collection<PlayingRecord> playingRecords, Collection<FormatRecord> formatRecords) {
 		this.player = player;
 		this.lastAttended = lastAttended;
 		this.matches = matches;
 		this.playingRecords = playingRecords;
+		this.formatRecords = formatRecords;
+	}
+	
+	public Collection<FormatRecord> getFormatRecords() {
+		return formatRecords;
 	}
 
 	public Player getPlayer() {

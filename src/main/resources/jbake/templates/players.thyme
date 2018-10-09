@@ -35,6 +35,23 @@
 			  		</tr>
 		  		</tbody>
 		  	</table>
+		  	<h3>Format Record </h3>
+		  	<table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Format</th>
+		  				<th>Wins</th>
+		  				<th>Losses</th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+			  		<tr th:each="record : ${stats.formatRecords}">
+			  			<td th:text="${record.format}"></td>
+			  			<td th:text="${record.wins}"></td>
+			  			<td th:text="${record.losses}"></td>
+			  		</tr>
+		  		</tbody>
+		  	</table>
 		  </div>
 		  <div class="col-md-4">
 		  	<h3>Matches</h3>
@@ -48,9 +65,9 @@
 		  		</thead>
 		  		<tbody>
 			  		<tr th:each="match : ${stats.matches}">
-			  			<td th:text="${config.helper.teamList(match.getPartnerNames(stats.player))}"></td>
+			  			<td th:text="${config.helper.teamList(match.getPartners(stats.player))}"></td>
 			  			<td th:text="${match.getResult(stats.player)}"></td>
-			  			<td th:text="${config.helper.teamList(match.getOpponentNames(stats.player))}"></td>
+			  			<td th:text="${config.helper.teamList(match.getOpponents(stats.player))}"></td>
 			  		</tr>
 		  		</tbody>
 		  	</table>
