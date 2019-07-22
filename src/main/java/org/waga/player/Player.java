@@ -27,4 +27,8 @@ public class Player {
 		return String.format("%s %s", firstName, surname);
 	}
 
+	public String toId() {
+		return getFullName().toLowerCase().replaceAll(" ", "-");
+	}
+
 }

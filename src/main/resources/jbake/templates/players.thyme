@@ -13,11 +13,21 @@
 		  	
 		  </div>
 		</div>
+		
+		<div class="row">
+		  <div class="col-md-4">
+		  	<ul>
+				<th:block  th:each="stats : ${config.data.playerStats}">
+					<li><a th:href="'#' + ${stats.player.toId()}" th:text="${stats.player.fullName}"></a></li>
+				</th:block>
+		  	</ul>
+		  </div>
+		</div>
   	
   		<th:block  th:each="stats : ${config.data.playerStats}">
   		<div class="row">
 		  <div class="col-md-4">
-		  	<h2 th:text="${stats.player.fullName}"></h2>
+		  	<h2 th:text="${stats.player.fullName}" th:id="${stats.player.toId()}"></h2>
 		  	<h3>Playing Record vs</h3>
 		  	<table class="table">
 		  		<thead>
